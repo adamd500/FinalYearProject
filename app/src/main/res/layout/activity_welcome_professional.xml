@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfessionalFeatures.WelcomeProfessional">
+
+    <Button
+        android:id="@+id/buttonBrowseJobs"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="52dp"
+        android:text="Browse for new job"
+        android:onClick="getJobs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
+
+    <Button
+        android:id="@+id/buttonAllJobs"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="52dp"
+        android:text="my jobs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <Button
+        android:id="@+id/buttonEarnings"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="52dp"
+        android:text="view earnings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299" />
+
+    <Button
+        android:id="@+id/buttonProfile"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="52dp"
+        android:text="View Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.439" />
+</androidx.constraintlayout.widget.ConstraintLayout>

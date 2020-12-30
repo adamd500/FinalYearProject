@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fyp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FYP">
+        <activity android:name=".CustomerFeatures.SelectedConsultation"></activity>
+        <activity android:name=".CustomerFeatures.CustomerAllConsultations" />
+        <activity android:name=".ProfessionalFeatures.ArrangeConsultation" />
+        <activity android:name=".ProfessionalFeatures.SelectedJob" />
+        <activity android:name=".RegisterAndLogin.RegisterCustomer" />
+        <activity android:name=".RegisterAndLogin.CustomerLogin" />
+        <activity
+            android:name=".ProfessionalFeatures.BrowseJobs"
+            android:label="@string/title_activity_brows_jobs"
+            android:theme="@style/Theme.FYP.NoActionBar" />
+        <activity android:name=".SelectedListing" />
+        <activity android:name=".CustomerFeatures.CustomerAllListings" />
+        <activity android:name=".CustomerFeatures.CustomerProfile" />
+        <activity android:name=".ProfessionalFeatures.WelcomeProfessional" />
+        <activity android:name=".RegisterAndLogin.ProfessionalLogin" />
+        <activity android:name=".CustomerFeatures.CreateListing" />
+        <activity android:name=".CustomerFeatures.WelcomeCustomer" />
+        <activity android:name=".RegisterAndLogin.RegisterProfessional" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
