@@ -3,6 +3,7 @@ package com.example.fyp.ProfessionalFeatures;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.StartConversationWithCustomer;
 import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,9 +33,9 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 import java.io.IOException;
 
-public class SelectedJob extends AppCompatActivity {
+public class SelectedNewJob extends AppCompatActivity {
 
-    private TextView t1, t2, t3,t4;
+    private TextView t1, t2, t3, t4;
     private ImageView imgView;
 
     private FirebaseDatabase database;
@@ -67,10 +70,9 @@ public class SelectedJob extends AppCompatActivity {
 
         Intent i = getIntent();
         listingId = i.getStringExtra("id");
-        t4.setText("Listing id "+ listingId);
+        t4.setText("Listing id " + listingId);
         //   t1.setText(id);
         getListing();
-        // displayListing();
 
     }
 
@@ -95,12 +97,14 @@ public class SelectedJob extends AppCompatActivity {
         });
     }
 
+
+    @SuppressLint("SetTextI18n")
     public void displayListing() {
         t1.setText("Listing location : " + listing.getLocation());
         t2.setText("Trade Sector : " + listing.getTradeSector());
         t3.setText("Description : " + listing.getDescription());
 
-        storageReference = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com"+photoUrl);
+        storageReference = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + photoUrl);
 
 //fypdatabase-d9dfe.appspot.com/images
         try {
@@ -114,7 +118,7 @@ public class SelectedJob extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(SelectedJob.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SelectedNewJob.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (IOException e) {
@@ -123,15 +127,74 @@ public class SelectedJob extends AppCompatActivity {
         // imgView.setImageBitmap();
     }
 
-    public void backToBrowse(View v){
-        Intent intent = new Intent(SelectedJob.this, BrowseJobs.class);
+    public void backToBrowse(View v) {
+        Intent intent = new Intent(SelectedNewJob.this, BrowseJobs.class);
         startActivity(intent);
     }
 
-    public void arrangeQuote(View v){
-        Intent intent = new Intent(SelectedJob.this, ArrangeConsultation.class);
-        intent.putExtra("listingId",listingId);
-        startActivity(intent);
+    public void arrangeQuote(View v) {
+        ref.child("Professional").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(uid)) {
+
+                        Professional professional = child.getValue(Professional.class);
+
+                        if ((professional.isIdVerified()) && (professional.isGardaVetVer()) && (professional.isSafePassVer())) {
+
+                            Intent intent = new Intent(SelectedNewJob.this, ArrangeConsultation.class);
+                            intent.putExtra("listingId", listingId);
+                            startActivity(intent);
+
+                        } else {
+
+                            Toast.makeText(SelectedNewJob.this, "Error ! You cannot perform that action until all documents have been verified.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+
+        });
+
+
     }
+
+    public void sendMessage(View v) {
+        ref.child("Listing").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(listingId)) {
+                        Listing listing = child.getValue(Listing.class);
+
+                        Intent intent = new Intent(SelectedNewJob.this, StartConversationWithCustomer.class);
+                        intent.putExtra("listingId", listingId);
+                        intent.putExtra("customerId", listing.getCustomerUsername());
+                        intent.putExtra("listingTitle", listing.getTitle());
+
+
+                        startActivity(intent);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+    }
+
 
 }
+

@@ -59,4 +59,8 @@ public class ProfessionalLogin extends AppCompatActivity {
 
 
     }
+    public void registerProfessional(View v){
+        Intent intent = new Intent(this, RegisterProfessional.class);
+        startActivity(intent);
+    }
 }

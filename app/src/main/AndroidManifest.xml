@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fyp">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -9,17 +15,60 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".CustomerFeatures.SelectedConsultation"></activity>
+        <activity android:name=".AdminFeatures.SelectedCustomerToVerify"></activity>
+        <activity android:name=".AdminFeatures.VerifyCustomers" />
+        <activity android:name=".AdminFeatures.WelcomeAdmin" />
+        <activity android:name=".RegisterAndLogin.AdminLogin" />
+        <activity android:name=".DocumentUploading.ProfessionalUploadGardaVet" />
+        <activity android:name=".DocumentUploading.ProfessionalUploadSafePass" />
+        <activity android:name=".DocumentUploading.ProfessionalUploadSelfie" />
+        <activity android:name=".ProfessionalFeatures.ProfessionalProfile" />
+        <activity android:name=".DocumentUploading.ProfessionalUploadId" />
+        <activity android:name=".DocumentUploading.CustomerUploadSelfieImage" />
+        <activity android:name=".DocumentUploading.CustomerUploadIdDocument" />
+        <activity android:name=".Messaging.CustomerSelectedConversation" />
+        <activity android:name=".Messaging.InboxCustomer" />
+        <activity android:name=".Messaging.ProfessionalSelectedConversation" />
+        <activity android:name=".Messaging.InboxProfessional" />
+        <activity android:name=".Messaging.StartConversationWithCustomer" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ProfessionalFeatures.BrowseJobsOnMap"
+            android:label="@string/title_activity_browse_jobs_on_map" />
+        <activity android:name=".CustomerFeatures.PaymentPage" />
+        <activity android:name=".CustomerFeatures.JobsAwaitingFinalisation" />
+        <activity android:name=".CustomerFeatures.FinaliseJobCustomer" />
+        <activity android:name=".ProfessionalFeatures.FinaliseJobProfessional" />
+        <activity
+            android:name=".ProfessionalFeatures.CurrentSelectedJobOnMap"
+            android:label="@string/title_activity_current_selected_job_on_map" />
+        <activity android:name=".ProfessionalFeatures.SelectedCurrentJob" />
+        <activity android:name=".ProfessionalFeatures.CurrentJobs" />
+        <activity android:name=".ProfessionalFeatures.CreateJob" />
+        <activity android:name=".ProfessionalFeatures.SelectedAcceptedConsultation" />
+        <activity android:name=".ProfessionalFeatures.AcceptedConsultations" />
+        <activity android:name=".CustomerFeatures.SelectedConsultation" />
         <activity android:name=".CustomerFeatures.CustomerAllConsultations" />
         <activity android:name=".ProfessionalFeatures.ArrangeConsultation" />
-        <activity android:name=".ProfessionalFeatures.SelectedJob" />
+        <activity android:name=".ProfessionalFeatures.SelectedNewJob" />
         <activity android:name=".RegisterAndLogin.RegisterCustomer" />
         <activity android:name=".RegisterAndLogin.CustomerLogin" />
         <activity
             android:name=".ProfessionalFeatures.BrowseJobs"
             android:label="@string/title_activity_brows_jobs"
             android:theme="@style/Theme.FYP.NoActionBar" />
-        <activity android:name=".SelectedListing" />
+        <activity android:name=".CustomerFeatures.SelectedListing" />
         <activity android:name=".CustomerFeatures.CustomerAllListings" />
         <activity android:name=".CustomerFeatures.CustomerProfile" />
         <activity android:name=".ProfessionalFeatures.WelcomeProfessional" />
@@ -27,7 +76,7 @@
         <activity android:name=".CustomerFeatures.CreateListing" />
         <activity android:name=".CustomerFeatures.WelcomeCustomer" />
         <activity android:name=".RegisterAndLogin.RegisterProfessional" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".RegisterAndLogin.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

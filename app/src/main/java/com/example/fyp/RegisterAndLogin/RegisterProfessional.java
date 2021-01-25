@@ -85,7 +85,7 @@ public class RegisterProfessional extends AppCompatActivity {
             return;
         }else {
             professional = new Professional(name, dob, address, false, feedback, location, number, email, password, usernamStr, false,
-                    false, jobsCompleted, trade, workRadiusInt);
+                    false, jobsCompleted, trade, workRadiusInt,"s","s","s","s");
             registerProfessional(email, password);
 
         }

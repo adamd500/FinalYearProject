@@ -1,7 +1,6 @@
-package com.example.fyp;
+package com.example.fyp.Adapters;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.R;
+import com.example.fyp.CustomerFeatures.SelectedListing;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapterCustomer extends RecyclerView.Adapter<MyAdapterCustomer.MyViewHolder> {
 
@@ -62,7 +62,7 @@ public class MyAdapterCustomer extends RecyclerView.Adapter<MyAdapterCustomer.My
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
                 Listing selectedListing =listingsFromDB.get(position);
-                Intent intent= new Intent(v.getContext(),SelectedListing.class);
+                Intent intent= new Intent(v.getContext(), SelectedListing.class);
                 intent.putExtra("id",name.getListingId());
                 v.getContext().startActivity(intent);
             }

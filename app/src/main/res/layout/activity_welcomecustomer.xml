@@ -22,46 +22,71 @@
         android:layout_width="356dp"
         android:layout_height="41dp"
         android:layout_marginLeft="24dp"
-        android:text="Create a listing"
         android:onClick="createListing"
+        android:text="Create a listing"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <Button
         android:id="@+id/buttonViewAllListing"
         android:layout_width="356dp"
         android:layout_height="41dp"
-        android:layout_marginLeft="24dp"
-        android:text="View my listings"
+        android:layout_marginLeft="36dp"
         android:onClick="listingView"
+        android:text="View my listings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.311" />
+
 
     <Button
         android:id="@+id/buttonProfile"
         android:layout_width="356dp"
         android:layout_height="41dp"
-        android:layout_marginLeft="16dp"
-        android:text="View Profile"
+        android:layout_marginLeft="24dp"
         android:onClick="goToProfile"
+        android:text="View Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.846" />
+
+    <Button
+        android:id="@+id/buttonApproveJob"
+        android:layout_width="356dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="viewJobsToBeFinalised"
+        android:text="Jobs awaiting finalisation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
+
+    <Button
+        android:id="@+id/buttonInbox"
+        android:layout_width="356dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="inboxCustomer"
+        android:text="Inbox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.627" />
 
     <Button
         android:id="@+id/buttonConsultations"
         android:layout_width="356dp"
         android:layout_height="41dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="36dp"
         android:onClick="viewConsultations"
         android:text="View Consultations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.413" />
 </androidx.constraintlayout.widget.ConstraintLayout>

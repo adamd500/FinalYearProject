@@ -80,7 +80,7 @@ public class RegisterCustomer extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }else {
-            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, usernamStr);
+            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, usernamStr,"s","s");
             customerProfessional(email, password);
 
         }

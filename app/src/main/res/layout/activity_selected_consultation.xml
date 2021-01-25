@@ -10,16 +10,16 @@
         android:id="@+id/txtViewConsultationDetails"
         android:layout_width="380dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="12dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/txtViewTitle"
-        android:layout_width="380dp"
+        android:layout_width="386dp"
         android:layout_height="50dp"
         android:layout_marginLeft="16dp"
         android:textSize="20dp"
@@ -37,65 +37,67 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512" />
+        app:layout_constraintVertical_bias="0.597" />
 
     <TextView
         android:id="@+id/txtViewTime"
         android:layout_width="380dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="12dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.69" />
+
 
     <TextView
         android:id="@+id/txtViewListingDetails"
-        android:layout_width="374dp"
-        android:layout_height="135dp"
+        android:layout_width="376dp"
+        android:layout_height="202dp"
         android:layout_marginLeft="16dp"
         android:ems="10"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.175" />
 
     <TextView
         android:id="@+id/textViewMessage"
-        android:layout_width="385dp"
-        android:layout_height="107dp"
+        android:layout_width="429dp"
+        android:layout_height="106dp"
         android:layout_marginLeft="8dp"
         android:ems="10"
-        android:textSize="20dp"
         android:gravity="start|top"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
-
+        app:layout_constraintVertical_bias="0.86" />
 
     <Button
         android:id="@+id/deleteButton"
-        android:layout_width="171dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:text="Delete Listing"
+        android:layout_width="176dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="rescheduleConsultation"
+        android:text="Deny Consultation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.998" />
 
     <Button
         android:id="@+id/editButton"
-        android:layout_width="210dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="200dp"
-        android:text="Edit Listing"
+        android:layout_width="204dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="196dp"
+        android:onClick="confirmConsultation"
+        android:text="Confirm Consultation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.998" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

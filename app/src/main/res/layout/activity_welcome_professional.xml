@@ -19,35 +19,62 @@
         app:layout_constraintVertical_bias="0.099" />
 
     <Button
-        android:id="@+id/buttonAllJobs"
+        android:id="@+id/buttonBrowseJobsOnMap"
         android:layout_width="307dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="52dp"
-        android:text="my jobs"
+        android:layout_marginLeft="60dp"
+        android:onClick="findJobOnMap"
+        android:text="Browse New Jobs on Map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintVertical_bias="0.204" />
+
+    <Button
+        android:id="@+id/buttonAllJobs"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:onClick="currentJobs"
+        android:text="Current Jobs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.305" />
 
     <Button
         android:id="@+id/buttonEarnings"
         android:layout_width="307dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="52dp"
-        android:text="view earnings"
+        android:layout_marginLeft="60dp"
+        android:text="Inbox"
+        android:onClick="inbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
+        app:layout_constraintVertical_bias="0.414" />
+
+    <Button
+        android:id="@+id/buttonAcceptedConsultation"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:onClick="acceptedConsultations"
+        android:text="Accepted Consultations"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.574" />
 
     <Button
         android:id="@+id/buttonProfile"
         android:layout_width="307dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="52dp"
+        android:layout_marginLeft="60dp"
         android:text="View Profile"
+        android:onClick="viewProfile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.439" />
+        app:layout_constraintVertical_bias="0.936" />
 </androidx.constraintlayout.widget.ConstraintLayout>

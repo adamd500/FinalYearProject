@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.fyp.MyAdapterCustomer;
+import com.example.fyp.Adapters.MyAdapterCustomer;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;

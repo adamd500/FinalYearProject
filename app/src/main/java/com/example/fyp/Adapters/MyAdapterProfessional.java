@@ -1,4 +1,4 @@
-package com.example.fyp;
+package com.example.fyp.Adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.ObjectClasses.Listing;
-import com.example.fyp.ProfessionalFeatures.SelectedJob;
+import com.example.fyp.ProfessionalFeatures.SelectedNewJob;
+import com.example.fyp.R;
+import com.example.fyp.CustomerFeatures.SelectedListing;
 
 import java.util.ArrayList;
 
@@ -33,7 +35,7 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
 
             int position=this.getLayoutPosition();
             Listing selectedListing =listingsFromDB.get(position);
-            Intent intent= new Intent(view.getContext(),SelectedListing.class);
+            Intent intent= new Intent(view.getContext(), SelectedListing.class);
             view.getContext().startActivity(intent);
         }
     }
@@ -60,7 +62,7 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
                 Listing selectedListing =listingsFromDB.get(position);
-                Intent intent= new Intent(v.getContext(), SelectedJob.class);
+                Intent intent= new Intent(v.getContext(), SelectedNewJob.class);
                 intent.putExtra("id",name.getListingId());
                 v.getContext().startActivity(intent);
             }

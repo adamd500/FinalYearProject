@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessionalFeatures.SelectedJob">
+    tools:context=".ProfessionalFeatures.SelectedNewJob">
+
     <TextView
         android:id="@+id/txtViewTrade"
         android:layout_width="380dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
         android:textSize="20dp"
-        android:layout_marginLeft="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintVertical_bias="0.627" />
 
     <TextView
         android:id="@+id/txtViewTitle"
@@ -37,7 +38,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintVertical_bias="0.537" />
+
 
     <TextView
         android:id="@+id/textViewDescription"
@@ -45,13 +47,12 @@
         android:layout_height="107dp"
         android:layout_marginLeft="8dp"
         android:ems="10"
-        android:textSize="20dp"
         android:gravity="start|top"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.817" />
-
+        app:layout_constraintVertical_bias="0.778" />
 
     <Button
         android:id="@+id/deleteButton"
@@ -63,19 +64,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <Button
-        android:id="@+id/editButton"
-        android:layout_width="210dp"
+        android:id="@+id/sendMessage"
+        android:layout_width="181dp"
         android:layout_height="59dp"
-        android:layout_marginLeft="200dp"
-        android:text="Back to browse"
-        android:onClick="backToBrowse"
+        android:layout_marginLeft="212dp"
+        android:onClick="sendMessage"
+        android:text="Send Client Message "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="362dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="backToBrowse"
+        android:text="Back to browse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
     <ImageView
         android:id="@+id/imageView"

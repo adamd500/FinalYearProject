@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.fyp.Messaging.InboxCustomer;
+import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
 import com.example.fyp.R;
 
 public class WelcomeCustomer extends AppCompatActivity {
@@ -33,6 +35,14 @@ public class WelcomeCustomer extends AppCompatActivity {
     }
     public void viewConsultations(View v){
         Intent intent = new Intent(WelcomeCustomer.this, CustomerAllConsultations.class);
+        startActivity(intent);
+    }
+    public void viewJobsToBeFinalised(View v){
+        Intent intent = new Intent(WelcomeCustomer.this, JobsAwaitingFinalisation.class);
+        startActivity(intent);
+    }
+    public void inboxCustomer(View v){
+        Intent intent = new Intent(WelcomeCustomer.this, InboxCustomer.class);
         startActivity(intent);
     }
 }

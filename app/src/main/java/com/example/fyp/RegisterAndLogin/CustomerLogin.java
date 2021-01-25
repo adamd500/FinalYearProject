@@ -26,7 +26,7 @@ public class CustomerLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_professional_login);
+        setContentView(R.layout.activity_customer_login);
 
         database=FirebaseDatabase.getInstance();
         mDatabase=database.getReference();
@@ -57,5 +57,9 @@ public class CustomerLogin extends AppCompatActivity {
                 });
 
 
+    }
+    public void registerCustomer(View v){
+        Intent intent = new Intent(this, RegisterCustomer.class);
+        startActivity(intent);
     }
 }

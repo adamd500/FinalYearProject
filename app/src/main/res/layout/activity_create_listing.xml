@@ -31,6 +31,19 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
+
+    <EditText
         android:id="@+id/editTextEircode"
         android:layout_width="380dp"
         android:layout_height="50dp"

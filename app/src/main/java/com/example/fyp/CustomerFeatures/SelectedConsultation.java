@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.fyp.ObjectClasses.Consultation;
+import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
 import com.google.firebase.database.DataSnapshot;
@@ -101,4 +103,33 @@ public class SelectedConsultation extends AppCompatActivity {
             }
         });
     }
+
+    public void confirmConsultation(View v){
+        ref.child("Consultation").child(consultationId).child("accepted").setValue(true);
+
+        ref.child("Consultation").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(consultationId)) {
+                        consultation = child.getValue(Consultation.class);
+
+                        ref.child("Listing").child(consultation.getListingId()).child("professionalId").setValue(consultation.getProfessionalId());
+                        ref.child("Listing").child(consultation.getListingId()).child("active").setValue(false);
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+
+    }
+    public void rescheduleConsultation(View v){
+
+    }
+
 }

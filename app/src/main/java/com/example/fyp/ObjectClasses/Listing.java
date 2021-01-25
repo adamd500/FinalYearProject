@@ -14,8 +14,11 @@ public class Listing {
     String tradeSector;
     String customerUsername;
     String listingId;
+    String title;
+    String professionalAssignedId;
 
-    public Listing(boolean active, ArrayList<String> photos, String description, String location, String tradeSector, String customerUsername, String listingId) {
+
+    public Listing(boolean active, ArrayList<String> photos, String description, String location, String tradeSector, String customerUsername, String listingId, String title, String professionalAssignedId) {
         this.active = active;
         this.photos = photos;
         this.description = description;
@@ -23,6 +26,8 @@ public class Listing {
         this.tradeSector = tradeSector;
         this.customerUsername = customerUsername;
         this.listingId = listingId;
+        this.title = title;
+        this.professionalAssignedId = professionalAssignedId;
     }
 
     public Listing() {
@@ -84,11 +89,27 @@ public class Listing {
         this.customerUsername = customerUsername;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getListingId() {
         return listingId;
     }
 
     public void setListingId(String listingId) {
         this.listingId = listingId;
+    }
+
+    public String getProfessionalAssignedId() {
+        return professionalAssignedId;
+    }
+
+    public void setProfessionalAssignedId(String professionalAssignedId) {
+        this.professionalAssignedId = professionalAssignedId;
     }
 }

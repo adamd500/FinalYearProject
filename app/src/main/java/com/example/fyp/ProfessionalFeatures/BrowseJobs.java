@@ -2,8 +2,7 @@ package com.example.fyp.ProfessionalFeatures;
 
 import android.os.Bundle;
 
-import com.example.fyp.MyAdapterCustomer;
-import com.example.fyp.MyAdapterProfessional;
+import com.example.fyp.Adapters.MyAdapterProfessional;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
@@ -20,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -96,7 +93,7 @@ public class BrowseJobs extends AppCompatActivity {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
                     Listing listing = child.getValue(Listing.class);
-                    if (listing.getTradeSector().equalsIgnoreCase(professional.getTrade())) {
+                    if (listing.getTradeSector().equalsIgnoreCase(professional.getTrade()) &&listing.isActive()) {
                         listings.add(listing);
                     }
                     myAdapter.notifyItemInserted(listings.size() - 1);

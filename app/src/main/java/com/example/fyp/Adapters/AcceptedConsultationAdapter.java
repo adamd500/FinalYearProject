@@ -1,4 +1,4 @@
-package com.example.fyp;
+package com.example.fyp.Adapters;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.CustomerFeatures.SelectedConsultation;
 import com.example.fyp.ObjectClasses.Consultation;
-import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ProfessionalFeatures.SelectedAcceptedConsultation;
+import com.example.fyp.R;
 
 import java.util.ArrayList;
 
-public class AdapterConsultationCustomer  extends RecyclerView.Adapter<AdapterConsultationCustomer.MyViewHolder>{
-
+public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedConsultationAdapter.MyViewHolder> {
     ArrayList<Consultation> consultationsFromDB;
 
     //Inner class - Provide a reference to each item/row
@@ -36,31 +36,31 @@ public class AdapterConsultationCustomer  extends RecyclerView.Adapter<AdapterCo
         }
     }
 
-    public AdapterConsultationCustomer(ArrayList<Consultation>myDataset){
+    public AcceptedConsultationAdapter(ArrayList<Consultation>myDataset){
         consultationsFromDB=myDataset;
     }
     @Override
-    public AdapterConsultationCustomer.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public AcceptedConsultationAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
         View itemView =inflater.inflate(R.layout.row_layout,parent,false);
-        AdapterConsultationCustomer.MyViewHolder viewHolder=new AdapterConsultationCustomer.MyViewHolder(itemView);
+        AcceptedConsultationAdapter.MyViewHolder viewHolder=new AcceptedConsultationAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterConsultationCustomer.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AcceptedConsultationAdapter.MyViewHolder holder, int position) {
 
         final Consultation consultation=consultationsFromDB.get(position);
-        holder.txtView.setText("\n Listing ID : "+consultation.getListingId()+"\n Proposed Date : "+consultation.getDate()+"\n Proposed Time : "+ consultation.getTime()
-                +"\n"+"Message from Professional : "+consultation.getMessage());
+        holder.txtView.setText("\n Listing ID : "+consultation.getListingId()+"\n Proposed Date : "+consultation.getDate()+"\n Proposed Time : "+ consultation.getTime());
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
                 Consultation selectedConsultation =consultationsFromDB.get(position);
-                Intent intent= new Intent(v.getContext(), SelectedConsultation.class);
+                Intent intent= new Intent(v.getContext(), SelectedAcceptedConsultation.class);
                 intent.putExtra("id",consultation.getConsultationId());
+
                 v.getContext().startActivity(intent);
             }
         });
@@ -90,5 +90,3 @@ public class AdapterConsultationCustomer  extends RecyclerView.Adapter<AdapterCo
     }
 
 }
-
-
