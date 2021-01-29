@@ -58,7 +58,7 @@ public class CustomerAllConsultations extends AppCompatActivity {
                 Iterable<DataSnapshot>children=snapshot.getChildren();
                 for(DataSnapshot child:children){
                     Consultation consultation=child.getValue(Consultation.class);
-                    if(consultation.getCustomerId().equals(uid)) {
+                    if( (consultation.getCustomerId().equals(uid)) && (!consultation.isFinished()) && (!consultation.isAccepted())) {
                         consultations.add(consultation);
                     }
                     adapter.notifyItemInserted(consultations.size()-1);

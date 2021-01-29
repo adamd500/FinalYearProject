@@ -142,28 +142,28 @@ public class StartConversationWithCustomer extends AppCompatActivity {
     }
 
     private void readMessage() {
-        messages = new ArrayList<Message>();
-        reference = database.getReference("Message");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                messages.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Message message = dataSnapshot.getValue(Message.class);
-                    if ((message.getProfessionalId().equals(uid)) && (message.getCustomerId().equals(customerId)) && (message.getListingId().equals(listingId))) {
-                        messages.add(message);
-                    }
-                    myAdapter = new MessageAdapter(messages);
-                    recyclerView.setAdapter(myAdapter);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        messages = new ArrayList<Message>();
+//        reference = database.getReference("Message");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                messages.clear();
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Message message = dataSnapshot.getValue(Message.class);
+//                    if ((message.getConversationId().equals(uid)) && (message.getCustomerId().equals(customerId)) && (message.getListingId().equals(listingId))) {
+//                        messages.add(message);
+//                    }
+//                    myAdapter = new MessageAdapter(messages);
+//                    recyclerView.setAdapter(myAdapter);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
     }
 
 
@@ -173,8 +173,8 @@ public class StartConversationWithCustomer extends AppCompatActivity {
 
             String currentDateAndTime = sdf.format(new Date());
 
-            Message message = new Message(uid, customerId, text, listingId, currentDateAndTime);
-            ref.child("Message").push().setValue(message);
+          //  Message message = new Message(uid, customerId, text, listingId, currentDateAndTime);
+          //  ref.child("Message").push().setValue(message);
 
             messageBox.setText("");
 

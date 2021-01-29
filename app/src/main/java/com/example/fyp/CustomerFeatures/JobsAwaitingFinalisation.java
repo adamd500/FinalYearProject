@@ -27,7 +27,7 @@ public class JobsAwaitingFinalisation extends AppCompatActivity {
     ArrayList<Job> jobs = new ArrayList<Job>();
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    JobsForFinalisingAdapter myAdapter;
+    static JobsForFinalisingAdapter myAdapter;
     private FirebaseUser user;
     private String uid;
 

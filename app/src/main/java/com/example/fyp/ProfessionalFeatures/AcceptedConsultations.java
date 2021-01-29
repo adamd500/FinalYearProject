@@ -28,7 +28,7 @@ public class AcceptedConsultations extends AppCompatActivity {
     ArrayList<Consultation> consultations = new ArrayList<Consultation>();
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    AcceptedConsultationAdapter myAdapter;
+   static  AcceptedConsultationAdapter myAdapter;
     private FirebaseUser user;
     private String uid;
 
@@ -64,12 +64,10 @@ public class AcceptedConsultations extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     Consultation consultation = child.getValue(Consultation.class);
 
-                    if (consultation.getProfessionalId().equals(uid) && consultation.isAccepted() == true) {
+                    if ( (consultation.getProfessionalId().equals(uid)) && (consultation.isAccepted()) && (!consultation.isFinished())) {
                         consultations.add(consultation);
                     }
-
                     myAdapter.notifyItemInserted(consultations.size() - 1);
-                    //myAdapter.notifyDataSetChanged();
                 }
             }
 

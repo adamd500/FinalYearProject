@@ -68,7 +68,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
 
         Message message = messagesFromDB.get(position);
-        holder.txtView.setText(message.getContent() + "\n" + message.getDateTime());
+        holder.txtView.setText(message.getContent() +"\nFrom : "+message.getFrom()+"\n At : " + message.getDateTime());
     }
 
     public void add(int position, Message consultation) {
@@ -101,10 +101,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     @Override
     public int getItemViewType(int position) {
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        if (messagesFromDB.get(position).getProfessionalId().equals(fuser.getUid())) {
+       // if (messagesFromDB.get(position).get().equals(fuser.getUid())) {
             return MSG_TYPE_RIGHT;
-        } else
-                return MSG_TYPE_LEFT;
+        //} else
+          //      return MSG_TYPE_LEFT;
 
 
         }

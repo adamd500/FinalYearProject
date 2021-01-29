@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminFeatures.VerifyProfessionalID">
+
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+
+    <Button
+        android:id="@+id/verifyButton"
+        android:layout_width="305dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="52dp"
+        android:onClick="verifyIdDocument"
+        android:text="Verify ID Document "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.726" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="405dp"
+        android:layout_height="142dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
+        tools:layout_editor_absoluteX="8dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="410dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/verifyButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        tools:layout_editor_absoluteX="3dp"
+        tools:srcCompat="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

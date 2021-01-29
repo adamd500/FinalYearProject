@@ -28,7 +28,7 @@ public class CurrentJobs extends AppCompatActivity {
     ArrayList<Job> jobs = new ArrayList<Job>();
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    CurrentJobsAdapter myAdapter;
+    static CurrentJobsAdapter myAdapter;
     private FirebaseUser user;
     private String uid;
 

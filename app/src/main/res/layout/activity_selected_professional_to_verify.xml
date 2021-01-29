@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminFeatures.SelectedProfessionalToVerify">
+
+    <TextView
+        android:id="@+id/txtViewTrade"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381" />
+
+
+    <TextView
+        android:id="@+id/textViewDob"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <TextView
+        android:id="@+id/txtViewAddress"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16" />
+
+    <Button
+        android:id="@+id/verifyIdButton"
+        android:layout_width="395dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="verifyId"
+        android:text="Verify ID "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
+
+    <Button
+        android:id="@+id/verifyGardaVetButton"
+        android:layout_width="395dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="verifyGardaVet"
+        android:text="Verify Garda Vet Form "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.744" />
+
+    <Button
+        android:id="@+id/verifySafePassButton"
+        android:layout_width="395dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="verifySafePass"
+        android:text="Verify Safe Pass "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.691" />
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="395dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="12dp"
+        android:onClick="home"
+        android:text="Back to Home "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+</androidx.constraintlayout.widget.ConstraintLayout>

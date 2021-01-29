@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fyp.Adapters.MessageAdapter;
+import com.example.fyp.ObjectClasses.Conversation;
+import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
@@ -31,7 +33,7 @@ import java.util.Date;
 
 public class CustomerSelectedConversation extends AppCompatActivity {
 
-    String listingId, customerId, listingTitle,professionalId;
+    String listingId, professionalId,conversationId;
     TextView titleText;
     private FirebaseDatabase database;
     private DatabaseReference ref, ref2, reference;
@@ -42,7 +44,7 @@ public class CustomerSelectedConversation extends AppCompatActivity {
     ArrayList<Message> messages;
     RecyclerView recyclerView;
     private String MESSAGE = "Message";
-    Button button;
+
     private SimpleDateFormat sdf;
 
     @Override
@@ -57,7 +59,7 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                readMessage();
+                   readMessage();
             }
 
             @Override
@@ -77,13 +79,6 @@ public class CustomerSelectedConversation extends AppCompatActivity {
 
             }
         });
-        button = (Button) findViewById(R.id.sendButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendText();
-            }
-        });
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -92,29 +87,47 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         Intent intent = getIntent();
         listingId = intent.getStringExtra("listingId");
         professionalId = intent.getStringExtra("professionalId");
-        //listingTitle = intent.getStringExtra("listingTitle");
+        conversationId = intent.getStringExtra("conversationId");
 
         titleText = (TextView) findViewById(R.id.textViewTitle);
         messageBox = (EditText) findViewById(R.id.message);
 
-        getProfessional();
+        getConversation();
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager lin = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(lin);
-        readMessage();
+        //  readMessage();
     }
 
-    public void getProfessional() {
-        ref.child("Professional").addValueEventListener(new ValueEventListener() {
+    //    public void getProfessional() {
+//        ref.child("Professional").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Iterable<DataSnapshot> children = snapshot.getChildren();
+//                for (DataSnapshot child : children) {
+//                    if (child.getKey().equals(professionalId)) {
+//                        Professional prof = child.getValue(Professional.class);
+//                        titleText.setText("Professional Name : " + prof.getName() + "\n");
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
+    public void getConversation() {
+        ref.child("Conversation").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
-                    if (child.getKey().equals(professionalId)) {
-                        Professional prof = child.getValue(Professional.class);
-                        titleText.setText("Professional Name : " + prof.getName() + "\n");
+                    if (child.getKey().equals(conversationId)) {
+                        Conversation conversation = child.getValue(Conversation.class);
+                        titleText.setText("Listing Title : " + conversation.getListingTitle() + "\n Professional Name : " + conversation.getProfessionalName() + "\n");
                     }
                 }
             }
@@ -125,17 +138,58 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         });
     }
 
+    //    private void readMessage() {
+//        messages = new ArrayList<Message>();
+//        reference = database.getReference("Message");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                messages.clear();
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Message message = dataSnapshot.getValue(Message.class);
+//                    if ((message.getProfessionalId().equals(professionalId)) && (message.getCustomerId().equals(uid)) && (message.getListingId().equals(listingId))) {
+//                        messages.add(message);
+//                    }
+//                    myAdapter = new MessageAdapter(messages);
+//                    recyclerView.setAdapter(myAdapter);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+//    public void sendText() {
+//        String text = messageBox.getText().toString();
+//        if (!text.equals("")) {
+//
+//            String currentDateAndTime = sdf.format(new Date());
+//            Message message = new Message(professionalId, uid, text, listingId, currentDateAndTime);
+//            ref.child("Message").push().setValue(message);
+//
+//            messageBox.setText("");
+//
+//        } else {
+//            Toast.makeText(this, "You cannot send an empty message.", Toast.LENGTH_SHORT).show();
+//
+//        }
+  //  }
     private void readMessage() {
         messages = new ArrayList<Message>();
-        reference = database.getReference("Message");
+        reference = database.getReference("Conversation");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 messages.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Message message = dataSnapshot.getValue(Message.class);
-                    if ((message.getProfessionalId().equals(professionalId)) && (message.getCustomerId().equals(uid)) && (message.getListingId().equals(listingId))) {
-                        messages.add(message);
+                    Conversation conversation = dataSnapshot.getValue(Conversation.class);
+                    if ((conversation.getCustomerId().equals(uid)) && (conversation.getProfessionalId().equals(professionalId)) && (conversation.getListingId().equals(listingId))) {
+                        for(Message mes : conversation.getMessages()){
+                            messages.add(mes);
+                        }
                     }
                     myAdapter = new MessageAdapter(messages);
                     recyclerView.setAdapter(myAdapter);
@@ -149,19 +203,62 @@ public class CustomerSelectedConversation extends AppCompatActivity {
             }
         });
     }
-    public void sendText() {
+
+    public void sendText(View v) {
         String text = messageBox.getText().toString();
         if (!text.equals("")) {
+            ref.child("Customer").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Customer customer = snapshot.getValue(Customer.class);
 
-            String currentDateAndTime = sdf.format(new Date());
-            Message message = new Message(professionalId, uid, text, listingId, currentDateAndTime);
-            ref.child("Message").push().setValue(message);
+                    String currentDateAndTime = sdf.format(new Date());
 
-            messageBox.setText("");
+                    Message message = new Message(conversationId, text, currentDateAndTime, customer.getName());
+                    addToConversation(message);
+
+                    messageBox.setText("");
+                }
+
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    //   Log.m("DBE Error","Cancel Access DB");
+                }
+            });
+
 
         } else {
             Toast.makeText(this, "You cannot send an empty message.", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    public void addToConversation(Message message){
+        ref.child("Conversation").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    Conversation conversation = child.getValue(Conversation.class);
+                    if(conversation.getConversationId().equals(message.getConversationId())) {
+
+                        ArrayList<Message>updatedConversation= conversation.getMessages();
+                        updatedConversation.add(message);
+                        ref.child("Conversation").child(conversationId).child("messages").setValue(updatedConversation);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+    }
+
+    public void viewProfessionalProfile(View view) {
+
     }
 }

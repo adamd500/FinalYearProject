@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerFeatures.FinaliseJobCustomer">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="389dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:text="Finalise Job"
+        android:gravity="center"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004" />
+
+    <TextView
+        android:id="@+id/estimatedDuration"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Estimated Duration"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
+
+
+    <TextView
+        android:id="@+id/quotePrice"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Quoted Price"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <TextView
+        android:id="@+id/actualDuration"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Actual Duration"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
+
+    <TextView
+        android:id="@+id/actualPrice"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Actual Price "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/finisDate"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:hint="Finish Date "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <EditText
+        android:id="@+id/punctuality"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="Punctuality of Professional(0-100) "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.548" />
+
+    <EditText
+        android:id="@+id/communication"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="Communication of Professional(0-100) "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629" />
+
+    <EditText
+        android:id="@+id/workQuality"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="8dp"
+        android:ems="10"
+        android:hint="Quality of Work Done (0-100) "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
+
+    <EditText
+        android:id="@+id/overallSatisfaction"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:hint="Overall Satisfaction (0-100) "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784" />
+
+    <TextView
+        android:id="@+id/startDate"
+        android:layout_width="382dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:hint="Start Date "
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.399" />
+
+    <TextView
+        android:id="@+id/priceBreakdown"
+        android:layout_width="382dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Breakdown of Price "
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.316" />
+
+    <EditText
+        android:id="@+id/feedbackForProfessional"
+        android:layout_width="381dp"
+        android:layout_height="83dp"
+        android:layout_marginLeft="12dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Feedback about professional and work done "
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.898" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="12dp"
+        android:onClick="finaliseJob"
+        android:text="Finish Job"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+</androidx.constraintlayout.widget.ConstraintLayout>

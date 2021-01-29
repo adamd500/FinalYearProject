@@ -19,6 +19,7 @@ public class Job {
     String actualDuration;
     String priceBreakdown;
     String jobTitle;
+
     public Job(){
 
     }

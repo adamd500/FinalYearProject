@@ -88,6 +88,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         String finishDate=e4.getText().toString();
         String feedbackForCustomer=e5.getText().toString();
 
+        CurrentJobs.myAdapter.notifyDataSetChanged();
         ref.child("Job").child(jobId).child("price").setValue(Integer.parseInt(actualPrice));
         ref.child("Job").child(jobId).child("actualDuration").setValue(actualDuration);
         ref.child("Job").child(jobId).child("priceBreakdown").setValue(priceBreakdown);

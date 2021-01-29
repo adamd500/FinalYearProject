@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Professional;
+import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
 import com.example.fyp.R;
 import com.example.fyp.CustomerFeatures.WelcomeCustomer;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,6 +76,8 @@ public class RegisterProfessional extends AppCompatActivity {
         String usernamStr=username.getText().toString();
 
         List<String> feedback = new ArrayList<String>();
+        String s="s";
+        feedback.add(s);
         List<Job>jobsCompleted=new ArrayList<Job>();
 
 
@@ -84,8 +87,11 @@ public class RegisterProfessional extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }else {
-            professional = new Professional(name, dob, address, false, feedback, location, number, email, password, usernamStr, false,
-                    false, jobsCompleted, trade, workRadiusInt,"s","s","s","s");
+
+            professional = new Professional( name,  dob,  address,  false, feedback,  location,  number,  email,  password,  "username",  false,
+                    false,  trade,  workRadiusInt, "s", "s", "s", "s",
+                    0, 0, 0, 0, 0,0) ;
+
             registerProfessional(email, password);
 
         }
@@ -108,9 +114,10 @@ public class RegisterProfessional extends AppCompatActivity {
     }
     public void updateUI(FirebaseUser currentUser){
         String uid=currentUser.getUid();
+        professional.setUsername(uid);
         mDatabase.child(uid).setValue(professional);
      //   professional.setProfessionalId(keyId);
-        Intent welcomeIntent = new Intent(this, WelcomeCustomer.class);
+        Intent welcomeIntent = new Intent(this, WelcomeProfessional.class);
 
         startActivity(welcomeIntent);
     }

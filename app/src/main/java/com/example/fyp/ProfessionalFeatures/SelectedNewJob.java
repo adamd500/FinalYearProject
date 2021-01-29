@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.StartConversation2;
 import com.example.fyp.Messaging.StartConversationWithCustomer;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Professional;
@@ -176,7 +177,7 @@ public class SelectedNewJob extends AppCompatActivity {
                     if (child.getKey().equals(listingId)) {
                         Listing listing = child.getValue(Listing.class);
 
-                        Intent intent = new Intent(SelectedNewJob.this, StartConversationWithCustomer.class);
+                        Intent intent = new Intent(SelectedNewJob.this, StartConversation2.class);
                         intent.putExtra("listingId", listingId);
                         intent.putExtra("customerId", listing.getCustomerUsername());
                         intent.putExtra("listingTitle", listing.getTitle());
@@ -194,7 +195,6 @@ public class SelectedNewJob extends AppCompatActivity {
             }
         });
     }
-
 
 }
 

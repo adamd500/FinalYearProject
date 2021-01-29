@@ -49,10 +49,13 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
     }
 
     public void completeConsultation(View v){
-        ref.child("Consultation").child(consultationId).child("finished").setValue(true);
+       // notifyDataSetChanged();
         Intent intent= new Intent(this, CreateJob.class);
         intent.putExtra("id",consultationId);
         startActivity(intent);
+
+        AcceptedConsultations.myAdapter.notifyDataSetChanged();
+        ref.child("Consultation").child(consultationId).child("finished").setValue(true);
     }
 
     public void displayDetails(){

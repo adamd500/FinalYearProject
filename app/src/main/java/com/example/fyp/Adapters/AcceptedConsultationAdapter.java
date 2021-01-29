@@ -57,11 +57,14 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
+                notifyDataSetChanged();
                 Consultation selectedConsultation =consultationsFromDB.get(position);
                 Intent intent= new Intent(v.getContext(), SelectedAcceptedConsultation.class);
                 intent.putExtra("id",consultation.getConsultationId());
 
                 v.getContext().startActivity(intent);
+                notifyDataSetChanged();
+
             }
         });
     }

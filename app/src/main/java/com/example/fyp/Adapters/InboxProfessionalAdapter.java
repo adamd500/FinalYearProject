@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.Messaging.ProfessionalSelectedConversation;
+import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
 
 import java.util.ArrayList;
 
 public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessionalAdapter.MyViewHolder> {
-    ArrayList<Listing> listingsFromDB;
+    ArrayList<Conversation> conversationsFromDB;
 
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -35,8 +36,8 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
         }
     }
 
-    public InboxProfessionalAdapter(ArrayList<Listing>myDataset){
-        listingsFromDB =myDataset;
+    public InboxProfessionalAdapter(ArrayList<Conversation>myDataset){
+        conversationsFromDB =myDataset;
     }
     @Override
     public InboxProfessionalAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -50,46 +51,46 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     @Override
     public void onBindViewHolder(@NonNull InboxProfessionalAdapter.MyViewHolder holder, int position) {
 
-        final Listing listing= listingsFromDB.get(position);
-        holder.txtView.setText("Conversation in Relation to Listing Titled  : "+listing.getTitle()+"\n Listing Description : "+listing.getDescription()
-                +"\n Listing location : "+listing.getLocation());
+        final Conversation listing= conversationsFromDB.get(position);
+        holder.txtView.setText("Conversation in Relation to Listing Titled  : "+listing.getListingTitle()+"\n Customers Name : "+listing.getCustomerName());
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              //   int position=this.getLayoutPosition();
-                Listing selectedConvo = listingsFromDB.get(position);
+                Conversation selectedConvo = conversationsFromDB.get(position);
 
                 Intent intent= new Intent(v.getContext(), ProfessionalSelectedConversation.class);
+
+                intent.putExtra("conversationId",selectedConvo.getConversationId());
+                intent.putExtra("customerId",selectedConvo.getCustomerId());
                 intent.putExtra("listingId",selectedConvo.getListingId());
-                intent.putExtra("customerId",selectedConvo.getCustomerUsername());
-                intent.putExtra("professionalId",selectedConvo.getProfessionalAssignedId());
-                intent.putExtra("title",selectedConvo.getTitle());
+             //   intent.putExtra("title",selectedConvo.getTitle());
                 v.getContext().startActivity(intent);
             }
         });
     }
-    public void add(int position, Listing consultation){
-        listingsFromDB.add(position, consultation);
+    public void add(int position, Conversation consultation){
+        conversationsFromDB.add(position, consultation);
         notifyItemInserted(position);
     }
     public void remove(int position){
-        listingsFromDB.remove(position);
+        conversationsFromDB.remove(position);
         notifyItemRemoved(position);
     }
-    public void update(Listing consultation,int position){
-        listingsFromDB.set(position,consultation);
+    public void update(Conversation consultation,int position){
+        conversationsFromDB.set(position,consultation);
         notifyItemChanged(position);
     }
-    public void addItemtoEnd(Listing consultation){
+    public void addItemtoEnd(Conversation consultation){
         //these functions are user-defined
-        listingsFromDB.add(consultation);
-        notifyItemInserted(listingsFromDB.size());
+        conversationsFromDB.add(consultation);
+        notifyItemInserted(conversationsFromDB.size());
     }
 
 
     @Override
     public int getItemCount() {
-        return listingsFromDB.size();
+        return conversationsFromDB.size();
     }
 
 }

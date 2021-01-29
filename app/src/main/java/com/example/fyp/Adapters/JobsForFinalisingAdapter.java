@@ -18,11 +18,11 @@ import java.util.ArrayList;
 
 public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinalisingAdapter.MyViewHolder>{
     ArrayList<Job> jobsFromDb;
-
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+       // public  TextView txtView;
+       public  TextView txtView;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -61,13 +61,15 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                notifyDataSetChanged();
                 //int position=this.getLayoutPosition();
                 Job selectedjob = jobsFromDb.get(position);
                 Intent intent= new Intent(v.getContext(), FinaliseJobCustomer.class);
                 intent.putExtra("id",name.getJobId());
                 intent.putExtra("professionalId",name.getProfessionalId());
-
                 v.getContext().startActivity(intent);
+                notifyDataSetChanged();
+
             }
         });
     }

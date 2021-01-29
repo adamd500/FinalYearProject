@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.fyp.Adapters.InboxCustomerAdapter;
-import com.example.fyp.Adapters.InboxProfessionalAdapter;
-import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,18 +24,12 @@ import java.util.ArrayList;
 
 public class InboxCustomer extends AppCompatActivity {
 
-    //  ArrayList<Listing> listings = new ArrayList<Listing>();
     private FirebaseDatabase database;
     private DatabaseReference ref, ref2;
-    // InboxProfessionalAdapter myAdapter;
     InboxCustomerAdapter myAdapter;
     private FirebaseUser user;
     private String uid;
-    ArrayList<Message> allMessages = new ArrayList<Message>();
-    ArrayList<Message> myMessages = new ArrayList<Message>();
-
-    ArrayList<String> userList = new ArrayList<String>();
-
+    ArrayList<Conversation> conversations = new ArrayList<Conversation>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,22 +48,25 @@ public class InboxCustomer extends AppCompatActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        myAdapter = new InboxCustomerAdapter(myMessages);
+        myAdapter = new InboxCustomerAdapter(conversations);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(myAdapter);
 
         getFromFirebase();
+        //   getConversations();
     }
 
     public void getFromFirebase() {
-        ref.child("Message").addValueEventListener(new ValueEventListener() {
+        ref.child("Conversation").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
-                    Message message = child.getValue(Message.class);
-                    allMessages.add(message);
-                    getFromFirebase2();
+                    Conversation conversation = child.getValue(Conversation.class);
+                    if(conversation.getCustomerId().equals(uid)){
+                        conversations.add(conversation);
+                    }
+                    myAdapter.notifyItemInserted(conversations.size() - 1);
 
                 }
             }
@@ -81,47 +77,4 @@ public class InboxCustomer extends AppCompatActivity {
             }
         });
     }
-
-    public void getFromFirebase2() {
-        ref2.child("Listing").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Iterable<DataSnapshot> children = snapshot.getChildren();
-                for (DataSnapshot child : children) {
-                    Listing listing = child.getValue(Listing.class);
-
-                    for (Message mes : allMessages) {
-//                        if(myMessages.isEmpty()){
-//                            myMessages.add(mes);
-                        // }else{
-                        if (mes.getListingId().equals(listing.getListingId()) && mes.getCustomerId().equals(uid)) {
-                            if (myMessages.isEmpty()) {
-                                myMessages.add(mes);
-
-                            } else {
-                               /// for (Message newMessage : myMessages) {
-                                    if (mes.getListingId().equals(listing.getListingId())) {
-                                      //  if (mes.getListingId().equals(newMessage.getListingId())) {
-
-                                            System.out.println("Already Exists");
-                                    } else {
-                                        myMessages.add(mes);
-                                    }
-                                }
-                                //    myMessages.add(mes);
-                            }
-                     //   }
-                    }
-                }
-
-                myAdapter.notifyItemInserted(userList.size() - 1);
-            }
-
-
-        @Override
-        public void onCancelled (@NonNull DatabaseError error){
-            //   Log.m("DBE Error","Cancel Access DB");
-        }
-    });
-}
 }
