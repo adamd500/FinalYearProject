@@ -8,13 +8,19 @@ import android.view.View;
 
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class WelcomeProfessional extends AppCompatActivity {
-
+    private FirebaseUser user;
+    private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_professional);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
     }
 
     public void getJobs(View v){
@@ -46,5 +52,12 @@ public class WelcomeProfessional extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //public void
+
+    public void feedback(View view) {
+
+        Intent intent = new Intent(WelcomeProfessional.this, ViewProfessionalFeedback.class);
+        intent.putExtra("professionalId",uid);
+        startActivity(intent);
+
+    }
 }

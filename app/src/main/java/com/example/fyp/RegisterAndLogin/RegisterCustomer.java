@@ -3,6 +3,7 @@ package com.example.fyp.RegisterAndLogin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -45,6 +46,7 @@ public class RegisterCustomer extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         mDatabase=database.getReference(USER);
         mAuth=FirebaseAuth.getInstance();
+
     }
 
     public void createCustomer(View v) {

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import com.example.fyp.Adapters.MessageAdapter;
 import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Message;
-import com.example.fyp.ObjectClasses.Professional;
+import com.example.fyp.ProfessionalFeatures.ViewProfessionalFeedback;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -98,27 +97,8 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager lin = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(lin);
-        //  readMessage();
     }
 
-    //    public void getProfessional() {
-//        ref.child("Professional").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Iterable<DataSnapshot> children = snapshot.getChildren();
-//                for (DataSnapshot child : children) {
-//                    if (child.getKey().equals(professionalId)) {
-//                        Professional prof = child.getValue(Professional.class);
-//                        titleText.setText("Professional Name : " + prof.getName() + "\n");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-//    }
     public void getConversation() {
         ref.child("Conversation").addValueEventListener(new ValueEventListener() {
             @Override
@@ -138,45 +118,7 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         });
     }
 
-    //    private void readMessage() {
-//        messages = new ArrayList<Message>();
-//        reference = database.getReference("Message");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                messages.clear();
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    Message message = dataSnapshot.getValue(Message.class);
-//                    if ((message.getProfessionalId().equals(professionalId)) && (message.getCustomerId().equals(uid)) && (message.getListingId().equals(listingId))) {
-//                        messages.add(message);
-//                    }
-//                    myAdapter = new MessageAdapter(messages);
-//                    recyclerView.setAdapter(myAdapter);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
-//    public void sendText() {
-//        String text = messageBox.getText().toString();
-//        if (!text.equals("")) {
-//
-//            String currentDateAndTime = sdf.format(new Date());
-//            Message message = new Message(professionalId, uid, text, listingId, currentDateAndTime);
-//            ref.child("Message").push().setValue(message);
-//
-//            messageBox.setText("");
-//
-//        } else {
-//            Toast.makeText(this, "You cannot send an empty message.", Toast.LENGTH_SHORT).show();
-//
-//        }
-  //  }
+
     private void readMessage() {
         messages = new ArrayList<Message>();
         reference = database.getReference("Conversation");
@@ -259,6 +201,8 @@ public class CustomerSelectedConversation extends AppCompatActivity {
     }
 
     public void viewProfessionalProfile(View view) {
-
+        Intent intent = new Intent(this, ViewProfessionalFeedback.class);
+        intent.putExtra("professionalId",professionalId);
+        startActivity(intent);
     }
 }

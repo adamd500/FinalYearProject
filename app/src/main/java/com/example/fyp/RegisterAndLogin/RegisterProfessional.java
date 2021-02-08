@@ -25,7 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RegisterProfessional extends AppCompatActivity {
 
@@ -46,6 +48,8 @@ public class RegisterProfessional extends AppCompatActivity {
         database=FirebaseDatabase.getInstance();
         mDatabase=database.getReference(USER);
         mAuth=FirebaseAuth.getInstance();
+
+
     }
 
     public void createProfessional(View v) {
@@ -88,9 +92,11 @@ public class RegisterProfessional extends AppCompatActivity {
             return;
         }else {
 
+           // registerStripe();
             professional = new Professional( name,  dob,  address,  false, feedback,  location,  number,  email,  password,  "username",  false,
                     false,  trade,  workRadiusInt, "s", "s", "s", "s",
                     0, 0, 0, 0, 0,0) ;
+
 
             registerProfessional(email, password);
 
@@ -111,6 +117,25 @@ public class RegisterProfessional extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public void registerStripe(){
+//        Stripe.apiKey = "sk_test_51IFKQvKgTR7yUeIexy2I5Th0pv3OGDiM088vBZY2YFHLkJO1uxZrCesiQoGzUewSLdkwnkcETWhlwk5bGlUCsrLB00FF8KPznk";
+//        Map<String, Object> cardPayments =
+//                new HashMap<>();
+//        cardPayments.put("requested", true);
+//        Map<String, Object> transfers = new HashMap<>();
+//        transfers.put("requested", true);
+//        Map<String, Object> capabilities =
+//                new HashMap<>();
+//        capabilities.put("card_payments", cardPayments);
+//        capabilities.put("transfers", transfers);
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("type", "custom");
+//        params.put("country", "US");
+//        params.put("email", "jenny.rosen@example.com");
+//        params.put("capabilities", capabilities);
+//
+//        Account account = Account.create(params);
     }
     public void updateUI(FirebaseUser currentUser){
         String uid=currentUser.getUid();

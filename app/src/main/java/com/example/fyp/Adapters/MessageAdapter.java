@@ -68,7 +68,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
 
         Message message = messagesFromDB.get(position);
-        holder.txtView.setText(message.getContent() +"\nFrom : "+message.getFrom()+"\n At : " + message.getDateTime());
+        holder.txtView.setText(message.getContent() +"\n " +"\nFrom : "+message.getFrom()+"\n " + message.getDateTime());
     }
 
     public void add(int position, Message consultation) {

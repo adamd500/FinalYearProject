@@ -1,14 +1,17 @@
 package com.example.fyp.ProfessionalFeatures;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +51,7 @@ public class SelectedNewJob extends AppCompatActivity {
     private String listingId;
     private Listing listing;
     private String photoUrl;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,7 @@ public class SelectedNewJob extends AppCompatActivity {
         t2 = (TextView) findViewById(R.id.txtViewTrade);
         t3 = (TextView) findViewById(R.id.textViewDescription);
         t4 = (TextView) findViewById(R.id.txtViewTitle);
-
+        button = (Button) findViewById(R.id.consultationButton);
         imgView = (ImageView) findViewById(R.id.imageView);
 
         storage = FirebaseStorage.getInstance();
@@ -131,6 +135,42 @@ public class SelectedNewJob extends AppCompatActivity {
     public void backToBrowse(View v) {
         Intent intent = new Intent(SelectedNewJob.this, BrowseJobs.class);
         startActivity(intent);
+    }
+
+    public void openDialog(View v){
+//        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener(this) {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                switch(which){
+//                    case DialogInterface.BUTTON_POSITIVE:
+//                        arrangeQuote();
+//                        break;
+//
+//                    case DialogInterface.BUTTON_NEGATIVE:
+//                        break;
+//
+//                }
+//            }
+//        };
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//        builder.setMessage("Only arrange consultations after organising a time and date with the client. Have you arranged this with the client?");
+//        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                arrangeQuote();
+//
+//            }
+//        });
+//        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//
+//            }
+//        });
+//
+//        AlertDialog alertDialog=builder.create();
+//        alertDialog.show();
+//              //  .setPositiveButton("Yes",dialogClickListener).setNegativeButton("No",dialogClickListener).show();
     }
 
     public void arrangeQuote(View v) {
