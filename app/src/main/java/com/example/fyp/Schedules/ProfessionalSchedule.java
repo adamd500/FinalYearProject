@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,9 +44,7 @@ public class ProfessionalSchedule extends AppCompatActivity {
     private DatabaseReference ref;
     private FirebaseUser user;
     private String uid;
-    private Calendar calendar;
-    List<Job> jobs=new ArrayList<Job>();
-    List<CalendarContract.EventDays> events=new ArrayList<>();
+    Calendar calendar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +56,8 @@ public class ProfessionalSchedule extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
+
+
     }
 
 //    public void populateJobs() {

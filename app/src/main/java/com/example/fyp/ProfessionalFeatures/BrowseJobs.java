@@ -3,6 +3,7 @@ package com.example.fyp.ProfessionalFeatures;
 import android.os.Bundle;
 
 import com.example.fyp.Adapters.MyAdapterProfessional;
+import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 public class BrowseJobs extends AppCompatActivity {
 
     ArrayList<Listing> listings = new ArrayList<Listing>();
+    ArrayList<Conversation> conversations = new ArrayList<Conversation>();
+
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private DatabaseReference ref2;
@@ -39,7 +42,7 @@ public class BrowseJobs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brows_jobs);
         user = FirebaseAuth.getInstance().getCurrentUser();
-        uid=user.getUid();
+        uid = user.getUid();
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recylcerViewProf);
 
         database = FirebaseDatabase.getInstance();
@@ -55,7 +58,7 @@ public class BrowseJobs extends AppCompatActivity {
         myAdapter = new MyAdapterProfessional(listings);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(myAdapter);
-        getFromFirebase();
+        getProfessionalsConversations();
 
     }
 
@@ -65,10 +68,10 @@ public class BrowseJobs extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
-                    if(child.getKey().equals(uid)){
-                         professional= child.getValue(Professional.class);
-                      //  TextView tv=(TextView)findViewById(R.id.textView9);
-                       // tv.setText(professional.getName());
+                    if (child.getKey().equals(uid)) {
+                        professional = child.getValue(Professional.class);
+                        //  TextView tv=(TextView)findViewById(R.id.textView9);
+                        // tv.setText(professional.getName());
                     }
                     //myAdapter.notifyItemInserted(listings.size() - 1);
                 }
@@ -81,11 +84,30 @@ public class BrowseJobs extends AppCompatActivity {
         });
     }
 
+    public void getProfessionalsConversations() {
+        ref.child("Conversation").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    Conversation conversation = child.getValue(Conversation.class);
+                    if (conversation.getProfessionalId().equals(uid)) {
+                        //getListings(conversation);
+                        conversations.add(conversation);
+                    }
+                }
+                getListings();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+    }
 
 
-
-
-    public void getFromFirebase() {
+    public void getListings() {
 
         ref.child("Listing").addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,8 +115,15 @@ public class BrowseJobs extends AppCompatActivity {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
                     Listing listing = child.getValue(Listing.class);
-                    if (listing.getTradeSector().equalsIgnoreCase(professional.getTrade()) &&listing.isActive()) {
-                        listings.add(listing);
+
+                    for(Conversation con : conversations) {
+
+                        if ((listing.getTradeSector().equalsIgnoreCase(professional.getTrade())) && (listing.isActive()) && (!listing.getListingId().equals(con.getListingId()))) {
+
+                            listings.add(listing);
+
+                        }
+
                     }
                     myAdapter.notifyItemInserted(listings.size() - 1);
                 }

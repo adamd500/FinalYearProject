@@ -58,12 +58,12 @@ public class AdapterConsultationCustomer  extends RecyclerView.Adapter<AdapterCo
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
-                notifyDataSetChanged();
+              //  notifyDataSetChanged();
                 Consultation selectedConsultation =consultationsFromDB.get(position);
                 Intent intent= new Intent(v.getContext(), SelectedConsultation.class);
-                intent.putExtra("id",consultation.getConsultationId());
+                intent.putExtra("id",selectedConsultation.getConsultationId());
                 v.getContext().startActivity(intent);
-                notifyDataSetChanged();
+               // notifyDataSetChanged();
             }
         });
     }

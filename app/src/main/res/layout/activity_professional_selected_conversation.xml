@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:text="TEST                TEST" />
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/sendButton"
-            android:hint="Tye a Message..." />
+            android:hint="Type a Message..." />
 
         <Button
             android:id="@+id/sendButton"

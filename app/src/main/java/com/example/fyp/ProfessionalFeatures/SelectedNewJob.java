@@ -52,6 +52,7 @@ public class SelectedNewJob extends AppCompatActivity {
     private Listing listing;
     private String photoUrl;
     private Button button;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,9 @@ public class SelectedNewJob extends AppCompatActivity {
 
         Intent i = getIntent();
         listingId = i.getStringExtra("id");
-        t4.setText("Listing id " + listingId);
+        title = i.getStringExtra("title");
+
+        t4.setText("Title : " + title);
         //   t1.setText(id);
         getListing();
 

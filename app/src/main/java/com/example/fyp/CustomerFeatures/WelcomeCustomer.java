@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.fyp.Messaging.InboxCustomer;
-import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
+import com.example.fyp.ProfessionalFeatures.SetupStripe;
 import com.example.fyp.R;
 
 public class WelcomeCustomer extends AppCompatActivity {
@@ -45,4 +45,6 @@ public class WelcomeCustomer extends AppCompatActivity {
         Intent intent = new Intent(WelcomeCustomer.this, InboxCustomer.class);
         startActivity(intent);
     }
+
+
 }

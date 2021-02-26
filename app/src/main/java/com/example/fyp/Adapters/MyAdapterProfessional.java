@@ -64,6 +64,7 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
                 Listing selectedListing =listingsFromDB.get(position);
                 Intent intent= new Intent(v.getContext(), SelectedNewJob.class);
                 intent.putExtra("id",name.getListingId());
+                intent.putExtra("title",name.getTitle());
                 v.getContext().startActivity(intent);
             }
         });

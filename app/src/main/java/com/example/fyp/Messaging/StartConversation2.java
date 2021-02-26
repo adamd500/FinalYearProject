@@ -78,6 +78,7 @@ public class StartConversation2 extends AppCompatActivity {
         uid = user.getUid();
 
         titleText = (TextView) findViewById(R.id.textViewTitle);
+        titleText.setText("Conversation in Relation to Listing Titled :"+title);
         messageBox = (EditText) findViewById(R.id.message);
 
         recyclerView = findViewById(R.id.recyclerView);

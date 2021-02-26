@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.fyp.CustomerFeatures.WelcomeCustomer;
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +53,10 @@ public class WelcomeProfessional extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void covidInformation(View v){
+        Intent intent = new Intent(WelcomeProfessional.this, CovidInformation.class);
+        startActivity(intent);
+    }
 
     public void feedback(View view) {
 
@@ -59,5 +64,17 @@ public class WelcomeProfessional extends AppCompatActivity {
         intent.putExtra("professionalId",uid);
         startActivity(intent);
 
+    }
+
+    public void feedbackGraph(View view) {
+
+        Intent intent = new Intent(WelcomeProfessional.this, FeedbackGraph.class);
+        startActivity(intent);
+
+    }
+
+    public void setUpStripe(View v){
+        Intent intent = new Intent(WelcomeProfessional.this, SetupStripe.class);
+        startActivity(intent);
     }
 }

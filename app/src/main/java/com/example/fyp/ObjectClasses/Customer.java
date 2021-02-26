@@ -6,11 +6,15 @@ public class Customer extends Person {
 
     String idImage;
     String selfieImage;
+    String stripeKey;
 
-    public Customer(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email, String password, String username, String idImage, String selfieImage) {
+
+    public Customer(String name, String dob, String address, boolean idVerified, List<String> feedback, String location,
+                    String phoneNumber, String email, String password, String username, String idImage, String selfieImage, String stripeKey) {
         super(name, dob, address, idVerified, feedback, location, phoneNumber, email, password, username);
         this.idImage = idImage;
         this.selfieImage = selfieImage;
+        this.stripeKey = stripeKey;
     }
 
     public Customer() {
@@ -31,6 +35,14 @@ public class Customer extends Person {
 
     public void setSelfieImage(String selfieImage) {
         this.selfieImage = selfieImage;
+    }
+
+    public String getStripeKey() {
+        return stripeKey;
+    }
+
+    public void setStripeKey(String stripeKey) {
+        this.stripeKey = stripeKey;
     }
 }
 

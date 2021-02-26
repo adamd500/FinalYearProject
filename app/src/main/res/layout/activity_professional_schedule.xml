@@ -8,10 +8,8 @@
     tools:context=".Schedules.ProfessionalSchedule">
 
 
-    <com.applandeo.materialcalendarview.CalendarView
+    <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
+        android:layout_height="514dp" />
 </LinearLayout>

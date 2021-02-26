@@ -22,13 +22,15 @@ public class Professional extends Person {
     int overallCustomerSatisfaction;
     int jobsCompleted;
     int totalEarned;
+    String stripeKey;
+
     public Professional() {
 
     }
 
-    public Professional(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email,
-                        String password, String username, boolean safePassVer, boolean gardaVetVer, String trade, int workRadius, String idImage, String selfieImage, String safePassImage, String gardaVetImage, int punctuality,
-                        int workQuality, int communication, int overallCustomerSatisfaction, int jobsCompleted, int totalEarned) {
+    public Professional(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email, String password, String username, boolean safePassVer, boolean gardaVetVer, String trade, int workRadius, String idImage, String selfieImage, String safePassImage, String gardaVetImage, int punctuality,
+                        int workQuality, int communication, int overallCustomerSatisfaction,
+                        int jobsCompleted, int totalEarned, String stripeKey) {
         super(name, dob, address, idVerified, feedback, location, phoneNumber, email, password, username);
         this.safePassVer = safePassVer;
         this.gardaVetVer = gardaVetVer;
@@ -44,6 +46,15 @@ public class Professional extends Person {
         this.overallCustomerSatisfaction = overallCustomerSatisfaction;
         this.jobsCompleted = jobsCompleted;
         this.totalEarned = totalEarned;
+        this.stripeKey = stripeKey;
+    }
+
+    public String getStripeKey() {
+        return stripeKey;
+    }
+
+    public void setStripeKey(String stripeKey) {
+        this.stripeKey = stripeKey;
     }
 
     public boolean isSafePassVer() {

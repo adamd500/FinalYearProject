@@ -23,6 +23,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Account;
+import com.stripe.param.AccountCreateParams;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,12 +38,19 @@ public class RegisterProfessional extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private FirebaseDatabase database;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabase,ref;
 
     private static final String USER = "Professional";
     private static final String TAG = "RegisterProfessional";
     private Professional professional;
-
+    Account account;
+    Thread thread;
+    String uid;
+    String address;
+    String dob;
+    String location;
+    String number;
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +58,56 @@ public class RegisterProfessional extends AppCompatActivity {
 
         database=FirebaseDatabase.getInstance();
         mDatabase=database.getReference(USER);
+        ref=database.getReference();
+
         mAuth=FirebaseAuth.getInstance();
 
+        Stripe.apiKey = "sk_test_51IFKQvKgTR7yUeIexy2I5Th0pv3OGDiM088vBZY2YFHLkJO1uxZrCesiQoGzUewSLdkwnkcETWhlwk5bGlUCsrLB00FF8KPznk";
 
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                AccountCreateParams params =
+                        AccountCreateParams.builder()
+                                .setCountry("IE")
+                                .setEmail(email)
+                                .setType(AccountCreateParams.Type.EXPRESS)
+                                .setBusinessType(AccountCreateParams.BusinessType.INDIVIDUAL)
+                                .setCapabilities(
+                                        AccountCreateParams.Capabilities.builder()
+                                                .setCardPayments(
+                                                        AccountCreateParams.Capabilities.CardPayments.builder()
+                                                                .setRequested(true)
+                                                                .build())
+                                                .setTransfers(
+                                                        AccountCreateParams.Capabilities.Transfers.builder()
+                                                                .setRequested(true)
+                                                                .build())
+                                                .build())
+
+                                .build();
+
+                try {
+                    account = Account.create(params);
+
+                    ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
+                    goToWelcomePage();
+                    //   ref= database.getReference();
+                  //  ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
+
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                }
+//                if(account.getId()!=null) {
+//                    ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
+//                    goToWelcomePage();
+//
+//                }
+            }
+        });
     }
+
 
     public void createProfessional(View v) {
         EditText nameTxt = (EditText) findViewById(R.id.name);
@@ -63,13 +120,12 @@ public class RegisterProfessional extends AppCompatActivity {
         EditText passwordTxt2 = (EditText) findViewById(R.id.password2);
         EditText tradetxt=(EditText)findViewById(R.id.trade);
         EditText worktxt=(EditText)findViewById(R.id.workRadius);
-        EditText username = (EditText) findViewById(R.id.username);
 
 
-        String email = emailTxt.getText().toString();
+         email = emailTxt.getText().toString();
         String password = passwordTxt.getText().toString();
         String password2=passwordTxt2.getText().toString();
-        String dob = dobTxt.getText().toString();
+         dob = dobTxt.getText().toString();
         String address = addressTxt.getText().toString();
         String location = locationTxt.getText().toString();
         String number = numberTxt.getText().toString();
@@ -77,7 +133,6 @@ public class RegisterProfessional extends AppCompatActivity {
         String trade = tradetxt.getText().toString();
         String workRadius = worktxt.getText().toString();
         int workRadiusInt = Integer.parseInt(workRadius);
-        String usernamStr=username.getText().toString();
 
         List<String> feedback = new ArrayList<String>();
         String s="s";
@@ -95,7 +150,7 @@ public class RegisterProfessional extends AppCompatActivity {
            // registerStripe();
             professional = new Professional( name,  dob,  address,  false, feedback,  location,  number,  email,  password,  "username",  false,
                     false,  trade,  workRadiusInt, "s", "s", "s", "s",
-                    0, 0, 0, 0, 0,0) ;
+                    0, 0, 0, 0, 0,0,"stripe") ;
 
 
             registerProfessional(email, password);
@@ -118,30 +173,19 @@ public class RegisterProfessional extends AppCompatActivity {
                     }
                 });
     }
-    public void registerStripe(){
-//        Stripe.apiKey = "sk_test_51IFKQvKgTR7yUeIexy2I5Th0pv3OGDiM088vBZY2YFHLkJO1uxZrCesiQoGzUewSLdkwnkcETWhlwk5bGlUCsrLB00FF8KPznk";
-//        Map<String, Object> cardPayments =
-//                new HashMap<>();
-//        cardPayments.put("requested", true);
-//        Map<String, Object> transfers = new HashMap<>();
-//        transfers.put("requested", true);
-//        Map<String, Object> capabilities =
-//                new HashMap<>();
-//        capabilities.put("card_payments", cardPayments);
-//        capabilities.put("transfers", transfers);
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("type", "custom");
-//        params.put("country", "US");
-//        params.put("email", "jenny.rosen@example.com");
-//        params.put("capabilities", capabilities);
-//
-//        Account account = Account.create(params);
-    }
+
     public void updateUI(FirebaseUser currentUser){
-        String uid=currentUser.getUid();
+         uid=currentUser.getUid();
+       // thread.start();
         professional.setUsername(uid);
         mDatabase.child(uid).setValue(professional);
-     //   professional.setProfessionalId(keyId);
+        thread.start();
+
+    //    Intent welcomeIntent = new Intent(this, WelcomeProfessional.class);
+//
+//        startActivity(welcomeIntent);
+    }
+    public void goToWelcomePage(){
         Intent welcomeIntent = new Intent(this, WelcomeProfessional.class);
 
         startActivity(welcomeIntent);

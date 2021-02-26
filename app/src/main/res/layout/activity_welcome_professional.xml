@@ -55,6 +55,29 @@
         app:layout_constraintVertical_bias="0.414" />
 
     <Button
+        android:id="@+id/buttonStripe"
+        android:layout_width="356dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="setUpStripe"
+        android:text="Set up payment service"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.804" />
+
+    <Button
+        android:id="@+id/buttonGraph"
+        android:layout_width="356dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="feedbackGraph"
+        android:text="Feedback graph"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728" />
+    <Button
         android:id="@+id/buttonAcceptedConsultation"
         android:layout_width="307dp"
         android:layout_height="50dp"
@@ -73,6 +96,18 @@
         android:layout_marginLeft="60dp"
         android:onClick="feedback"
         android:text="Feedback and Ratings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.647" />
+
+    <Button
+        android:id="@+id/buttonCovid"
+        android:layout_width="307dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:onClick="covidInformation"
+        android:text="Info on beign self employed durign covid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"

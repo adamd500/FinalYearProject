@@ -2,10 +2,10 @@ package com.example.fyp.RegisterAndLogin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.accounts.Account;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -23,9 +23,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Account;
+import com.stripe.model.Address;
+import com.stripe.param.AccountCreateParams;
+import com.stripe.param.AccountUpdateParams;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Executor;
 
 public class RegisterCustomer extends AppCompatActivity {
 
@@ -37,19 +46,30 @@ public class RegisterCustomer extends AppCompatActivity {
     private static final String USER = "Customer";
     private static final String TAG = "RegisterCustomer";
     private Customer customer;
+    String email;
+    Account account;
+    Thread thread;
+    String uid;
+    String address;
+    String dob;
+    String location;
+    String number;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_customer);
 
-        database=FirebaseDatabase.getInstance();
-        mDatabase=database.getReference(USER);
-        mAuth=FirebaseAuth.getInstance();
+        //StrictMode.ThreadPolicy.Builder().;
+
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference(USER);
+        mAuth = FirebaseAuth.getInstance();
 
     }
+    public void createCustomer (View v) throws StripeException {
 
-    public void createCustomer(View v) {
         EditText nameTxt = (EditText) findViewById(R.id.name);
         EditText dobTxt = (EditText) findViewById(R.id.dob);
         EditText addressTxt = (EditText) findViewById(R.id.address);
@@ -58,54 +78,57 @@ public class RegisterCustomer extends AppCompatActivity {
         EditText emailTxt = (EditText) findViewById(R.id.email);
         EditText passwordTxt = (EditText) findViewById(R.id.password);
         EditText passwordTxt2 = (EditText) findViewById(R.id.password2);
-        EditText username = (EditText) findViewById(R.id.username);
 
 
+        email = emailTxt.getText().toString();
+      //  stripeSetup();
 
-        String email = emailTxt.getText().toString();
         String password = passwordTxt.getText().toString();
-        String password2=passwordTxt2.getText().toString();
-        String dob = dobTxt.getText().toString();
-        String address = addressTxt.getText().toString();
-        String location = locationTxt.getText().toString();
-        String number = numberTxt.getText().toString();
-        String name = nameTxt.getText().toString();
-        String usernamStr=username.getText().toString();
+        String password2 = passwordTxt2.getText().toString();
+         dob = dobTxt.getText().toString();
+         address = addressTxt.getText().toString();
+         location = locationTxt.getText().toString();
+         number = numberTxt.getText().toString();
+         name = nameTxt.getText().toString();
 
         List<String> feedback = new ArrayList<String>();
-        List<Job>jobsCompleted=new ArrayList<Job>();
+
 
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(dob) || TextUtils.isEmpty(address) || TextUtils.isEmpty(location)
-                || TextUtils.isEmpty(number) || TextUtils.isEmpty(name)|| TextUtils.isEmpty(name)|| TextUtils.isEmpty(password2)||!password.equals(password2)) {
+                || TextUtils.isEmpty(number) || TextUtils.isEmpty(name) || TextUtils.isEmpty(name) || TextUtils.isEmpty(password2) || !password.equals(password2)) {
             Toast.makeText(getApplicationContext(), "Please ensure all fields are completed and that passwords match",
                     Toast.LENGTH_SHORT).show();
-            return;
-        }else {
-            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, usernamStr,"s","s");
+            //    return;
+        } else {
+            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, "usernamStr", "s", "s", "stripe");
             customerProfessional(email, password);
 
         }
     }
-    public void customerProfessional(String email,String password){
-        mAuth.createUserWithEmailAndPassword(email,password)
+    public void customerProfessional(String email, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Log.d(TAG,"Create user with email : success");
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Create user with email : success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                        }else{
-                            Log.w(TAG,"Create user with email : failure",task.getException());
+                        } else {
+                            Log.w(TAG, "Create user with email : failure", task.getException());
                             Toast.makeText(RegisterCustomer.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
-    public void updateUI(FirebaseUser currentUser){
-        String uid=currentUser.getUid();
+
+    public void updateUI(FirebaseUser currentUser) {
+          uid = currentUser.getUid();
+        customer.setUsername(uid);
+      //  customer.setStripeKey(account.getId());
         mDatabase.child(uid).setValue(customer);
+        thread.start();
 
         Intent welcomeIntent = new Intent(this, WelcomeCustomer.class);
         startActivity(welcomeIntent);

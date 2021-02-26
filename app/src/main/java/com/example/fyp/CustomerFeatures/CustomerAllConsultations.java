@@ -25,7 +25,7 @@ public class CustomerAllConsultations extends AppCompatActivity {
     ArrayList<Consultation> consultations=new ArrayList<Consultation>();
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    AdapterConsultationCustomer adapter;
+    public static AdapterConsultationCustomer adapter;
     private FirebaseUser user;
     private String uid;
     @Override

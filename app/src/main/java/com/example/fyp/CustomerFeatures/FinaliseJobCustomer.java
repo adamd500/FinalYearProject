@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fyp.Adapters.JobsForFinalisingAdapter;
-import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
@@ -20,13 +18,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FinaliseJobCustomer extends AppCompatActivity {
 
+    int price;
     TextView t1, t2, t3, t4, t5, t6, t7;
     EditText e1, e2, e3, e4, e5;
     String jobId;
@@ -37,11 +40,16 @@ public class FinaliseJobCustomer extends AppCompatActivity {
     int workQuality;
     int overallCustomerSatisfaction;
     String feedbackForProfessional;
+    Thread thread;
+    String clientSecret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalise_job_customer);
+
+        Stripe.apiKey = "sk_test_51IFKQvKgTR7yUeIexy2I5Th0pv3OGDiM088vBZY2YFHLkJO1uxZrCesiQoGzUewSLdkwnkcETWhlwk5bGlUCsrLB00FF8KPznk";
+
 
         Intent intent = getIntent();
         jobId = intent.getStringExtra("id");
@@ -64,10 +72,73 @@ public class FinaliseJobCustomer extends AppCompatActivity {
         e4 = (EditText) findViewById(R.id.workQuality);
         e5 = (EditText) findViewById(R.id.overallSatisfaction);
 
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList paymentMethodTypes = new ArrayList();
+                paymentMethodTypes.add("card");
+//                int price1 = Integer.valueOf(price);
+//                Double p = price1 * 0.15;
+//                int fee = (int) Math.round(p);
+                Map<String, Object> params = new HashMap<>();
+                params.put("payment_method_types", paymentMethodTypes);
+                params.put("amount", price);
+                params.put("currency", "eur");
+                params.put("application_fee_amount", 500);
+                Map<String, Object> transferDataParams = new HashMap<>();
+                transferDataParams.put("destination", "acct_1IMGGO4CaypLLH6w");
+                params.put("transfer_data", transferDataParams);
+                try {
+                    PaymentIntent paymentIntent = PaymentIntent.create(params);
+                    clientSecret = paymentIntent.getClientSecret();
+
+                } catch (StripeException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         getJob();
 
+    //    try {
+        //    thread.sleep(6000);
+         //   thread.start();
+
+     //   } catch (InterruptedException e) {
+      //      e.printStackTrace();
+     //   }
 
     }
+
+//    public void initThread() {
+//        thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                ArrayList paymentMethodTypes = new ArrayList();
+//                paymentMethodTypes.add("card");
+////                int price1 = Integer.valueOf(price);
+////                Double p = price1 * 0.15;
+////                int fee = (int) Math.round(p);
+//                Map<String, Object> params = new HashMap<>();
+//                params.put("payment_method_types", paymentMethodTypes);
+//                params.put("amount", price*100);
+//                params.put("currency", "eur");
+//                params.put("application_fee_amount", price*15);
+//                Map<String, Object> transferDataParams = new HashMap<>();
+//                transferDataParams.put("destination", "acct_1IMGGO4CaypLLH6w");
+//                params.put("transfer_data", transferDataParams);
+//                try {
+//                    PaymentIntent paymentIntent = PaymentIntent.create(params);
+//                    clientSecret = paymentIntent.getClientSecret();
+//
+//                } catch (StripeException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });c
+//    }
 
     public void getJob() {
         ref.child("Job").addValueEventListener(new ValueEventListener() {
@@ -77,14 +148,17 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(jobId)) {
                         Job job = child.getValue(Job.class);
+                        price=job.getPrice();
 
+ //                       thread.start();
                         t1.setText("Estimated Duration : " + job.getEstimatedDuration());
                         t2.setText("Actual Duration : " + job.getActualDuration());
                         t3.setText("Quoted Price : " + String.valueOf(job.getQuote()));
-                        t4.setText("Actual Price : " + String.valueOf(job.getPrice()));
+                        t4.setText("Actual Price : " + price);
                         t5.setText("Price Breakdown : " + job.getPriceBreakdown());
                         t6.setText("Date Started : " + job.getStartDate());
                         t7.setText("Date Finished : " + job.getEndDate());
+                        thread.start();
                     }
                 }
             }
@@ -96,7 +170,11 @@ public class FinaliseJobCustomer extends AppCompatActivity {
         });
     }
 
+
+
     public void finaliseJob(View v) {
+        //thread.start();
+
         punctuality = Integer.parseInt(e2.getText().toString());
         communication = Integer.parseInt(e3.getText().toString());
         workQuality = Integer.parseInt(e4.getText().toString());
@@ -116,6 +194,10 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                     Job job = snapshot.getValue(Job.class);
                     getProfessional(job.getProfessionalId(), job.getPrice());
 
+                    Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
+                    intent.putExtra("clientSecret",clientSecret);
+                    intent.putExtra("jobId",jobId);
+                    startActivity(intent);
                 }
 
                 @Override
@@ -123,8 +205,7 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                     //   Log.m("DBE Error","Cancel Access DB");
                 }
             });
-            Intent intent = new Intent(this, PaymentPage.class);
-            startActivity(intent);
+
         }
     }
 
@@ -156,7 +237,6 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                 professional.setFeedback(feedbackList);
 
                 ref2.child("Professional").child(professionalId).setValue(professional);
-                ref.child("Job").child(jobId).child("finished").setValue(true);
                 ref.child("Job").child(jobId).child("feedbackFromCustomer").setValue(feedbackForProfessional);
             }
 
