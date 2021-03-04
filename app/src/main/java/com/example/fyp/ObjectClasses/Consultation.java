@@ -12,18 +12,27 @@ public class Consultation {
     boolean finished;
     String message;
     String consultationId;
+    boolean denied;
+    String title;
 
     public Consultation() {
 
     }
 
-    public Consultation(String date, String time,String message,boolean accepted,boolean finished,String consultationId) {
+    public Consultation(String date, String time, String location, String customerId, String professionalId,
+                        String listingId, boolean accepted, boolean finished, String message, String consultationId, boolean denied, String title) {
         this.date = date;
         this.time = time;
+        this.location = location;
+        this.customerId = customerId;
+        this.professionalId = professionalId;
+        this.listingId = listingId;
+        this.accepted = accepted;
+        this.finished = finished;
         this.message = message;
-        this.accepted=accepted;
-        this.finished=finished;
-        this.consultationId=consultationId;
+        this.consultationId = consultationId;
+        this.denied = denied;
+        this.title = title;
     }
 
     public String getDate() {
@@ -104,5 +113,21 @@ public class Consultation {
 
     public void setConsultationId(String consultationId) {
         this.consultationId = consultationId;
+    }
+
+    public boolean isDenied() {
+        return denied;
+    }
+
+    public void setDenied(boolean denied) {
+        this.denied = denied;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

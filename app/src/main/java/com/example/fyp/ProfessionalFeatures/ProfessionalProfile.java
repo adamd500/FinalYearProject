@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,9 +17,11 @@ import com.example.fyp.DocumentUploading.ProfessionalUploadGardaVet;
 import com.example.fyp.DocumentUploading.ProfessionalUploadId;
 import com.example.fyp.DocumentUploading.ProfessionalUploadSafePass;
 import com.example.fyp.DocumentUploading.ProfessionalUploadSelfie;
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +60,42 @@ public class ProfessionalProfile extends AppCompatActivity {
         ref = database.getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(ProfessionalProfile.this, InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(ProfessionalProfile.this, ProfessionalProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(ProfessionalProfile.this, BrowseJobs.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(ProfessionalProfile.this, ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(ProfessionalProfile.this, WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
 
         ref.child("Professional").addValueEventListener(new ValueEventListener() {
             @Override

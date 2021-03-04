@@ -93,7 +93,7 @@
         android:layout_width="204dp"
         android:layout_height="64dp"
         android:layout_marginLeft="196dp"
-        android:onClick="confirmConsultation"
+        android:onClick="getProfessional"
         android:text="Confirm Consultation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

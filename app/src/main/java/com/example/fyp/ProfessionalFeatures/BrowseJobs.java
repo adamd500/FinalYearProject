@@ -1,12 +1,16 @@
 package com.example.fyp.ProfessionalFeatures;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.fyp.Adapters.MyAdapterProfessional;
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -60,6 +64,40 @@ public class BrowseJobs extends AppCompatActivity {
         mRecyclerView.setAdapter(myAdapter);
         getProfessionalsConversations();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(BrowseJobs.this, InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(BrowseJobs.this, ProfessionalProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(BrowseJobs.this, BrowseJobs.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(BrowseJobs.this, ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(BrowseJobs.this, WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
     }
 
     public void getProfessional() {
@@ -116,9 +154,9 @@ public class BrowseJobs extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     Listing listing = child.getValue(Listing.class);
 
-                    for(Conversation con : conversations) {
+                   // for(Conversation con : conversations) {
 
-                        if ((listing.getTradeSector().equalsIgnoreCase(professional.getTrade())) && (listing.isActive()) && (!listing.getListingId().equals(con.getListingId()))) {
+                        if ((listing.getTradeSector().equalsIgnoreCase(professional.getTrade())) && (listing.isActive()) ){//&& (!listing.getListingId().equals(con.getListingId()))) {
 
                             listings.add(listing);
 
@@ -126,7 +164,7 @@ public class BrowseJobs extends AppCompatActivity {
 
                     }
                     myAdapter.notifyItemInserted(listings.size() - 1);
-                }
+                //}
             }
 
             @Override

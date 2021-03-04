@@ -8,14 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.fyp.Adapters.InboxCustomerAdapter;
 import com.example.fyp.Adapters.ProfessionalFeedbackAdapter;
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Professional;
 import com.example.fyp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +39,8 @@ public class ViewProfessionalFeedback extends AppCompatActivity {
     private TextView t1, t2, t3, t4, t5;
     private ProfessionalFeedbackAdapter myAdapter;
     private ArrayList<String> feedback = new ArrayList<>();
-
+    private FirebaseUser user;
+    private String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +66,43 @@ public class ViewProfessionalFeedback extends AppCompatActivity {
         myAdapter = new ProfessionalFeedbackAdapter(feedback);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(myAdapter);
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
         getProfessional();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(ViewProfessionalFeedback.this, InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(ViewProfessionalFeedback.this, ProfessionalProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(ViewProfessionalFeedback.this, BrowseJobs.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(ViewProfessionalFeedback.this, ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(ViewProfessionalFeedback.this, WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
     }
 
     public void getProfessional() {

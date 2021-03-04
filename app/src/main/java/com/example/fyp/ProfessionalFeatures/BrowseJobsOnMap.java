@@ -13,8 +13,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Professional;
@@ -27,6 +29,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -65,7 +68,41 @@ public class BrowseJobsOnMap extends FragmentActivity implements OnMapReadyCallb
         uid = user.getUid();
 
        // populateHashMap();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(BrowseJobsOnMap.this, InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
 
+                    case R.id.profile:
+                        Intent intent1 = new Intent(BrowseJobsOnMap.this, ProfessionalProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(BrowseJobsOnMap.this, BrowseJobs.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(BrowseJobsOnMap.this, ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(BrowseJobsOnMap.this, WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()

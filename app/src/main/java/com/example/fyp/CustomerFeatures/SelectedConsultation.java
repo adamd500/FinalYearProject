@@ -1,15 +1,19 @@
 package com.example.fyp.CustomerFeatures;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fyp.Adapters.AdapterConsultationCustomer;
+import com.example.fyp.AdminFeatures.SelectedProfessionalToVerify;
 import com.example.fyp.ObjectClasses.Consultation;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Listing;
@@ -24,7 +28,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SelectedConsultation extends AppCompatActivity {
 
@@ -128,34 +136,46 @@ public class SelectedConsultation extends AppCompatActivity {
                     if (child.getKey().equals(consultationId)) {
                         consultation = child.getValue(Consultation.class);
 
-                        // String profEmail=getProfessionalEmail(consultation.getProfessionalId());
-
                         String[]parts=consultation.getTime().split("-");
                         String beginTime=parts[0];
                         String endTime=parts[1];
 
+                        String[]startTime=beginTime.split(":");
+                        String hour=startTime[0];
+                        String minute=startTime[1];
+
+                        String[]finishTime=endTime.split(":");
+                        String hourEnd=finishTime[0];
+                        String minuteEnd=finishTime[1];
 //
-                     //   long eventBeginTime = Calendar.getInstance().getTimeInMillis();
-                       // long eventEndTime = Calendar.getInstance().getTimeInMillis();
-                       // CustomerAllConsultations.adapter.notifyDataSetChanged();
+                        String[] date=consultation.getDate().split("/");
+                        int day=Integer.parseInt(date[0]);
+                        int month =Integer.parseInt(date[1]);
+                        int year=Integer.parseInt(date[2]);
+
+                        Calendar beginCal = Calendar.getInstance();
+                        beginCal.set(year, month,day,Integer.parseInt(hour),Integer.parseInt(minute));
+
+                        Calendar finishCal = Calendar.getInstance();
+                        finishCal.set(year, month,day,Integer.parseInt(hourEnd),Integer.parseInt(minuteEnd));
 
                         Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
                                 .putExtra(CalendarContract.Events.TITLE,"Professional Visiting for Consultation")
                                 .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false)
-                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,beginTime) // Only date part is considered when ALL_DAY is true; Same as DTSTART
-                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime) // Only date part is considered when ALL_DAY is true; Same as DTSTART
+                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,beginCal.getTimeInMillis()) // Only date part is considered when ALL_DAY is true; Same as DTSTART
+                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME,finishCal.getTimeInMillis()) // Only date part is considered when ALL_DAY is true; Same as DTSTART
                                 .putExtra(CalendarContract.Events.EVENT_LOCATION, consultation.getLocation())
-                                .putExtra(CalendarContract.Events.DESCRIPTION, "Message from Professional:"+ consultation.getMessage()) // Description
-                                .putExtra(Intent.EXTRA_EMAIL,profEmail)
-                               // .putExtra(CalendarContract.Events.RRULE, getRRule()) // Recurrence rule
+                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :"+ consultation.getMessage()) // Description
                                 .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
                                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
 
                         startActivity(insertCalendarIntent);
-                        // CustomerAllConsultations.adapter.notifyDataSetChanged();
-                        //  ref.child("Listing").child(consultation.getListingId()).child("active").setValue(false);
-                        // ref.child("Listing").child(consultation.getListingId()).child("professionalId").setValue(consultation.getProfessionalId());
+                         CustomerAllConsultations.adapter.notifyDataSetChanged();
+                          ref.child("Listing").child(consultation.getListingId()).child("active").setValue(false);
+                         ref.child("Listing").child(consultation.getListingId()).child("professionalId").setValue(consultation.getProfessionalId());
 
+                        Intent intent=new Intent(SelectedConsultation.this,WelcomeCustomer.class);
+                        startActivity(intent);
                     }
                 }
             }
@@ -170,6 +190,10 @@ public class SelectedConsultation extends AppCompatActivity {
 
     public void rescheduleConsultation(View v) {
 
+        ref.child("Consultation").child(consultation.getConsultationId()).child("denied").setValue(true);
+        Intent intent=new Intent(this,WelcomeCustomer.class);
+        Toast.makeText(this, "Consultation Denied", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
     }
 
     public void getProfessional( View v) {

@@ -7,17 +7,20 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -74,8 +77,45 @@ public class SelectedCurrentJob extends AppCompatActivity {
         t7 = (TextView) findViewById(R.id.quotedPrice);
         imgView = (ImageView) findViewById(R.id.imageView);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+       String uid = user.getUid();
+
         getCustomer();
         //getJob();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(SelectedCurrentJob.this, InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(SelectedCurrentJob.this, ProfessionalProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(SelectedCurrentJob.this, BrowseJobs.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(SelectedCurrentJob.this, ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(SelectedCurrentJob.this, WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
     }
 
     public void showOnMap(View v){

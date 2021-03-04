@@ -27,4 +27,14 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/tv"
         tools:layout_editor_absoluteX="-10dp" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/cardview_shadow_start_color"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_navigation"
+        tools:layout_editor_absoluteX="208dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
     public void onBindViewHolder(@NonNull AcceptedConsultationAdapter.MyViewHolder holder, int position) {
 
         final Consultation consultation=consultationsFromDB.get(position);
-        holder.txtView.setText("\n Listing ID : "+consultation.getListingId()+"\n Proposed Date : "+consultation.getDate()+"\n Proposed Time : "+ consultation.getTime());
+        holder.txtView.setText("\n Listing Title : "+consultation.getTitle()+"\n Proposed Date : "+consultation.getDate()+"\n Proposed Time : "+ consultation.getTime());
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

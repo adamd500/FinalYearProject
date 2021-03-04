@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.WelcomeProfessional">
 
+
     <Button
         android:id="@+id/buttonBrowseJobs"
         android:layout_width="307dp"
         android:layout_height="50dp"
         android:layout_marginLeft="52dp"
-        android:text="Browse for new job"
         android:onClick="getJobs"
+        android:text="Browse for new job"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.099" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <Button
         android:id="@+id/buttonBrowseJobsOnMap"
@@ -28,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <Button
         android:id="@+id/buttonAllJobs"
@@ -40,19 +41,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <Button
         android:id="@+id/buttonEarnings"
         android:layout_width="307dp"
         android:layout_height="50dp"
         android:layout_marginLeft="60dp"
-        android:text="Inbox"
         android:onClick="inbox"
+        android:text="Inbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.414" />
+        app:layout_constraintVertical_bias="0.323" />
+
 
     <Button
         android:id="@+id/buttonStripe"
@@ -64,7 +66,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804" />
+        app:layout_constraintVertical_bias="0.76" />
+
+    <Button
+        android:id="@+id/buttonSchedule"
+        android:layout_width="356dp"
+        android:layout_height="41dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="openCalendar"
+        android:text="Calendar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.807" />
 
     <Button
         android:id="@+id/buttonGraph"
@@ -76,7 +90,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728" />
+        app:layout_constraintVertical_bias="0.701" />
+
     <Button
         android:id="@+id/buttonAcceptedConsultation"
         android:layout_width="307dp"
@@ -87,7 +102,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="0.431" />
 
     <Button
         android:id="@+id/buttonFeedback"
@@ -111,17 +126,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintVertical_bias="0.544" />
 
     <Button
         android:id="@+id/buttonProfile"
         android:layout_width="307dp"
         android:layout_height="50dp"
         android:layout_marginLeft="60dp"
-        android:text="View Profile"
         android:onClick="viewProfile"
+        android:text="View Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.878" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/cardview_shadow_start_color"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_navigation"
+        tools:layout_editor_absoluteX="208dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
