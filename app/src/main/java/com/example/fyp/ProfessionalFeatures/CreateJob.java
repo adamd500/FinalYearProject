@@ -3,6 +3,8 @@ package com.example.fyp.ProfessionalFeatures;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -51,6 +54,7 @@ public class CreateJob extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
     private static final String Job = "Job";
+    DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,22 +78,24 @@ public class CreateJob extends AppCompatActivity {
         startDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateJob.this, new TimePickerDialog.OnTimeSetListener() {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(CreateJob.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, dateSetListener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
+                dialog.show();
+                dateSetListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time = hourOfDay + ":" + minute;
-                        SimpleDateFormat f24Hours = new SimpleDateFormat("HH:mm");
-                        try {
-                            Date date = f24Hours.parse(time);
-                            startDate.setText(f24Hours.format(date));
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
+                    public void onDateSet(DatePicker view, int year1, int month1, int dayOfMonth1) {
+                        month1 = month1 + 1;
+
+                        String dateStr = dayOfMonth1 + "/" + month1 + "/" + year1;
+                        startDate.setText(dateStr);
+
                     }
-                }, 12, 0, true
-                );
-                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
-                timePickerDialog.show();
+                };
             }
     });
 
@@ -114,12 +120,12 @@ public class CreateJob extends AppCompatActivity {
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(CreateJob.this, ProfessionalProfile.class);
+                        Intent intent1 = new Intent(CreateJob.this, ProfileHomePage.class);
                         startActivity(intent1);
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(CreateJob.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(CreateJob.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 
@@ -290,8 +296,7 @@ public class CreateJob extends AppCompatActivity {
 
     }
 
-    public void backToHomePage() {
-        Intent intent = new Intent(CreateJob.this, WelcomeProfessional.class);
-        startActivity(intent);
+    private void createNotificationChannel(){
+
     }
 }

@@ -1,9 +1,12 @@
 package com.example.fyp.Adapters;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ProfessionalFeatures.SelectedCurrentJob;
 import com.example.fyp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.MyViewHolder>{
@@ -23,10 +33,14 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txtView;
+        public ImageView img;
+        private FirebaseStorage storage;
+        private StorageReference storageReference;
 
         public MyViewHolder(View itemView){
             super(itemView);
             txtView=(TextView)itemView.findViewById(R.id.textView);
+            img=(ImageView)itemView.findViewById(R.id.imageView3);
 
         }
 
@@ -47,7 +61,7 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
     public CurrentJobsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.row_layout,parent,false);
+        View itemView =inflater.inflate(R.layout.inbox_card_view,parent,false);
         CurrentJobsAdapter.MyViewHolder viewHolder=new CurrentJobsAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -56,7 +70,9 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
     public void onBindViewHolder(@NonNull CurrentJobsAdapter.MyViewHolder holder, int position) {
 
         final Job name= jobsFromDb.get(position);
-        holder.txtView.setText("\nJob ID : "+name.getJobId()+"\n Location : "+name.getLocation()+"\n Description : "+ name.getDescription()
+
+         holder.img.setImageResource(R.drawable.consultation);
+        holder.txtView.setText("\nTitle : "+name.getJobTitle()+"\n Location : "+name.getLocation()
                 +"\n Start Date :"+name.getStartDate()+"\n Estimated Duration "+name.getEstimatedDuration());
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+
     tools:context=".RegisterAndLogin.MainActivity">
 
     <Button
@@ -13,6 +15,7 @@
         android:layout_marginBottom="428dp"
         android:onClick="professionalLogin"
         android:text="Professional Account"
+        android:background="@drawable/custom_button"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="38dp" />
 

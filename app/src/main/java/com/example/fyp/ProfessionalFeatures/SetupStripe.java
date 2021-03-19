@@ -104,7 +104,7 @@ public class SetupStripe extends AppCompatActivity {
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(SetupStripe.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(SetupStripe.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 

@@ -19,10 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".ProfessionalFeatures.FeedbackGraph"></activity>
+        <activity android:name=".WebLinks.BecomingSelfEmployedInfo"></activity>
+        <activity android:name=".WebLinks.EmploymentStatusInfo" />
+        <activity android:name=".ProfessionalFeatures.ProfileHomePage" />
+        <activity android:name=".CustomerFeatures.CustomerListingNav" />
+        <activity android:name=".ProfessionalFeatures.Graph2" />
+        <activity android:name=".ProfessionalFeatures.WorkHomepage" />
         <activity android:name=".ProfessionalFeatures.StripeDetails" />
         <activity android:name=".ProfessionalFeatures.SetupStripe" />
-        <activity android:name=".ProfessionalFeatures.CovidInformation" />
+        <activity android:name=".WebLinks.CovidInformation" />
         <activity android:name=".ProfessionalFeatures.ViewProfessionalFeedback" />
         <activity android:name=".Messaging.StartConversation2" />
         <activity android:name=".AdminFeatures.SelectedCustomerToVerify" />
@@ -93,6 +98,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".Notifications.ReminderConsultation" />
     </application>
 
 </manifest>

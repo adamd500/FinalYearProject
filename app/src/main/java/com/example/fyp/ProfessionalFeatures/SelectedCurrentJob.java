@@ -93,12 +93,12 @@ public class SelectedCurrentJob extends AppCompatActivity {
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(SelectedCurrentJob.this, ProfessionalProfile.class);
+                        Intent intent1 = new Intent(SelectedCurrentJob.this, ProfileHomePage.class);
                         startActivity(intent1);
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(SelectedCurrentJob.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(SelectedCurrentJob.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 

@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.InboxCustomer;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Professional;
+import com.example.fyp.ProfessionalFeatures.FinaliseJobProfessional;
 import com.example.fyp.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -100,47 +104,43 @@ public class FinaliseJobCustomer extends AppCompatActivity {
         });
 
         getJob();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(FinaliseJobCustomer.this, InboxCustomer.class);
+                        startActivity(intent);
+                        return true;
 
-    //    try {
-        //    thread.sleep(6000);
-         //   thread.start();
+                    case R.id.profile:
+                        Intent intent1 = new Intent(FinaliseJobCustomer.this, CustomerProfile.class);
+                        startActivity(intent1);
+                        return true;
 
-     //   } catch (InterruptedException e) {
-      //      e.printStackTrace();
-     //   }
+                    case R.id.createListing:
+                        Intent intent2 = new Intent(FinaliseJobCustomer.this, CreateListing.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.myListings:
+                        Intent intent3 = new Intent(FinaliseJobCustomer.this, CustomerListingNav.class);
+                        startActivity(intent3);
+                        return true;
+
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(FinaliseJobCustomer.this, WelcomeCustomer.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
 
     }
-
-//    public void initThread() {
-//        thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                ArrayList paymentMethodTypes = new ArrayList();
-//                paymentMethodTypes.add("card");
-////                int price1 = Integer.valueOf(price);
-////                Double p = price1 * 0.15;
-////                int fee = (int) Math.round(p);
-//                Map<String, Object> params = new HashMap<>();
-//                params.put("payment_method_types", paymentMethodTypes);
-//                params.put("amount", price*100);
-//                params.put("currency", "eur");
-//                params.put("application_fee_amount", price*15);
-//                Map<String, Object> transferDataParams = new HashMap<>();
-//                transferDataParams.put("destination", "acct_1IMGGO4CaypLLH6w");
-//                params.put("transfer_data", transferDataParams);
-//                try {
-//                    PaymentIntent paymentIntent = PaymentIntent.create(params);
-//                    clientSecret = paymentIntent.getClientSecret();
-//
-//                } catch (StripeException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });c
-//    }
-
-    public void getJob() {
+  public void getJob() {
         ref.child("Job").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

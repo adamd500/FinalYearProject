@@ -3,22 +3,38 @@ package com.example.fyp.ProfessionalFeatures;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.CalendarContract;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
-import com.example.fyp.CustomerFeatures.WelcomeCustomer;
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.R;
+import com.example.fyp.WebLinks.CovidInformation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+
 public class WelcomeProfessional extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
+    TextView tv,tv2;
+    String text;
+    String next;
+
+    Thread thread;
+    String allTraffic;
+    String nationalTraffic,dublinTraffic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +42,64 @@ public class WelcomeProfessional extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
+
+        tv = findViewById(R.id.nationwideTraffic);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        tv2 = findViewById(R.id.dublinTraffic);
+        tv2.setMovementMethod(new ScrollingMovementMethod());
+
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Document doc = null;
+                try {
+                    doc = Jsoup.connect("https://www.rte.ie/traffic/").get();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                Elements divs = doc.getElementsByTag("div");
+                Elements divTags = doc.getElementsByTag("div");
+
+                for (Element elem : divTags) {
+                    if (elem.attr("class").equalsIgnoreCase("summary_tab_content")) {
+                        if(elem.attr("ng-show").equalsIgnoreCase("isSummTabSet(1)")) {
+
+                            text = text + elem.text();
+                            String[]sections=text.toString().split("NATIONAL TRAFFIC");
+                            allTraffic=sections[1];
+
+                            String nextSections[]=allTraffic.toString().split("DUBLIN TRAFFIC | NATIONAL TRAFFIC");
+                            if(nextSections[0]!=null) {
+                                nationalTraffic = nextSections[0];
+                                nationalTraffic=nationalTraffic.replaceAll("\\.\\s?","\\.\n");
+
+                            }
+                            if( nextSections.length>=2) {
+                                 next = nextSections[1];
+                                String dublinTrafficSection[]=next.toString().split("PUBLIC TRANSPORT | ROADWORKS");
+                                dublinTraffic=dublinTrafficSection[0];
+                                dublinTraffic=dublinTraffic.replaceAll("\\.\\s?","\\.\n");
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+
+        });
+        thread.start();
+        try {
+            thread.join();
+            tv.setText(nationalTraffic);
+            tv2.setText(dublinTraffic);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -38,17 +112,17 @@ public class WelcomeProfessional extends AppCompatActivity {
                        return true;
 
                    case R.id.profile:
-                       Intent intent1 = new Intent(WelcomeProfessional.this, ProfessionalProfile.class);
+                       Intent intent1 = new Intent(WelcomeProfessional.this, ProfileHomePage.class);
                        startActivity(intent1);
                        return true;
 
                    case R.id.work:
-                       Intent intent2 = new Intent(WelcomeProfessional.this, BrowseJobs.class);
+                       Intent intent2 = new Intent(WelcomeProfessional.this, WorkHomepage.class);
                        startActivity(intent2);
                        return true;
 
                    case R.id.stats:
-                       Intent intent3 = new Intent(WelcomeProfessional.this, WelcomeProfessional.class);
+                       Intent intent3 = new Intent(WelcomeProfessional.this, ViewProfessionalFeedback.class);
                        intent3.putExtra("professionalId",uid);
                        startActivity(intent3);
                        return true;
@@ -59,34 +133,7 @@ public class WelcomeProfessional extends AppCompatActivity {
         });
     }
 
-    public void getJobs(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, BrowseJobs.class);
-        startActivity(intent);
-    }
 
-    public void findJobOnMap(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, BrowseJobsOnMap.class);
-        startActivity(intent);
-    }
-
-    public void acceptedConsultations(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, AcceptedConsultations.class);
-        startActivity(intent);
-    }
-
-    public void currentJobs(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, CurrentJobs.class);
-        startActivity(intent);
-    }
-
-    public void inbox(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, InboxProfessional.class);
-        startActivity(intent);
-    }
-    public void viewProfile(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, ProfessionalProfile.class);
-        startActivity(intent);
-    }
 
     public void covidInformation(View v){
         Intent intent = new Intent(WelcomeProfessional.this, CovidInformation.class);
@@ -103,7 +150,7 @@ public class WelcomeProfessional extends AppCompatActivity {
 
     public void feedbackGraph(View view) {
 
-        Intent intent = new Intent(WelcomeProfessional.this, FeedbackGraph.class);
+        Intent intent = new Intent(WelcomeProfessional.this, Graph2.class);
         startActivity(intent);
 
     }
@@ -115,8 +162,15 @@ public class WelcomeProfessional extends AppCompatActivity {
 
     public void openCalendar(View v){
 
-        Intent insertCalendarIntent = new Intent(Intent.ACTION_PICK).setData(CalendarContract.Events.CONTENT_URI);
-        startActivity(insertCalendarIntent);
+//        Intent insertCalendarIntent = new Intent(Intent.ACTION_PICK).setData(CalendarContract.Events.CONTENT_URI);
+//        startActivity(insertCalendarIntent);
+        Intent intent = new Intent();
+       ComponentName cn= new ComponentName("com.google.android.calendar","com.android.calendar.LaunchActivity");
+        intent.setComponent(cn);
+        startActivity(intent);
+
 
     }
+
+
 }

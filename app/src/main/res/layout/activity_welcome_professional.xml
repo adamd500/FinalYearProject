@@ -4,69 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".ProfessionalFeatures.WelcomeProfessional">
 
-
-    <Button
-        android:id="@+id/buttonBrowseJobs"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="52dp"
-        android:onClick="getJobs"
-        android:text="Browse for new job"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/nationwideTraffic"
+        android:layout_width="match_parent"
+        android:layout_height="136dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="96dp"
+        android:ems="10"
+        android:background="@color/white"
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonBrowseJobsOnMap"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="findJobOnMap"
-        android:text="Browse New Jobs on Map"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/dublinTraffic"
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="264dp"
+        android:background="@color/white"
+        android:ems="10"
+
+        android:scrollbars="vertical"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
-
-    <Button
-        android:id="@+id/buttonAllJobs"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="currentJobs"
-        android:text="Current Jobs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
-
-    <Button
-        android:id="@+id/buttonEarnings"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="inbox"
-        android:text="Inbox"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323" />
-
-
-    <Button
-        android:id="@+id/buttonStripe"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="setUpStripe"
-        android:text="Set up payment service"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSchedule"
@@ -74,82 +40,66 @@
         android:layout_height="41dp"
         android:layout_marginLeft="24dp"
         android:onClick="openCalendar"
-        android:text="Calendar"
+        android:text="Check Schedule"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.807" />
-
-    <Button
-        android:id="@+id/buttonGraph"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="feedbackGraph"
-        android:text="Feedback graph"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
-
-    <Button
-        android:id="@+id/buttonAcceptedConsultation"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="acceptedConsultations"
-        android:text="Accepted Consultations"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
-
-    <Button
-        android:id="@+id/buttonFeedback"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="feedback"
-        android:text="Feedback and Ratings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
-
-    <Button
-        android:id="@+id/buttonCovid"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="covidInformation"
-        android:text="Info on beign self employed durign covid"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544" />
-
-    <Button
-        android:id="@+id/buttonProfile"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="viewProfile"
-        android:text="View Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemBackground="@color/cardview_shadow_start_color"
+        app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/white"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Welcome to Job Connect"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="381dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="See Major Traffic Updates Below Retrieved from AA."
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="381dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Nationwide Traffic"
+        app:layout_constraintBottom_toTopOf="@+id/nationwideTraffic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="381dp"
+        android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Dublin Traffic"
+        app:layout_constraintBottom_toTopOf="@+id/dublinTraffic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

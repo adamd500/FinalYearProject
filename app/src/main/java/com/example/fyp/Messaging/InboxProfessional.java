@@ -16,9 +16,11 @@ import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.ProfessionalFeatures.BrowseJobs;
 import com.example.fyp.ProfessionalFeatures.ProfessionalProfile;
+import com.example.fyp.ProfessionalFeatures.ProfileHomePage;
 import com.example.fyp.ProfessionalFeatures.SelectedAcceptedConsultation;
 import com.example.fyp.ProfessionalFeatures.ViewProfessionalFeedback;
 import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
+import com.example.fyp.ProfessionalFeatures.WorkHomepage;
 import com.example.fyp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -70,17 +72,17 @@ public class InboxProfessional extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.inbox:
-                        Intent intent = new Intent(InboxProfessional.this, InboxProfessional.class);
-                        startActivity(intent);
+//                        Intent intent = new Intent(InboxProfessional.this, InboxProfessional.class);
+//                        startActivity(intent);
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(InboxProfessional.this, ProfessionalProfile.class);
+                        Intent intent1 = new Intent(InboxProfessional.this, ProfileHomePage.class);
                         startActivity(intent1);
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(InboxProfessional.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(InboxProfessional.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 

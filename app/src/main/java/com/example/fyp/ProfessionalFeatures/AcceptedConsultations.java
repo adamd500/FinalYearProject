@@ -69,12 +69,12 @@ public class AcceptedConsultations extends AppCompatActivity {
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(AcceptedConsultations.this, ProfessionalProfile.class);
+                        Intent intent1 = new Intent(AcceptedConsultations.this, ProfileHomePage.class);
                         startActivity(intent1);
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(AcceptedConsultations.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(AcceptedConsultations.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 

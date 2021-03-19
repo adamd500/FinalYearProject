@@ -9,15 +9,22 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.fyp.CustomerFeatures.CustomerProfile;
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ProfessionalFeatures.ProfessionalProfile;
+import com.example.fyp.ProfessionalFeatures.ProfileHomePage;
+import com.example.fyp.ProfessionalFeatures.ViewProfessionalFeedback;
+import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
+import com.example.fyp.ProfessionalFeatures.WorkHomepage;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -55,6 +62,40 @@ public class ProfessionalUploadGardaVet extends AppCompatActivity {
     ivImage = (ImageView) findViewById(R.id.imageView);
     user= FirebaseAuth.getInstance().getCurrentUser();
     uid=user.getUid();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(getApplicationContext(), InboxProfessional.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(getApplicationContext(), ProfileHomePage.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.work:
+                        Intent intent2 = new Intent(getApplicationContext(), WorkHomepage.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.stats:
+                        Intent intent3 = new Intent(getApplicationContext(), ViewProfessionalFeedback.class);
+                        intent3.putExtra("professionalId",uid);
+                        startActivity(intent3);
+                        return true;
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(getApplicationContext(), WelcomeProfessional.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
 }
 
     public void selectImage(View v) {

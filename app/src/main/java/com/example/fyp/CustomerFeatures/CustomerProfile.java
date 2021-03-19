@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 
 import com.example.fyp.DocumentUploading.CustomerUploadIdDocument;
 import com.example.fyp.DocumentUploading.CustomerUploadSelfieImage;
+import com.example.fyp.Messaging.InboxCustomer;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -109,7 +112,40 @@ public class CustomerProfile extends AppCompatActivity {
             }
         });
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(CustomerProfile.this, InboxCustomer.class);
+                        startActivity(intent);
+                        return true;
 
+                    case R.id.profile:
+                        Intent intent1 = new Intent(CustomerProfile.this, CustomerProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.createListing:
+                        Intent intent2 = new Intent(CustomerProfile.this, CustomerListingNav.class);
+                        startActivity(intent2);
+                        return true;
+
+                    case R.id.myListings:
+                        Intent intent3 = new Intent(CustomerProfile.this, CustomerAllListings.class);
+                        startActivity(intent3);
+                        return true;
+
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(CustomerProfile.this, WelcomeCustomer.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
     }
 
     public void selectId(View v) {

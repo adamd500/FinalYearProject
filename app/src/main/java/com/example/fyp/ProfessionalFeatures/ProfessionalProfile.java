@@ -73,12 +73,12 @@ public class ProfessionalProfile extends AppCompatActivity {
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(ProfessionalProfile.this, ProfessionalProfile.class);
+                        Intent intent1 = new Intent(ProfessionalProfile.this, ProfileHomePage.class);
                         startActivity(intent1);
                         return true;
 
                     case R.id.work:
-                        Intent intent2 = new Intent(ProfessionalProfile.this, BrowseJobs.class);
+                        Intent intent2 = new Intent(ProfessionalProfile.this, WorkHomepage.class);
                         startActivity(intent2);
                         return true;
 

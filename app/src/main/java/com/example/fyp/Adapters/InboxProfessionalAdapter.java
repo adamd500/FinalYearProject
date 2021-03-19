@@ -1,9 +1,12 @@
 package com.example.fyp.Adapters;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,11 +26,11 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txtView;
-
+        public ImageView img;
         public MyViewHolder(View itemView){
             super(itemView);
             txtView=(TextView)itemView.findViewById(R.id.textView);
-
+            img=(ImageView)itemView.findViewById(R.id.imageView3);
         }
 
         @Override
@@ -43,7 +46,7 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     public InboxProfessionalAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.row_layout,parent,false);
+        View itemView =inflater.inflate(R.layout.inbox_card_view,parent,false);
         InboxProfessionalAdapter.MyViewHolder viewHolder=new InboxProfessionalAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -52,7 +55,8 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     public void onBindViewHolder(@NonNull InboxProfessionalAdapter.MyViewHolder holder, int position) {
 
         final Conversation listing= conversationsFromDB.get(position);
-        holder.txtView.setText("Conversation in Relation to Listing Titled  : "+listing.getListingTitle()+"\n Customers Name : "+listing.getCustomerName());
+        holder.img.setImageResource(R.drawable.letter);
+        holder.txtView.setText("Listing Titled  : "+listing.getListingTitle()+"\n Customers Name : "+listing.getCustomerName());
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

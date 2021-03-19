@@ -9,16 +9,25 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.fyp.Messaging.InboxCustomer;
+import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ProfessionalFeatures.ArrangeConsultation;
+import com.example.fyp.ProfessionalFeatures.ProfessionalProfile;
+import com.example.fyp.ProfessionalFeatures.ViewProfessionalFeedback;
+import com.example.fyp.ProfessionalFeatures.WelcomeProfessional;
+import com.example.fyp.ProfessionalFeatures.WorkHomepage;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +67,41 @@ public class CreateListing extends AppCompatActivity {
         ivImage = (ImageView) findViewById(R.id.imageView);
         user=FirebaseAuth.getInstance().getCurrentUser();
         uid=user.getUid();
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.inbox:
+                        Intent intent = new Intent(CreateListing.this, InboxCustomer.class);
+                        startActivity(intent);
+                        return true;
+
+                    case R.id.profile:
+                        Intent intent1 = new Intent(CreateListing.this, CustomerProfile.class);
+                        startActivity(intent1);
+                        return true;
+
+                    case R.id.createListing:
+//                        Intent intent2 = new Intent(CreateListing.this, CreateListing.class);
+//                        startActivity(intent2);
+                        return true;
+
+                    case R.id.myListings:
+                        Intent intent3 = new Intent(CreateListing.this, CustomerListingNav.class);
+                        startActivity(intent3);
+                        return true;
+
+
+                    case R.id.home:
+                        Intent intent4 = new Intent(CreateListing.this, WelcomeCustomer.class);
+                        startActivity(intent4);
+                }
+
+                return false;
+            }
+        });
 
     }
     public void postListing(View v) {
