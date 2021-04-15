@@ -16,13 +16,15 @@ public class WelcomeAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_admin);
     }
 
-    public void verifyProfessionals(View v){
-//        Intent intent=new Intent(this,VerifyProfessionals.class);
-//        startActivity(intent);
-    }
+
 
     public void verifyCustomers(android.view.View view) {
         Intent intent=new Intent(WelcomeAdmin.this,VerifyCustomers.class);
+        startActivity(intent);
+    }
+
+    public void verifyProfessionals(android.view.View view) {
+        Intent intent=new Intent(this,VerifyProfessionals.class);
         startActivity(intent);
     }
 }

@@ -5,40 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminFeatures.VerifyProfessionalGardaVet">
-    <TextView
-        android:id="@+id/txtViewTitle"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
 
-
-    <Button
-        android:id="@+id/verifyButton"
-        android:layout_width="357dp"
-        android:layout_height="55dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="verifyGardaVetForm"
-        android:text="Verify Garda Vet Form "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.553" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="411dp"
-        android:layout_height="181dp"
-        android:layout_marginTop="52dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/verifyButton"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:layout_editor_absoluteY="16dp">
+
+        <TextView
+            android:id="@+id/txtViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Verify Identity : Upload ID Document"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large"
+            tools:layout_editor_absoluteX="10dp" />
+
+
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="411dp"
+            android:layout_height="181dp"
+            android:layout_marginTop="52dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/verifyButton"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
+            tools:layout_editor_absoluteX="0dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <Button
+            android:id="@+id/sendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@drawable/bg_btn_shape"
+            android:fontFamily="@font/googlesansbold"
+            android:onClick="verifyGardaVetForm"
+            android:text="Verify Garda Vet Form "
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

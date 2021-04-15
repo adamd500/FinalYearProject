@@ -5,19 +5,324 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.FinaliseJobProfessional">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/title"
-        android:layout_width="389dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:text="Finalise Job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Finalise Job"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:text=""
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_medium" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Estimated Duration"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <TextView
+                android:id="@+id/estimatedDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:hint="Estimated"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Actual Duration"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="false"
+                android:layout_marginEnd="228dp"
+                android:entries="@array/time"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_medium"
+                android:text="Time Period"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            <EditText
+                android:id="@+id/actualDuration"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="132dp"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:hint="Time Estimation"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Quoted Price"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <TextView
+                android:id="@+id/quotePrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:hint="Quote"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Actual Price"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <EditText
+                android:id="@+id/actualPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:hint="Actual"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Breakdown of Price"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <EditText
+                android:id="@+id/priceBreakdown"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:gravity="start|top"
+                android:hint=" Breakdown"
+                android:inputType="textMultiLine"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Finish Date"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <TextView
+                android:id="@+id/finishDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:text="Date"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Feedback Comments for Client"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <EditText
+                android:id="@+id/feedbackForCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_rounded_border_edittext"
+                android:fontFamily="@font/googlesansregular"
+                android:gravity="start|top"
+                android:hint="Feedback"
+                android:inputType="textMultiLine"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:background="@drawable/bg_btn_shape"
+        android:fontFamily="@font/googlesansbold"
+        android:onClick="finishJob"
+        android:text="Finalise Job"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_large" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
@@ -29,107 +334,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
-
-    <TextView
-        android:id="@+id/estimatedDuration"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
-
-    <TextView
-        android:id="@+id/quotePrice"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
-
-    <EditText
-        android:id="@+id/actualDuration"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Actual Duration"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.204" />
-
-    <EditText
-        android:id="@+id/actualPrice"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:hint="Actual Price "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.363" />
-
-
-    <EditText
-        android:id="@+id/finishDate"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Finish Date "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <EditText
-        android:id="@+id/feedbackForCustomer"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:hint="Feedback for Customer "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
-
-    <EditText
-        android:id="@+id/priceBreakdown"
-        android:layout_width="381dp"
-        android:layout_height="83dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Breakdown of Price "
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="finishJob"
-        android:text="Finish Job"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878" />
 </androidx.constraintlayout.widget.ConstraintLayout>

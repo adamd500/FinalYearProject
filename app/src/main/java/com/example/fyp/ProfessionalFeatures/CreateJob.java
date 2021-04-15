@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class CreateJob extends AppCompatActivity {
     private String uid;
     private static final String Job = "Job";
     DatePickerDialog.OnDateSetListener dateSetListener;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class CreateJob extends AppCompatActivity {
         e3 = (EditText) findViewById(R.id.description);
         e4 = (EditText) findViewById(R.id.quote);
         e6 = (EditText) findViewById(R.id.jobTitle);
+
+        spinner=(Spinner)findViewById(R.id.spinner);
 
         startDate = (TextView) findViewById(R.id.startDate);
         startDate.setOnClickListener(new View.OnClickListener() {
@@ -173,7 +177,7 @@ public class CreateJob extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(consultation.getListingId())) {
                         listing = child.getValue(Listing.class);
-                        loc.setText("Location" + listing.getLocation());
+                        loc.setText(listing.getLocation());
 
                     }
                 }
@@ -187,7 +191,7 @@ public class CreateJob extends AppCompatActivity {
     }
 
     public void getCustomer(View v) {
-        ref.child("Listing").addValueEventListener(new ValueEventListener() {
+        ref.child("Listing").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
@@ -195,9 +199,9 @@ public class CreateJob extends AppCompatActivity {
                     if (child.getKey().equals(consultation.getListingId())) {
                         listing = child.getValue(Listing.class);
 
-                        createJob(listing.getCustomerUsername());
+                    //    createJob(listing.getCustomerUsername());
 
-                        ref.child("Customer").addValueEventListener(new ValueEventListener() {
+                        ref.child("Customer").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 Iterable<DataSnapshot> children = snapshot.getChildren();
@@ -231,7 +235,7 @@ public class CreateJob extends AppCompatActivity {
 
     public void createJob(String customerEmail) {
 
-        ref.child("Consultation").addValueEventListener(new ValueEventListener() {
+        ref.child("Consultation").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
@@ -241,7 +245,6 @@ public class CreateJob extends AppCompatActivity {
                         // loc.setText("Location"+consultation.getLocation());
 
                         String jobId = ref2.push().getKey();
-
 
                         String duration = e2.getText().toString();
                         String description = e3.getText().toString();
@@ -266,22 +269,25 @@ public class CreateJob extends AppCompatActivity {
 
                         ref2.child(jobId).setValue(job);
 
+                        ref2.child(jobId).child("estimatedDuration").setValue(duration+" "+spinner.getSelectedItem());
 
-                        Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
-                                .putExtra(CalendarContract.Events.TITLE, "Working on Job Titled :" + job.getJobTitle())
-                                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.getTimeInMillis())
-                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finishCal.getTimeInMillis())
-                                .putExtra(CalendarContract.Events.EVENT_LOCATION, job.getLocation())
-                                .putExtra(Intent.EXTRA_EMAIL, customerEmail)
-                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :" + job.getDescription()) // Description
-                                .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
-                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
-
-                        startActivity(insertCalendarIntent);
+//
+//                        Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+//                                .putExtra(CalendarContract.Events.TITLE, "Working on Job Titled :" + job.getJobTitle())
+//                                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+//                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.getTimeInMillis())
+//                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finishCal.getTimeInMillis())
+//                                .putExtra(CalendarContract.Events.EVENT_LOCATION, job.getLocation())
+//                                .putExtra(Intent.EXTRA_EMAIL, customerEmail)
+//                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :" + job.getDescription()) // Description
+//                                .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
+//                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
+//
+//                        startActivity(insertCalendarIntent);
 
                         Toast.makeText(CreateJob.this, "Job has been created", Toast.LENGTH_SHORT).show();
-
+                        Intent intent=new Intent(getApplicationContext(),WelcomeProfessional.class);
+                        startActivity(intent);
                         //  backToHomePage();
                     }
                 }

@@ -71,7 +71,8 @@ public class CurrentSelectedJobOnMap extends FragmentActivity implements OnMapRe
 
         // Add a marker in Sydney and move the camera
         LatLng selectedJob = new LatLng(latitude,longitude);
-        mMap.addMarker(new MarkerOptions().position(selectedJob).title("Current Job"));
+        mMap.addMarker(new MarkerOptions().position(selectedJob).title("Current Listing"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(selectedJob));
+
     }
 }

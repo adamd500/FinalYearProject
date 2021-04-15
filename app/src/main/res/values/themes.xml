@@ -23,6 +23,9 @@
     <item name="android:background">@drawable/custom_button</item>
     </style>
 
+    <style name="Toolbar">
+        <item name="android:fontFamily">@font/googlesansextrabold</item>
+    </style>
 
     <style name="Theme.FYP.NoActionBar">
         <item name="windowActionBar">false</item>

@@ -6,17 +6,241 @@
     android:layout_height="match_parent"
     tools:context=".CustomerFeatures.WelcomeCustomer">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtViewTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="124dp"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
         android:text="Welcome to Job Connect"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/browser_actions_bg_grey"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_card"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/consTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="How It Works :"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_card"
+                    android:layout_below="@+id/consTitle"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="The Icons on the Bottom Bar Represent Each Function of the App. Here's What They Do :"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+                <TextView
+                    android:id="@+id/customerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:layout_below="@+id/desc"
+                    android:drawableStart="@drawable/ic_baseline_home_24"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Press Home to Return to this Page"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+                <TextView
+                    android:id="@+id/a1"
+                    android:layout_below="@+id/customerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text=""
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+                <TextView
+                    android:id="@+id/f"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:layout_below="@+id/a1"
+                    android:drawableStart="@drawable/ic_inbox"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Press this Icon to View Your Inbox"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/a2"
+                    android:layout_below="@+id/f"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text=""
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:layout_below="@+id/a2"
+                    android:drawableStart="@drawable/ic_create_listing"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Press This to Create a Listing"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/a3"
+                    android:layout_below="@+id/s"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text=""
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+
+                <TextView
+                    android:id="@+id/t"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:layout_below="@+id/a3"
+                    android:drawableStart="@drawable/ic_listings"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Press This to View Your Listings, Consultations and Jobs"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/a4"
+                    android:layout_below="@+id/t"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text=""
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/r"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:layout_below="@+id/a4"
+                    android:drawableStart="@drawable/ic_user_settings_line"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Press This to View Your Profile"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_medium" />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
@@ -28,12 +252,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/customer_menu_nav"
         tools:layout_editor_absoluteX="208dp" />
-
-
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

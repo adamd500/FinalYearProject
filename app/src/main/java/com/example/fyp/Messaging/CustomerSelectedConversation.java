@@ -33,7 +33,7 @@ import java.util.Date;
 public class CustomerSelectedConversation extends AppCompatActivity {
 
     String listingId, professionalId,conversationId;
-    TextView titleText;
+    TextView titleText, profText;
     private FirebaseDatabase database;
     private DatabaseReference ref, ref2, reference;
     private FirebaseUser user;
@@ -89,6 +89,8 @@ public class CustomerSelectedConversation extends AppCompatActivity {
         conversationId = intent.getStringExtra("conversationId");
 
         titleText = (TextView) findViewById(R.id.textViewTitle);
+        profText = (TextView) findViewById(R.id.customer);
+
         messageBox = (EditText) findViewById(R.id.message);
 
         getConversation();
@@ -107,7 +109,8 @@ public class CustomerSelectedConversation extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(conversationId)) {
                         Conversation conversation = child.getValue(Conversation.class);
-                        titleText.setText("Listing Title : " + conversation.getListingTitle() + "\n Professional Name : " + conversation.getProfessionalName() + "\n");
+                        titleText.setText(conversation.getListingTitle());
+                        profText.setText(conversation.getProfessionalName());
                     }
                 }
             }

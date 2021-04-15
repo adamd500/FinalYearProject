@@ -6,27 +6,275 @@
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.SelectedCurrentJob">
 
-    <TextView
-        android:id="@+id/customerPhone"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/startDate"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.675" />
+        android:id="@+id/txtViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Current Job"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/consTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Client's Details"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/customerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/consTitle"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Name"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/customerPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerName"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Phone"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/jTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Job Details"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="200dp"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"                    android:layout_below="@+id/jTitle"
+                    android:layout_height="184dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toTopOf="@+id/txtViewEircode"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Start Date"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/quotedDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/startDate"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Quoted Dur"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/quotedPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/quotedDuration"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Quoted Price"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+
+                <TextView
+                    android:id="@+id/jobLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/quotedPrice"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Location"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/locationOnMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/jobLocation"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:onClick="showOnMap"
+                    android:drawableEnd="@drawable/ic_map_pin_2_line"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="View on Map"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:background="@drawable/bg_btn_shape"
+        android:fontFamily="@font/googlesansbold"
+        android:onClick="completeJob"
+        android:text="Job is Complete"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_large" />
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
@@ -38,108 +286,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
-    <TextView
-        android:id="@+id/quotedDuration"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
-
-    <TextView
-        android:id="@+id/quotedPrice"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
-
-    <TextView
-        android:id="@+id/jobLocation"
-        android:layout_width="251dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <TextView
-        android:id="@+id/txtViewTitle"
-        android:layout_width="432dp"
-        android:layout_height="39dp"
-        android:layout_marginLeft="28dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
-
-
-    <TextView
-        android:id="@+id/customerName"
-        android:layout_width="380dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
-
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="181dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="8dp"
-        android:onClick="completeJob"
-        android:text="Complete Job "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
-
-    <Button
-        android:id="@+id/locationOnMap"
-        android:layout_width="122dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="272dp"
-        android:onClick="showOnMap"
-        android:text=" Map "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="210dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="196dp"
-        android:text="Edit Details"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="406dp"
-        android:layout_height="184dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="30dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/txtViewEircode"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

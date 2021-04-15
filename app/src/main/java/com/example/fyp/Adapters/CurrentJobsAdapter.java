@@ -32,14 +32,17 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+        public TextView t1,t2,t3,t4,t5;
         public ImageView img;
-        private FirebaseStorage storage;
-        private StorageReference storageReference;
 
         public MyViewHolder(View itemView){
             super(itemView);
-            txtView=(TextView)itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.txtViewTitle);
+            t2=(TextView)itemView.findViewById(R.id.location);
+            t3=(TextView)itemView.findViewById(R.id.dateStarted);
+            t4=(TextView)itemView.findViewById(R.id.duration);
+            t5=(TextView)itemView.findViewById(R.id.sched3);
+
             img=(ImageView)itemView.findViewById(R.id.imageView3);
 
         }
@@ -61,7 +64,7 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
     public CurrentJobsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.inbox_card_view,parent,false);
+        View itemView =inflater.inflate(R.layout.current_job_recyler,parent,false);
         CurrentJobsAdapter.MyViewHolder viewHolder=new CurrentJobsAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -71,10 +74,13 @@ public class CurrentJobsAdapter extends RecyclerView.Adapter<CurrentJobsAdapter.
 
         final Job name= jobsFromDb.get(position);
 
-         holder.img.setImageResource(R.drawable.consultation);
-        holder.txtView.setText("\nTitle : "+name.getJobTitle()+"\n Location : "+name.getLocation()
-                +"\n Start Date :"+name.getStartDate()+"\n Estimated Duration "+name.getEstimatedDuration());
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+       //  holder.img.setImageResource(R.drawable.consultation);
+        holder.t1.setText(name.getJobTitle());
+        holder.t2.setText(name.getLocation());
+        holder.t3.setText(name.getStartDate());
+        holder.t4.setText(name.getEstimatedDuration());
+
+        holder.t5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();

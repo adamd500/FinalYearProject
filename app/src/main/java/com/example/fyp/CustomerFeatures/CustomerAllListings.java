@@ -98,7 +98,7 @@ public class CustomerAllListings extends AppCompatActivity {
                 Iterable<DataSnapshot>children=snapshot.getChildren();
                 for(DataSnapshot child:children){
                     Listing listing=child.getValue(Listing.class);
-                    if(listing.getCustomerUsername().equals(uid)) {
+                    if(listing.getCustomerUsername().equals(uid)&&listing.isActive()) {
                         listings.add(listing);
                     }
                     myAdapter.notifyItemInserted(listings.size()-1);

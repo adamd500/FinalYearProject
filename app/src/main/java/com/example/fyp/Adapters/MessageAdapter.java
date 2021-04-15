@@ -28,11 +28,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+        public TextView t1,t2;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            txtView = (TextView) itemView.findViewById(R.id.showMessage);
+            t1 = (TextView) itemView.findViewById(R.id.content);
+            t2 = (TextView) itemView.findViewById(R.id.other);
 
         }
 
@@ -51,12 +52,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
         //create new view - create a row - inflate the layout for the row
         if (viewType == MSG_TYPE_RIGHT) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View itemView = inflater.inflate(R.layout.chat_item_right, parent, false);
+            View itemView = inflater.inflate(R.layout.message_layout, parent, false);
             MessageAdapter.MyViewHolder viewHolder = new MessageAdapter.MyViewHolder(itemView);
             return viewHolder;
         } else {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            View itemView = inflater.inflate(R.layout.chat_item_left, parent, false);
+            View itemView = inflater.inflate(R.layout.message_layout, parent, false);
             MessageAdapter.MyViewHolder viewHolder = new MessageAdapter.MyViewHolder(itemView);
             return viewHolder;
         }
@@ -68,7 +69,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHo
 
 
         Message message = messagesFromDB.get(position);
-        holder.txtView.setText(message.getContent() +"\n " +"\nFrom : "+message.getFrom()+"\n " + message.getDateTime());
+        holder.t1.setText(message.getContent());
+        holder.t2.setText("From : "+message.getFrom()+"\n " + message.getDateTime());
+
     }
 
     public void add(int position, Message consultation) {

@@ -40,21 +40,27 @@ public class CustomerLogin extends AppCompatActivity {
 
         String email = emailTxt.getText().toString();
         String password = passwordTxt.getText().toString();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+        if(email.isEmpty()||password.isEmpty()){
+            Toast.makeText(CustomerLogin.this, "Please Fill all Fields", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(CustomerLogin.this, "User signed in.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(CustomerLogin.this, WelcomeCustomer.class);
-                            startActivity(intent);
-                        } else {
-                            Log.w("MySignIn", "SignInUserWithEmail : Failure", task.getException());
-                            Toast.makeText(CustomerLogin.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+        }else{
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                Toast.makeText(CustomerLogin.this, "User signed in.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CustomerLogin.this, WelcomeCustomer.class);
+                                startActivity(intent);
+                            } else {
+                                Log.w("MySignIn", "SignInUserWithEmail : Failure", task.getException());
+                                Toast.makeText(CustomerLogin.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
 
 
     }

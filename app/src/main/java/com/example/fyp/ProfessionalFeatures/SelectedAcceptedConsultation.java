@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 public class SelectedAcceptedConsultation extends AppCompatActivity {
 
-    private TextView title,txtViewListingDetails,txtViewConsultationDetails,txtViewTime,txtViewDate,textViewMessage;
+    private TextView title,txtViewListingDetails,txtViewTime,txtViewDate,textViewMessage;
     private String consultationId;
     private Consultation consultation;
     private Listing listing;
@@ -47,9 +47,7 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
 
-        title=(TextView)findViewById(R.id.txtViewTitle);
         txtViewListingDetails=(TextView)findViewById(R.id.txtViewListingDetails);
-        txtViewConsultationDetails=(TextView)findViewById(R.id.txtViewConsultationDetails);
         txtViewTime=(TextView)findViewById(R.id.txtViewTime);
         txtViewDate=(TextView)findViewById(R.id.txtViewDate);
         textViewMessage=(TextView)findViewById(R.id.textViewMessage);
@@ -108,11 +106,9 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
 
     public void displayDetails(){
 
-        title.setText("Consultation ID : "+consultationId);
-        txtViewListingDetails.setText("Listing Title : "+listing.getTitle()+"\nDescription : "+listing.getDescription()+"\n Location : "+listing.getLocation());
-        txtViewConsultationDetails.setText("Your Consultation Details :");
-        txtViewTime.setText("Proposed Time : "+consultation.getTime());
-        txtViewDate.setText("Proposed Date : "+consultation.getDate());
+        txtViewListingDetails.setText("Listing Title : "+listing.getTitle()+"\n"+"\nDescription : "+listing.getDescription()+"\n"+"\nLocation : "+listing.getLocation());
+        txtViewTime.setText("Time : "+consultation.getTime());
+        txtViewDate.setText("Date : "+consultation.getDate());
         textViewMessage.setText("Message : "+consultation.getMessage());
     }
     public void getConsultation(){

@@ -161,12 +161,12 @@ public class SelectedCurrentJob extends AppCompatActivity {
 
                         photoUrl = job.getListing().getPhotos().get(0);
 
-                        t1.setText("Job ID : " + job.getJobId());
-                        t2.setText("Customer Name : " + customer.getName());
-                        t3.setText("Customer Phone Number : " + customer.getPhoneNumber());
-                        t4.setText("Job Location : " + job.getLocation());
-                        t5.setText("Job Start Date : " + job.getStartDate());
-                        t6.setText("Estimated Job Duration : " + job.getEstimatedDuration());
+                        t1.setText("Current Job \n  " + job.getJobTitle());
+                        t2.setText("Name : " + customer.getName());
+                        t3.setText("Phone Number : " + customer.getPhoneNumber());
+                        t4.setText("Location : " + job.getLocation());
+                        t5.setText("Start Date : " + job.getStartDate());
+                        t6.setText("Estimated Duration : " + job.getEstimatedDuration());
                         t7.setText("Quoted Price : " + job.getQuote());
 
                         storageReference = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com"+photoUrl);

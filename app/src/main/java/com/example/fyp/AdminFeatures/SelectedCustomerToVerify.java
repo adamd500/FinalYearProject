@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,46 +78,48 @@ public class SelectedCustomerToVerify extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(customerId)) {
                         customer = child.getValue(Customer.class);
-                        t4.setText("Currently Selected : "+customer.getName());
+                        t4.setText("Currently Selected : " + customer.getName());
 
-                        storageReference1 = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + customer.getIdImage());
-                        storageReference2 = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + customer.getSelfieImage());
+                        if (customer.getSelfieImage() != null && customer.getIdImage() != null) {
+                            storageReference1 = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + customer.getIdImage());
+                            storageReference2 = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + customer.getSelfieImage());
 
 //fypdatabase-d9dfe.appspot.com/images
-                        try {
-                            final File file1 = File.createTempFile("image", "jpeg");
-                            storageReference1.getFile(file1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    Bitmap bitmap = BitmapFactory.decodeFile(file1.getAbsolutePath());
-                                    imageView1.setImageBitmap(bitmap);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(SelectedCustomerToVerify.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                            try {
+                                final File file1 = File.createTempFile("image", "jpeg");
+                                storageReference1.getFile(file1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        Bitmap bitmap = BitmapFactory.decodeFile(file1.getAbsolutePath());
+                                        imageView1.setImageBitmap(bitmap);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SelectedCustomerToVerify.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
-                        try {
-                            final File file2 = File.createTempFile("image", "jpeg");
-                            storageReference2.getFile(file2).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    Bitmap bitmap = BitmapFactory.decodeFile(file2.getAbsolutePath());
-                                    imageView2.setImageBitmap(bitmap);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(SelectedCustomerToVerify.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                            try {
+                                final File file2 = File.createTempFile("image", "jpeg");
+                                storageReference2.getFile(file2).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                        Bitmap bitmap = BitmapFactory.decodeFile(file2.getAbsolutePath());
+                                        imageView2.setImageBitmap(bitmap);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SelectedCustomerToVerify.this, "Image Failed to Load", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
@@ -129,4 +132,11 @@ public class SelectedCustomerToVerify extends AppCompatActivity {
         });
     }
 
+    public void verifyCustomer(View view) {
+        VerifyCustomers.myAdapter.notifyDataSetChanged();
+        ref.child("Customer").child(customerId).child("idVerified").setValue(true);
+
+        Intent intent = new Intent(this, WelcomeAdmin.class);
+        startActivity(intent);
+    }
 }

@@ -19,7 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".WebLinks.BecomingSelfEmployedInfo"></activity>
+        <activity android:name=".CustomerFeatures.PaymentSuccess"></activity>
+        <activity android:name=".WebLinks.TrafficLink" />
+        <activity android:name=".ProfessionalFeatures.ViewListingFromConversation" />
+        <activity android:name=".CustomerFeatures.CustomerPreviousListings" />
+        <activity android:name=".ProfessionalFeatures.SelectedFinishedJob" />
+        <activity android:name=".ProfessionalFeatures.CompletedSelectedJobs" />
+        <activity android:name=".WebLinks.BecomingSelfEmployedInfo" />
         <activity android:name=".WebLinks.EmploymentStatusInfo" />
         <activity android:name=".ProfessionalFeatures.ProfileHomePage" />
         <activity android:name=".CustomerFeatures.CustomerListingNav" />

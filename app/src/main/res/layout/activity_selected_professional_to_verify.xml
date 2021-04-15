@@ -6,109 +6,225 @@
     android:layout_height="match_parent"
     tools:context=".AdminFeatures.SelectedProfessionalToVerify">
 
-    <TextView
-        android:id="@+id/txtViewTrade"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.381" />
-
-
-    <TextView
-        android:id="@+id/textViewDob"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
 
     <TextView
         android:id="@+id/txtViewTitle"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Prof"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
 
-    <TextView
-        android:id="@+id/txtViewAddress"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
 
-    <Button
-        android:id="@+id/verifyIdButton"
-        android:layout_width="395dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="16dp"
-        android:onClick="verifyId"
-        android:text="Verify ID "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
 
-    <Button
-        android:id="@+id/verifyGardaVetButton"
-        android:layout_width="395dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="16dp"
-        android:onClick="verifyGardaVet"
-        android:text="Verify Garda Vet Form "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.744" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
 
-    <Button
-        android:id="@+id/verifySafePassButton"
-        android:layout_width="395dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="16dp"
-        android:onClick="verifySafePass"
-        android:text="Verify Safe Pass "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.691" />
+                <TextView
+                    android:id="@+id/consTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Professional's Details"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
 
-    <Button
-        android:id="@+id/homeButton"
-        android:layout_width="395dp"
-        android:layout_height="37dp"
-        android:layout_marginLeft="12dp"
-        android:onClick="home"
-        android:text="Back to Home "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+                <TextView
+                    android:id="@+id/txtViewTrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/consTitle"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Name"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtViewTrade"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Phone"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewDob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewEmail"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Phone"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                android:id="@+id/txtViewAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewDob"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Phone"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:id="@+id/sched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/g"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="verifyId"
+            android:text="Verify ID "
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/sched2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sched1"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="verifyGardaVet"
+            android:text="Verify Garda Vet Form "
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/sched3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sched1"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="verifySafePass"
+            android:text="Verify Safe Pass "
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

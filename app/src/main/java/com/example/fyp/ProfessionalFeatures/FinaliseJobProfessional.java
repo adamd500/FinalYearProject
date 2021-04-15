@@ -3,11 +3,17 @@ package com.example.fyp.ProfessionalFeatures;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +33,11 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 public class FinaliseJobProfessional extends AppCompatActivity {
 
-    TextView t1, t2;
+    TextView t1, t2,t3;
     EditText e1, e2, e3, e4, e5;
     private String jobId;
     private FirebaseDatabase database;
@@ -37,6 +45,9 @@ public class FinaliseJobProfessional extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
     private Job job;
+    Spinner spinner;
+    String finishDate;
+    DatePickerDialog.OnDateSetListener dateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +62,37 @@ public class FinaliseJobProfessional extends AppCompatActivity {
 
         t1 = (TextView) findViewById(R.id.estimatedDuration);
         t2 = (TextView) findViewById(R.id.quotePrice);
+        t3 = (TextView) findViewById(R.id.finishDate);
+        t3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(FinaliseJobProfessional.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, dateSetListener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.LTGRAY));
+                dialog.show();
+                dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year1, int month1, int dayOfMonth1) {
+                        month1 = month1 + 1;
+
+                        String dateStr = dayOfMonth1 + "/" + month1 + "/" + year1;
+                        t3.setText(dateStr);
+
+                    }
+                };
+            }
+        });
 
         e1 = (EditText) findViewById(R.id.actualDuration);
         e2 = (EditText) findViewById(R.id.actualPrice);
         e3 = (EditText) findViewById(R.id.priceBreakdown);
-        e4 = (EditText) findViewById(R.id.finishDate);
         e5 = (EditText) findViewById(R.id.feedbackForCustomer);
+
+        spinner=(Spinner)findViewById(R.id.spinner);
 
         getJob();
 
@@ -104,9 +140,9 @@ public class FinaliseJobProfessional extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(jobId)) {
                         job = child.getValue(Job.class);
-                        t1.setText("Estimated Duration : "+job.getEstimatedDuration());
+                        t1.setText(job.getEstimatedDuration());
                         String price = String.valueOf(job.getQuote());
-                        t2.setText("Price Quoted : "+price);
+                        t2.setText(price);
                     }
                 }
             }
@@ -123,12 +159,12 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         String actualDuration=e1.getText().toString();
         String actualPrice=e2.getText().toString();
         String priceBreakdown=e3.getText().toString();
-        String finishDate=e4.getText().toString();
+        String finishDate=t3.getText().toString();
         String feedbackForCustomer=e5.getText().toString();
 
         CurrentJobs.myAdapter.notifyDataSetChanged();
         ref.child("Job").child(jobId).child("price").setValue(Integer.parseInt(actualPrice));
-        ref.child("Job").child(jobId).child("actualDuration").setValue(actualDuration);
+        ref.child("Job").child(jobId).child("actualDuration").setValue(actualDuration+spinner.getSelectedItem());
         ref.child("Job").child(jobId).child("priceBreakdown").setValue(priceBreakdown);
         ref.child("Job").child(jobId).child("endDate").setValue(finishDate);
         ref.child("Job").child(jobId).child("feedbackFromProfessional").setValue(feedbackForCustomer);

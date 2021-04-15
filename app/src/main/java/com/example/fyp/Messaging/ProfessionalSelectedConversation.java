@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.example.fyp.Adapters.MessageAdapter;
 import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Customer;
+import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.ObjectClasses.Professional;
+import com.example.fyp.ProfessionalFeatures.ViewListingFromConversation;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +36,7 @@ import java.util.Date;
 public class ProfessionalSelectedConversation extends AppCompatActivity {
 
     String listingId, customerId, listingTitle, professionalId;
-    TextView titleText;
+    TextView titleText,customerText;
     private FirebaseDatabase database;
     private DatabaseReference ref, ref2, reference;
     private FirebaseUser user;
@@ -94,6 +96,9 @@ public class ProfessionalSelectedConversation extends AppCompatActivity {
         //listingTitle = intent.getStringExtra("listingTitle");
 
         titleText = (TextView) findViewById(R.id.textViewTitle);
+        customerText = (TextView) findViewById(R.id.customer);
+
+
         messageBox = (EditText) findViewById(R.id.message);
 
         //getCustomer();
@@ -112,7 +117,9 @@ public class ProfessionalSelectedConversation extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(conversationId)) {
                         Conversation conversation = child.getValue(Conversation.class);
-                        titleText.setText("Listing Title : " + conversation.getListingTitle() + "\n Customer Name : " + conversation.getCustomerName() + "\n");
+                        titleText.setText(conversation.getListingTitle());
+                        customerText.setText(conversation.getCustomerName());
+
                     }
                 }
             }
@@ -206,4 +213,24 @@ public class ProfessionalSelectedConversation extends AppCompatActivity {
         });
     }
 
+    public void viewListing(View view) {
+        ref.child("Listing").child(listingId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Listing prof = snapshot.getValue(Listing.class);
+                Intent intent = new Intent(getApplicationContext(), ViewListingFromConversation.class);
+                intent.putExtra("id",prof.getListingId());
+                intent.putExtra("title",prof.getTitle());
+                startActivity(intent);
+
+            }
+
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+    }
 }

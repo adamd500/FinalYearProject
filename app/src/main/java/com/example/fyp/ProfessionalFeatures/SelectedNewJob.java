@@ -66,7 +66,7 @@ public class SelectedNewJob extends AppCompatActivity {
         t2 = (TextView) findViewById(R.id.txtViewTrade);
         t3 = (TextView) findViewById(R.id.textViewDescription);
         t4 = (TextView) findViewById(R.id.txtViewTitle);
-        button = (Button) findViewById(R.id.consultationButton);
+      //  button = (Button) findViewById(R.id.consultationButton);
         imgView = (ImageView) findViewById(R.id.imageView);
 
         storage = FirebaseStorage.getInstance();
@@ -81,7 +81,7 @@ public class SelectedNewJob extends AppCompatActivity {
         listingId = i.getStringExtra("id");
         title = i.getStringExtra("title");
 
-        t4.setText("Title : " + title);
+        t4.setText("Listing Title :\n " + title);
         //   t1.setText(id);
         getListing();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
@@ -169,82 +169,6 @@ public class SelectedNewJob extends AppCompatActivity {
             e.printStackTrace();
         }
         // imgView.setImageBitmap();
-    }
-
-    public void backToBrowse(View v) {
-        Intent intent = new Intent(SelectedNewJob.this, BrowseJobs.class);
-        startActivity(intent);
-    }
-
-    public void openDialog(View v){
-//        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener(this) {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                switch(which){
-//                    case DialogInterface.BUTTON_POSITIVE:
-//                        arrangeQuote();
-//                        break;
-//
-//                    case DialogInterface.BUTTON_NEGATIVE:
-//                        break;
-//
-//                }
-//            }
-//        };
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//        builder.setMessage("Only arrange consultations after organising a time and date with the client. Have you arranged this with the client?");
-//        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                arrangeQuote();
-//
-//            }
-//        });
-//        builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//
-//            }
-//        });
-//
-//        AlertDialog alertDialog=builder.create();
-//        alertDialog.show();
-//              //  .setPositiveButton("Yes",dialogClickListener).setNegativeButton("No",dialogClickListener).show();
-    }
-
-    public void arrangeQuote(View v) {
-        ref.child("Professional").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Iterable<DataSnapshot> children = snapshot.getChildren();
-                for (DataSnapshot child : children) {
-                    if (child.getKey().equals(uid)) {
-
-                        Professional professional = child.getValue(Professional.class);
-
-                        if ((professional.isIdVerified()) && (professional.isGardaVetVer()) && (professional.isSafePassVer())) {
-
-                            Intent intent = new Intent(SelectedNewJob.this, ArrangeConsultation.class);
-                            intent.putExtra("listingId", listingId);
-                            startActivity(intent);
-
-                        } else {
-
-                            Toast.makeText(SelectedNewJob.this, "Error ! You cannot perform that action until all documents have been verified.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //   Log.m("DBE Error","Cancel Access DB");
-            }
-
-        });
-
-
     }
 
     public void sendMessage(View v) {

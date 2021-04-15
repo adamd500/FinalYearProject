@@ -5,52 +5,172 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.WorkHomepage">
-    <Button
-        android:id="@+id/buttonBrowseJobs"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="52dp"
-        android:onClick="getJobs"
-        android:text="Browse for new job"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
 
-    <Button
-        android:id="@+id/buttonBrowseJobsOnMap"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="findJobOnMap"
-        android:text="Browse New Jobs on Map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
-    <Button
-        android:id="@+id/buttonAcceptedConsultation"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="acceptedConsultations"
-        android:text="Accepted Consultations"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
-    <Button
-        android:id="@+id/buttonAllJobs"
-        android:layout_width="307dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="60dp"
-        android:onClick="currentJobs"
-        android:text="Current Jobs"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Work Homepage"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+
+        <TextView
+            android:id="@+id/sched"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/g"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="getJobs"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Browse Listings"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/sched1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sched"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="findJobOnMap"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Browse Listings on Map"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/sched2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sched1"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="acceptedConsultations"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Accepted Consultations"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <TextView
+            android:id="@+id/sched3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sched1"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="start"
+            android:onClick="currentJobs"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Current Jobs"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+
+
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

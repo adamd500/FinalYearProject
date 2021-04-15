@@ -44,7 +44,7 @@ import java.util.Date;
 
 public class SelectedConsultation extends AppCompatActivity {
 
-    private TextView title, txtViewListingDetails, txtViewConsultationDetails, txtViewTime, txtViewDate, textViewMessage;
+    private TextView title, txtViewTime, txtViewDate, textViewMessage;
     private String consultationId;
     private Consultation consultation;
     private Listing listing;
@@ -67,8 +67,6 @@ public class SelectedConsultation extends AppCompatActivity {
         ref2 = database.getReference();
 
         title = (TextView) findViewById(R.id.txtViewTitle);
-        txtViewListingDetails = (TextView) findViewById(R.id.txtViewListingDetails);
-        txtViewConsultationDetails = (TextView) findViewById(R.id.txtViewConsultationDetails);
         txtViewTime = (TextView) findViewById(R.id.txtViewTime);
         txtViewDate = (TextView) findViewById(R.id.txtViewDate);
         textViewMessage = (TextView) findViewById(R.id.textViewMessage);
@@ -114,12 +112,11 @@ public class SelectedConsultation extends AppCompatActivity {
 
     public void displayDetails() {
 
-        title.setText("Consultation ID : " + consultationId);
-        txtViewListingDetails.setText("Listing ID : " + listing.getListingId() + "\nDescription : " + listing.getDescription() + "\n Location : " + listing.getDescription());
-        txtViewConsultationDetails.setText("Consultation Details from Professional :");
-        txtViewTime.setText("Proposed Time : " + consultation.getTime());
-        txtViewDate.setText("Proposed Date : " + consultation.getDate());
-        textViewMessage.setText("Message : " + consultation.getMessage());
+        title.setText("Consultation \n Re Listing : "+listing.getTitle());
+      //  txtViewListingDetails.setText("Listing Titled : " + listing.getTitle() + "\nDescription : " + listing.getDescription());
+        txtViewTime.setText( consultation.getTime());
+        txtViewDate.setText( consultation.getDate());
+        textViewMessage.setText( consultation.getMessage());
     }
 
     public void getConsultation() {

@@ -4,8 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_card"
+
     tools:context=".ProfessionalFeatures.BrowseJobs">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Available Jobs"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:layout_marginTop="98dp"
+        android:fontFamily="@font/googlesansbold"
+        android:text=""
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_medium"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:layout_editor_absoluteX="10dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recylcerViewProf"
@@ -13,7 +45,7 @@
         android:layout_height="669dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
 
@@ -28,13 +60,5 @@
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="164dp"
-        android:layout_height="25dp"
-        android:gravity="center"
-        android:text="Available Jobs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

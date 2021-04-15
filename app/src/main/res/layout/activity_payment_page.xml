@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".CustomerFeatures.CheckoutActivity"
@@ -11,6 +12,87 @@
 
     <!--  ...  -->
 
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Payment"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:text=""
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_medium" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/spacing_small"
+                app:cardElevation="@dimen/card_shadow">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_small">
+
+                    <TextView
+                        android:id="@+id/durationTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text="Total Payable: "
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+                    <TextView
+                        android:id="@+id/txtViewTrade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/durationTitle"
+                        android:layout_marginStart="@dimen/spacing_large"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansregular"
+                        android:padding="@dimen/spacing_small"
+                        android:text="Trade"
+                        android:textColor="@color/textchild"
+                        android:textSize="@dimen/font_large" />
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
     <com.stripe.android.view.CardInputWidget
         android:id="@+id/cardInputWidget"
@@ -24,6 +106,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@android:color/holo_green_light"/>
 
+        </LinearLayout>
     <!--  ...  -->
 </LinearLayout>
 

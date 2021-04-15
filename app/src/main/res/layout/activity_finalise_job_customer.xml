@@ -6,32 +6,535 @@
     android:layout_height="match_parent"
     tools:context=".CustomerFeatures.FinaliseJobCustomer">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="389dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:text="Finalise Job"
-        android:gravity="center"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
+    <LinearLayout
+         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/estimatedDuration"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Estimated Duration"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        <TextView
+            android:id="@+id/tvReferEarn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Finalise Job"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:background="@color/white"
+        app:cardCornerRadius="@dimen/spacing_small"
+        app:cardElevation="@dimen/card_shadow">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small">
+
+            <TextView
+                android:id="@+id/durationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Duration of Job"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/estimatedDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/durationTitle"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Estimated Duration"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/actualDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/estimatedDuration"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Actual Duration"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/priceTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Price of Job"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/quotePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/priceTitle"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Quoted Price"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/actualPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/quotePrice"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Actual Price"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/priceBreakdown"
+                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/actualPrice"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Price Breakdown"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/dateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Dates"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/startDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dateTitle"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Start Date"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/finisDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/startDate"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Finish Date"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Feedback for Professional"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/pun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Punctuality"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <RatingBar
+                    android:id="@+id/punctuality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:numStars="5"
+                    android:layout_below="@+id/pun"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:scaleX=".6"
+                    android:scaleY=".6"
+                    android:stepSize="1.0"
+                     />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Communication"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <RatingBar
+                    android:id="@+id/communication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:numStars="5"
+                    android:layout_below="@+id/com"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:scaleX=".6"
+                    android:scaleY=".6"
+                    android:stepSize="1.0"
+                    />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/qual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Quality of Work"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <RatingBar
+                    android:id="@+id/workQuality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:numStars="5"
+                    android:layout_below="@+id/qual"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:scaleX=".6"
+                    android:scaleY=".6"
+                    android:stepSize="1.0"
+                    />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/over"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Overall Satisfaction"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <RatingBar
+                    android:id="@+id/overallSatisfaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:numStars="5"
+                    android:layout_below="@+id/over"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:scaleX=".6"
+                    android:scaleY=".6"
+                    android:stepSize="1.0"
+                    />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/comments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Feedback about the Professional and Work "
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <EditText
+                    android:id="@+id/feedbackForProfessional"
+                    android:layout_width="369dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comments"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_rounded_border_edittext"
+                    android:fontFamily="@font/googlesansregular"
+                    android:hint="Feedback"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:padding="@dimen/spacing_large"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_medium"
+        android:background="@drawable/bg_btn_shape"
+        android:fontFamily="@font/googlesansbold"
+        android:onClick="finaliseJob"
+        android:text="Finalise Job"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -42,162 +545,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/customer_menu_nav"
         tools:layout_editor_absoluteX="208dp" />
-
-
-    <TextView
-        android:id="@+id/quotePrice"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Quoted Price"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18" />
-
-    <TextView
-        android:id="@+id/actualDuration"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Actual Duration"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
-
-    <TextView
-        android:id="@+id/actualPrice"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Actual Price "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
-
-    <TextView
-        android:id="@+id/finisDate"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:hint="Finish Date "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
-
-    <EditText
-        android:id="@+id/punctuality"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Punctuality of Professional(0-100) "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.525" />
-
-    <EditText
-        android:id="@+id/communication"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="8dp"
-        android:ems="10"
-        android:hint="Communication of Professional(0-100) "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597" />
-
-    <EditText
-        android:id="@+id/workQuality"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Quality of Work Done (0-100) "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
-
-    <EditText
-        android:id="@+id/overallSatisfaction"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Overall Satisfaction (0-100) "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.723" />
-
-    <TextView
-        android:id="@+id/startDate"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:hint="Start Date "
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.387" />
-
-    <TextView
-        android:id="@+id/priceBreakdown"
-        android:layout_width="382dp"
-        android:layout_height="54dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Breakdown of Price "
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.316" />
-
-    <EditText
-        android:id="@+id/feedbackForProfessional"
-        android:layout_width="376dp"
-        android:layout_height="77dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Feedback about professional and work done "
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="12dp"
-        android:onClick="finaliseJob"
-        android:text="Finish Job"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
 </androidx.constraintlayout.widget.ConstraintLayout>

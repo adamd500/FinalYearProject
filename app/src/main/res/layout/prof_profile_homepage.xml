@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfessionalFeatures.ProfileHomePage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@drawable/bg_toolbar" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:background="@drawable/bg_card">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/spacing_large">
+
+                    <TextView
+                        android:id="@+id/tvReferEarn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Your Profile"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text=""
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_medium" />
+                    <TextView
+                        android:id="@+id/tvProfileSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:onClick="details"
+                        android:drawableStart="@drawable/ic_user_settings_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Details and Verification"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+                    <TextView
+                        android:id="@+id/tvWallet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:onClick="graph"
+                        android:drawableStart="@drawable/ic_wallet_3_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Earnings Page"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+
+                    <TextView
+                        android:id="@+id/tvCards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawableStart="@drawable/ic_bank_card_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="TEST"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+
+
+
+
+                    <TextView
+                        android:id="@+id/tvLinks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Useful Links"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+                    <TextView
+                        android:id="@+id/tvCovid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawableStart="@drawable/ic_question_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="start"
+                        android:onClick="covidInfo"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Self-Employment during Covid"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+                    <TextView
+                        android:id="@+id/tvEmployment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawableStart="@drawable/ic_question_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="start"
+                        android:onClick="employmentStatus"
+
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Determening Employment Status "
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+                    <TextView
+                        android:id="@+id/tvSelfEmployed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:background="@drawable/bg_square"
+                        android:drawableStart="@drawable/ic_question_line"
+                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                        android:drawablePadding="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="start"
+                        android:onClick="selfEmployed"
+                        android:paddingStart="@dimen/spacing_medium"
+                        android:paddingTop="@dimen/spacing_large"
+                        android:paddingEnd="@dimen/spacing_medium"
+                        android:paddingBottom="@dimen/spacing_large"
+                        android:text="Becoming Self Employed"
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_large" />
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvSetting"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="@dimen/spacing_medium"-->
+<!--                        android:layout_marginTop="@dimen/spacing_medium"-->
+<!--                        android:layout_marginEnd="@dimen/spacing_medium"-->
+<!--                        android:background="@drawable/bg_square"-->
+<!--                        android:drawableStart="@drawable/ic_settings"-->
+<!--                        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"-->
+<!--                        android:drawablePadding="@dimen/spacing_medium"-->
+<!--                        android:fontFamily="@font/googlesansbold"-->
+<!--                        android:foreground="?android:attr/selectableItemBackgroundBorderless"-->
+<!--                        android:gravity="start"-->
+<!--                        android:paddingStart="@dimen/spacing_medium"-->
+<!--                        android:paddingTop="@dimen/spacing_large"-->
+<!--                        android:paddingEnd="@dimen/spacing_medium"-->
+<!--                        android:paddingBottom="@dimen/spacing_large"-->
+<!--                        android:text="@string/text_settings"-->
+<!--                        android:textColor="@color/textheader"-->
+<!--                        android:textSize="@dimen/font_large" />-->
+
+
+
+
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_navigation"
+        tools:layout_editor_absoluteX="208dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

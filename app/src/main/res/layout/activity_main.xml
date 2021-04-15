@@ -8,36 +8,80 @@
 
     tools:context=".RegisterAndLogin.MainActivity">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="334dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="428dp"
-        android:onClick="professionalLogin"
-        android:text="Professional Account"
-        android:background="@drawable/custom_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="38dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="334dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="356dp"
-        android:onClick="customerLogin"
-        android:text="Client Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="38dp" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="334dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="44dp"
-        android:onClick="adminLogin"
-        android:text="Admin Login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="38dp" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:onClick="adminLogin"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Welcome to "
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_xlarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesansextrabold"
+                android:text="Job Connect"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/font_xxxlarge" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_img__height"
+                android:paddingTop="@dimen/spacing_large"
+                android:src="@drawable/jobconnect" />
+
+            <Button
+                android:id="@+id/btnClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:background="@drawable/bg_btn_shape"
+                android:fontFamily="@font/googlesansbold"
+                android:shadowColor="@color/blue"
+                android:text="Client Account"
+                android:onClick="customerLogin"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_large" />
+
+            <Button
+                android:id="@+id/btnProf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:background="@drawable/bg_btn_shape"
+                android:fontFamily="@font/googlesansbold"
+                android:shadowColor="@color/blue"
+                android:text="Professional Account"
+                android:onClick="professionalLogin"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_large" />
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

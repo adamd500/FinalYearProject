@@ -27,6 +27,14 @@
         <item>December</item>
 
     </string-array>
+
+    <string-array name="time">
+        <item>Days</item>
+        <item>Hours</item>
+
+
+    </string-array>
+
     <string name="title_activity_listings_recycler_view">ListingsRecyclerView</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

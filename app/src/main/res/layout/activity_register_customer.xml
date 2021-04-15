@@ -1,126 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterAndLogin.RegisterCustomer">
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvReferEarn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Register a Customer Account"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
     <EditText
         android:id="@+id/name"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
         android:hint="Full Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/number"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
         android:hint="Phone Number"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" />
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/location"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:hint="Location"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
+        android:hint="Eircode"
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/address"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:ems="10"
-        android:hint="Address Number and Street,City,County"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
+        android:hint="Address"
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/dob"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:hint="DOB dd/mm/yy"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
+        android:hint="Date of Birth"
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:onClick="createCustomer"
-        android:text="Create Customer Account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
         android:hint="Email"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554" />
+        android:inputType="text"
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659" />
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
 
     <EditText
         android:id="@+id/password2"
-        android:layout_width="382dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:ems="10"
-        android:hint="Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_rounded_border_edittext"
+        android:fontFamily="@font/googlesansregular"
+        android:hint="Repeat Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.749" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="@dimen/spacing_large"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@drawable/bg_btn_shape"
+            android:fontFamily="@font/googlesansbold"
+            android:onClick="createCustomer"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+</RelativeLayout>

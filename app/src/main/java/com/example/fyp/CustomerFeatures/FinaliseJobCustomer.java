@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Rating;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +39,7 @@ public class FinaliseJobCustomer extends AppCompatActivity {
 
     int price;
     TextView t1, t2, t3, t4, t5, t6, t7;
-    EditText e1, e2, e3, e4, e5;
+    EditText e1;
     String jobId;
     private FirebaseDatabase database;
     private DatabaseReference ref, ref2;
@@ -46,7 +50,7 @@ public class FinaliseJobCustomer extends AppCompatActivity {
     String feedbackForProfessional;
     Thread thread;
     String clientSecret;
-
+    RatingBar punc,r2,r3,r4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +58,10 @@ public class FinaliseJobCustomer extends AppCompatActivity {
 
         Stripe.apiKey = "sk_test_51IFKQvKgTR7yUeIexy2I5Th0pv3OGDiM088vBZY2YFHLkJO1uxZrCesiQoGzUewSLdkwnkcETWhlwk5bGlUCsrLB00FF8KPznk";
 
-
         Intent intent = getIntent();
         jobId = intent.getStringExtra("id");
+        String price1=intent.getStringExtra("price");
+        price=Integer.parseInt(price1);
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -70,27 +75,29 @@ public class FinaliseJobCustomer extends AppCompatActivity {
         t6 = (TextView) findViewById(R.id.startDate);
         t7 = (TextView) findViewById(R.id.finisDate);
 
+        punc=(RatingBar)findViewById(R.id.punctuality);
+        r2=(RatingBar)findViewById(R.id.communication);
+        r3=(RatingBar)findViewById(R.id.workQuality);
+        r4=(RatingBar)findViewById(R.id.overallSatisfaction);
+
         e1 = (EditText) findViewById(R.id.feedbackForProfessional);
-        e2 = (EditText) findViewById(R.id.punctuality);
-        e3 = (EditText) findViewById(R.id.communication);
-        e4 = (EditText) findViewById(R.id.workQuality);
-        e5 = (EditText) findViewById(R.id.overallSatisfaction);
 
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
+                int fee = (int) (price*0.1);
+                int fee1=fee*100;
+                int truePrice=price*100;
                 ArrayList paymentMethodTypes = new ArrayList();
                 paymentMethodTypes.add("card");
-//                int price1 = Integer.valueOf(price);
-//                Double p = price1 * 0.15;
-//                int fee = (int) Math.round(p);
                 Map<String, Object> params = new HashMap<>();
                 params.put("payment_method_types", paymentMethodTypes);
-                params.put("amount", price);
+                params.put("amount", truePrice);
                 params.put("currency", "eur");
-                params.put("application_fee_amount", 500);
+                params.put("application_fee_amount",fee1);
                 Map<String, Object> transferDataParams = new HashMap<>();
-                transferDataParams.put("destination", "acct_1IMGGO4CaypLLH6w");
+                transferDataParams.put("destination", "acct_1IP30k4DYA4IHK3o");
                 params.put("transfer_data", transferDataParams);
                 try {
                     PaymentIntent paymentIntent = PaymentIntent.create(params);
@@ -102,6 +109,8 @@ public class FinaliseJobCustomer extends AppCompatActivity {
 
             }
         });
+
+        thread.start();
 
         getJob();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
@@ -141,6 +150,7 @@ public class FinaliseJobCustomer extends AppCompatActivity {
 
     }
   public void getJob() {
+
         ref.child("Job").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -150,7 +160,6 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                         Job job = child.getValue(Job.class);
                         price=job.getPrice();
 
- //                       thread.start();
                         t1.setText("Estimated Duration : " + job.getEstimatedDuration());
                         t2.setText("Actual Duration : " + job.getActualDuration());
                         t3.setText("Quoted Price : " + String.valueOf(job.getQuote()));
@@ -158,7 +167,8 @@ public class FinaliseJobCustomer extends AppCompatActivity {
                         t5.setText("Price Breakdown : " + job.getPriceBreakdown());
                         t6.setText("Date Started : " + job.getStartDate());
                         t7.setText("Date Finished : " + job.getEndDate());
-                        thread.start();
+
+
                     }
                 }
             }
@@ -170,15 +180,17 @@ public class FinaliseJobCustomer extends AppCompatActivity {
         });
     }
 
-
-
     public void finaliseJob(View v) {
         //thread.start();
+        int pun= (int) (punc.getRating()*2);
+        int com= (int) (r2.getRating()*2);
+        int qual= (int) (r3.getRating()*2);
+        int ov= (int) (r4.getRating()*2);
 
-        punctuality = Integer.parseInt(e2.getText().toString());
-        communication = Integer.parseInt(e3.getText().toString());
-        workQuality = Integer.parseInt(e4.getText().toString());
-        overallCustomerSatisfaction = Integer.parseInt(e5.getText().toString());
+        punctuality = pun*10;
+        communication = com*10;
+        workQuality = qual*10;
+        overallCustomerSatisfaction = ov*10;
         feedbackForProfessional = e1.getText().toString();
 
         if (punctuality > 100 || communication > 100 || workQuality > 100 || overallCustomerSatisfaction > 100 || punctuality < 0 ||
@@ -193,10 +205,12 @@ public class FinaliseJobCustomer extends AppCompatActivity {
 
                     Job job = snapshot.getValue(Job.class);
                     getProfessional(job.getProfessionalId(), job.getPrice());
+                    JobsAwaitingFinalisation.myAdapter.notifyDataSetChanged();
 
                     Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
                     intent.putExtra("clientSecret",clientSecret);
                     intent.putExtra("jobId",jobId);
+                    intent.putExtra("price",String.valueOf(price));
                     startActivity(intent);
                 }
 

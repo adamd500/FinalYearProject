@@ -37,14 +37,16 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+        public TextView t1,t2,t3,t4;
         public ImageView img;
-        private FirebaseStorage storage;
-        private StorageReference storageReference;
 
         public MyViewHolder(View itemView){
             super(itemView);
-            txtView=(TextView)itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.txtViewTitle);
+            t2=(TextView)itemView.findViewById(R.id.location);
+            t3=(TextView)itemView.findViewById(R.id.tradeSector);
+            t4=(TextView)itemView.findViewById(R.id.sched3);
+
             img=(ImageView)itemView.findViewById(R.id.imageView3);
 
         }
@@ -66,7 +68,7 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
     public MyAdapterProfessional.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.listing_recycler,parent,false);
+        View itemView =inflater.inflate(R.layout.listing_recycler2,parent,false);
         MyViewHolder viewHolder=new MyViewHolder(itemView);
         return viewHolder;
     }
@@ -98,8 +100,11 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
         }
        // holder.img.setImageResource(R.drawable.listing);
       //  holder.img.setImageURI(Uri.parse("\"gs://fypdatabase-d9dfe.appspot.com"+name.getPhotos().get(0)));
-        holder.txtView.setText("Title :"+name.getTitle()+"\n"+"\n Location : "+name.getLocation()+"\n"+"\nTrade Sector : "+name.getTradeSector()+"\n"+"\nStatus : Available");
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+        holder.t1.setText(name.getTitle());
+        holder.t2.setText(name.getLocation());
+        holder.t3.setText(name.getTradeSector());
+
+        holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();

@@ -22,7 +22,7 @@ public class ProfileHomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_home_page);
+        setContentView(R.layout.prof_profile_homepage);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

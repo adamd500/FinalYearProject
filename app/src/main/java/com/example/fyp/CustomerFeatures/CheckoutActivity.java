@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.telecom.Call;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fyp.ProfessionalFeatures.SelectedNewJob;
@@ -38,28 +39,30 @@ import javax.security.auth.callback.Callback;
 
 public class CheckoutActivity extends AppCompatActivity {
 
-
     Stripe stripe;
     private FirebaseDatabase database;
     private DatabaseReference ref;
     String clientSecret,jobId;
+    TextView t1;
+    String price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_page);
 
+        Intent intent1 = getIntent();
+        clientSecret = intent1.getStringExtra("clientSecret");
+        jobId = intent1.getStringExtra("jobId");
+        price=intent1.getStringExtra("price");
 
         PaymentConfiguration.init(
                 getApplicationContext(),
                 "pk_test_51IFKQvKgTR7yUeIeGWCvBXHkv6Tp5hY4BPW2PgeIbWCkAKNjsvxnFLbS0vbOCxMSkB0fc36bK25XQD9ZloDoBoOC00YTntPZOh"
         );
 
-        Intent intent1 = getIntent();
-        clientSecret = intent1.getStringExtra("clientSecret");
-        jobId = intent1.getStringExtra("jobId");
-//        initThread();
-//        thread.start();
+        t1=(TextView)findViewById(R.id.txtViewTrade);
+        t1.setText(price);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
 
@@ -92,7 +95,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Payment Processed. Thank You", Toast.LENGTH_SHORT).show();
         ref.child("Job").child(jobId).child("finished").setValue(true);
-        Intent intent = new Intent(this,WelcomeCustomer.class);
+        Intent intent = new Intent(this,PaymentSuccess.class);
         startActivity(intent);
 
     }

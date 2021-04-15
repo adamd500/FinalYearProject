@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fyp.Messaging.ProfessionalSelectedConversation;
 import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.R;
 
 import java.util.ArrayList;
@@ -25,13 +26,20 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+        public TextView t1,t2,t3,t4,t5;
         public ImageView img;
         public MyViewHolder(View itemView){
             super(itemView);
-            txtView=(TextView)itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.other);
+            t2=(TextView)itemView.findViewById(R.id.other2);
+            t3=(TextView)itemView.findViewById(R.id.other3);
+            t4=(TextView)itemView.findViewById(R.id.sched3);
+            t5=(TextView)itemView.findViewById(R.id.content2);
+
             img=(ImageView)itemView.findViewById(R.id.imageView3);
+
         }
+
 
         @Override
         public void onClick(View view) {
@@ -55,9 +63,16 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     public void onBindViewHolder(@NonNull InboxProfessionalAdapter.MyViewHolder holder, int position) {
 
         final Conversation listing= conversationsFromDB.get(position);
+
+        ArrayList<Message> list=listing.getMessages();
+
         holder.img.setImageResource(R.drawable.letter);
-        holder.txtView.setText("Listing Titled  : "+listing.getListingTitle()+"\n Customers Name : "+listing.getCustomerName());
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+        holder.t1.setText(listing.getListingTitle());
+        holder.t2.setText(listing.getProfessionalName());
+        holder.t3.setText(listing.getMessages().get(list.size()-1).getDateTime());
+        holder.t5.setText("Professionals Name:");
+
+        holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              //   int position=this.getLayoutPosition();

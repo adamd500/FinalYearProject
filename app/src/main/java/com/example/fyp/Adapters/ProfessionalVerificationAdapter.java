@@ -36,10 +36,6 @@ public class ProfessionalVerificationAdapter extends RecyclerView.Adapter<Profes
         @Override
         public void onClick(View view) {
 
-//            int position=this.getLayoutPosition();
-//            Listing selectedListing =listingsFromDB.get(position);
-//            Intent intent= new Intent(view.getContext(),SelectedListing.class);
-//            view.getContext().startActivity(intent);
         }
     }
 

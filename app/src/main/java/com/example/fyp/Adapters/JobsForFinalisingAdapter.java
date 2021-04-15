@@ -22,21 +22,21 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
        // public  TextView txtView;
-       public  TextView txtView;
+       public  TextView t1,t2,t3,t4;
 
         public MyViewHolder(View itemView){
             super(itemView);
-            txtView=(TextView)itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.txtViewTitle);
+            t2=(TextView)itemView.findViewById(R.id.location);
+            t3=(TextView)itemView.findViewById(R.id.tradeSector);
+            t4=(TextView)itemView.findViewById(R.id.sched3);
 
         }
 
         @Override
         public void onClick(View view) {
 
-//            int position=this.getLayoutPosition();
-//            Listing selectedListing =listingsFromDB.get(position);
-//            Intent intent= new Intent(view.getContext(),SelectedListing.class);
-//            view.getContext().startActivity(intent);
+
         }
     }
 
@@ -47,7 +47,7 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
     public JobsForFinalisingAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.row_layout,parent,false);
+        View itemView =inflater.inflate(R.layout.finalise_job_recylcer,parent,false);
         JobsForFinalisingAdapter.MyViewHolder viewHolder=new JobsForFinalisingAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -56,9 +56,12 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
     public void onBindViewHolder(@NonNull JobsForFinalisingAdapter.MyViewHolder holder, int position) {
 
         final Job name= jobsFromDb.get(position);
-        holder.txtView.setText("\nJob ID : "+name.getJobId()+"\n Job Title : "+name.getJobTitle()+"\n Quoted Price : "+ name.getQuote() +"\n Actual Price :"+name.getPrice()
-                +"\n Start Date :"+name.getStartDate()+"\n Finish Date : "+name.getEndDate());
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+
+        holder.t1.setText(name.getJobTitle());
+        holder.t2.setText(name.getStartDate());
+        holder.t3.setText(name.getEndDate());
+
+        holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 notifyDataSetChanged();
@@ -66,6 +69,7 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
                 Job selectedjob = jobsFromDb.get(position);
                 Intent intent= new Intent(v.getContext(), FinaliseJobCustomer.class);
                 intent.putExtra("id",name.getJobId());
+                intent.putExtra("price", String.valueOf(name.getPrice()));
                 intent.putExtra("professionalId",name.getProfessionalId());
                 v.getContext().startActivity(intent);
                 notifyDataSetChanged();

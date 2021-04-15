@@ -3,20 +3,20 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title=""
         android:icon="@drawable/ic_baseline_home_24"
 
         />
 
     <item
         android:id="@+id/inbox"
-        android:title="Inbox"
+        android:title=""
         android:icon="@drawable/ic_inbox"
 
         />
     <item
         android:id="@+id/createListing"
-        android:title="Create Listing"
+        android:title=" "
         android:icon="@drawable/ic_create_listing"
 
         />
@@ -25,15 +25,15 @@
 
     <item
         android:id="@+id/myListings"
-        android:title="My Listings"
+        android:title=" "
         android:icon="@drawable/ic_listings"
 
         />
 
     <item
         android:id="@+id/profile"
-        android:title="Profile"
-        android:icon="@drawable/ic_profile"
+        android:title=""
+        android:icon="@drawable/ic_user_settings_line"
 
         />
 

@@ -6,106 +6,258 @@
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.ViewProfessionalFeedback">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Name"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
 
-    <TextView
-        android:id="@+id/textViewVer"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:text="Verifications "
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
-    <TextView
-        android:id="@+id/textViewIdVer"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:text="Identity Verified : Yes "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
 
-    <TextView
-        android:id="@+id/textViewSafePassVer"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:text="Safe Pass Verified : Yes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewGardaVetVer"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:text="Garda Vet Verified : Yes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
 
-    <TextView
-        android:id="@+id/textViewRatings"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:gravity="center"
-        android:text="Ratings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.337" />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
 
-    <TextView
-        android:id="@+id/textViewFeedback"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        android:gravity="center"
-        android:text="Feedback From Previous Clients"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.625" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/timeFrame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Verifications"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/totalEarned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/timeFrame"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Identitiy Verified : Yes \nSafe Pass Verified :Yes \nGarda Vet Verified : Yes"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/rat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Ratings"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewCommunicationRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rat"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Com"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewPunctualityRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewCommunicationRating"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Punc"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewWorkQualityRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewPunctualityRating"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Over"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewOverallCustomerSatisfactionRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewWorkQualityRating"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="work"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/ot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Feedback from Previous Clients"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+
+                <TextView
+                    android:id="@+id/r"
+                    android:layout_width="wrap_content"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/ot"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text=""
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="407dp"
+                    android:layout_height="220dp"
+                    android:layout_below="@+id/r"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:layout_editor_absoluteX="2dp" />
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -116,65 +268,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
-    <TextView
-        android:id="@+id/textViewCommunicationRating"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
-
-    <TextView
-        android:id="@+id/textViewPunctualityRating"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
-
-    <TextView
-        android:id="@+id/textViewOverallCustomerSatisfactionRating"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.567" />
-
-    <TextView
-        android:id="@+id/textViewWorkQualityRating"
-        android:layout_width="252dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.509" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="407dp"
-        android:layout_height="220dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFeedback"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="2dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

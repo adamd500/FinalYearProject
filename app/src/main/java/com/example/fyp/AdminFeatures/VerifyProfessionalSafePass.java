@@ -45,7 +45,6 @@ public class VerifyProfessionalSafePass extends AppCompatActivity {
         Intent intent = getIntent();
         professionalId = intent.getStringExtra("id");
 
-
         t1 = (TextView) findViewById(R.id.txtViewTitle);
 
         imageView1 = (ImageView) findViewById(R.id.imageView1);

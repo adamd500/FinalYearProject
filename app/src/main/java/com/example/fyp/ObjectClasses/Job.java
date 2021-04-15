@@ -19,13 +19,14 @@ public class Job {
     String actualDuration;
     String priceBreakdown;
     String jobTitle;
+  //  String professionalStripeKey;
 
     public Job(){
 
     }
 
-    public Job(String jobId, String customerId, String professionalId, Consultation consultation, Listing listing, int price, String location, String estimatedDuration, String description, int quote, String feedbackFromCustomer,
-               String feedbackFromProfessional, boolean finished, String startDate, String endDate, String actualDuration, String priceBreakdown, String jobTitle) {
+    public Job(String jobId, String customerId, String professionalId, Consultation consultation, Listing listing, int price, String location, String estimatedDuration, String description, int quote, String feedbackFromCustomer, String feedbackFromProfessional,
+               boolean finished, String startDate, String endDate, String actualDuration, String priceBreakdown, String jobTitle) {
         this.jobId = jobId;
         this.customerId = customerId;
         this.professionalId = professionalId;
@@ -44,6 +45,7 @@ public class Job {
         this.actualDuration = actualDuration;
         this.priceBreakdown = priceBreakdown;
         this.jobTitle = jobTitle;
+//        this.professionalStripeKey = professionalStripeKey;
     }
 
     public String getJobTitle() {
@@ -89,6 +91,14 @@ public class Job {
     public int getQuote() {
         return quote;
     }
+
+//    public String getProfessionalStripeKey() {
+//        return professionalStripeKey;
+//    }
+//
+//    public void setProfessionalStripeKey(String professionalStripeKey) {
+//        this.professionalStripeKey = professionalStripeKey;
+//    }
 
     public void setQuote(int quote) {
         this.quote = quote;

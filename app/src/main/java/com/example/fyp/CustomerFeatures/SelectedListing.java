@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,7 +70,6 @@ public class SelectedListing extends AppCompatActivity {
 
         Intent i = getIntent();
         id = i.getStringExtra("id");
-        t4.setText("Listing id "+id);
         //   t1.setText(id);
         getListing();
         // displayListing();
@@ -117,6 +117,7 @@ public class SelectedListing extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(id)) {
                         listing = child.getValue(Listing.class);
+                        t4.setText("Listing : \n"+listing.getTitle());
                         photoUrl = listing.getPhotos().get(0);
                         displayListing();
                     }
@@ -131,9 +132,9 @@ public class SelectedListing extends AppCompatActivity {
     }
 
     public void displayListing() {
-        t1.setText("Listing location : " + listing.getLocation());
-        t2.setText("Trade Sector : " + listing.getTradeSector());
-        t3.setText("Description : " + listing.getDescription());
+        t1.setText(listing.getLocation());
+        t2.setText(listing.getTradeSector());
+        t3.setText(listing.getDescription());
 
         storageReference = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com"+photoUrl);
 
@@ -156,5 +157,10 @@ public class SelectedListing extends AppCompatActivity {
             e.printStackTrace();
         }
         // imgView.setImageBitmap();
+    }
+
+    public void deactivate(View view) {
+        ref.child("Listing").child(id).child("active").setValue(false);
+
     }
 }

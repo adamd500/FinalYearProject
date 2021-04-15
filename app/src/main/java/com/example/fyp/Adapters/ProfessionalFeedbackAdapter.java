@@ -60,11 +60,7 @@ public class ProfessionalFeedbackAdapter extends RecyclerView.Adapter<Profession
         holder.txtView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                //int position=this.getLayoutPosition();
-//                Listing selectedListing = feedbackFromDB.get(position);
-//                Intent intent= new Intent(v.getContext(), SelectedListing.class);
-//                intent.putExtra("id",name.getListingId());
-//                v.getContext().startActivity(intent);
+
             }
         });
     }

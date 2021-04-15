@@ -32,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
 public class ProfessionalProfile extends AppCompatActivity {
     private TextView t1, t2, t3, t4, t5, t6, t7, t8, t9;
     private FirebaseDatabase database;
@@ -39,7 +41,7 @@ public class ProfessionalProfile extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
     private Professional professional;
-    private Button buttonID, buttonSelfie,buttonSafePass,buttonGardaVet;
+    private TextView buttonID, buttonSelfie,buttonSafePass,buttonGardaVet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,6 @@ public class ProfessionalProfile extends AppCompatActivity {
         t4 = (TextView) findViewById(R.id.textViewIdVer);
         t5 = (TextView) findViewById(R.id.textViewLocation);
         t6 = (TextView) findViewById(R.id.textViewName);
-        t7 = (TextView) findViewById(R.id.textViewPassword);
         t8 = (TextView) findViewById(R.id.textViewNumber);
         t9 = (TextView) findViewById(R.id.textViewIdRequired);
 
@@ -109,23 +110,23 @@ public class ProfessionalProfile extends AppCompatActivity {
                         t3.setText("Email:      " + professional.getEmail());
                         t4.setText("Id Verified:      " + professional.isIdVerified());
                         t5.setText("Location:     " + professional.getLocation());
-                        t6.setText(professional.getName());
+                        t6.setText("Name :"+professional.getName());
                     //    t7.setText("ID Verified: "+professional);
-                        t7.setText("Phone Number:      " + professional.getPhoneNumber());
+                        t8.setText("Phone Number:      " + professional.getPhoneNumber());
 
                             if(professional.isIdVerified()){
-                                buttonID = (Button) findViewById(R.id.buttonID);
-                                buttonSelfie = (Button) findViewById(R.id.buttonSelfie);
+                                buttonID = (TextView) findViewById(R.id.buttonID);
+                                buttonSelfie = (TextView) findViewById(R.id.buttonSelfie);
                                 buttonID.setVisibility(View.INVISIBLE);
                                 buttonSelfie.setVisibility(View.INVISIBLE);
                             }
                             if(professional.isGardaVetVer()){
-                                buttonGardaVet = (Button) findViewById(R.id.buttonGardaVet);
+                                buttonGardaVet = (TextView) findViewById(R.id.buttonGardaVet);
                                 buttonGardaVet.setVisibility(View.INVISIBLE);
 
                             }
                             if(professional.isSafePassVer()) {
-                                buttonSafePass = (Button) findViewById(R.id.buttonSafePass);
+                                buttonSafePass = (TextView) findViewById(R.id.buttonSafePass);
                                 buttonSafePass.setVisibility(View.INVISIBLE);
                             }
                             if((professional.isIdVerified())&&(professional.isGardaVetVer())&&(professional.isSafePassVer())) {

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.R;
 import com.example.fyp.WebLinks.CovidInformation;
+import com.example.fyp.WebLinks.TrafficLink;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -135,35 +136,21 @@ public class WelcomeProfessional extends AppCompatActivity {
 
 
 
-    public void covidInformation(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, CovidInformation.class);
+    public void inbox1(View v){
+        Intent intent = new Intent(WelcomeProfessional.this, InboxProfessional.class);
         startActivity(intent);
     }
 
-    public void feedback(View view) {
+    public void jobf(View view) {
 
-        Intent intent = new Intent(WelcomeProfessional.this, ViewProfessionalFeedback.class);
-        intent.putExtra("professionalId",uid);
-        startActivity(intent);
-
-    }
-
-    public void feedbackGraph(View view) {
-
-        Intent intent = new Intent(WelcomeProfessional.this, Graph2.class);
+        Intent intent = new Intent(WelcomeProfessional.this, BrowseJobs.class);
         startActivity(intent);
 
     }
 
-    public void setUpStripe(View v){
-        Intent intent = new Intent(WelcomeProfessional.this, SetupStripe.class);
-        startActivity(intent);
-    }
 
     public void openCalendar(View v){
 
-//        Intent insertCalendarIntent = new Intent(Intent.ACTION_PICK).setData(CalendarContract.Events.CONTENT_URI);
-//        startActivity(insertCalendarIntent);
         Intent intent = new Intent();
        ComponentName cn= new ComponentName("com.google.android.calendar","com.android.calendar.LaunchActivity");
         intent.setComponent(cn);
@@ -173,4 +160,8 @@ public class WelcomeProfessional extends AppCompatActivity {
     }
 
 
+    public void traffic(View view) {
+        Intent intent = new Intent(WelcomeProfessional.this, TrafficLink.class);
+        startActivity(intent);
+    }
 }

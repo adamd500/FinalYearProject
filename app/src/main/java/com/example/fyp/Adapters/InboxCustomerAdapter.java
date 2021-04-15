@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,11 +25,17 @@ public class InboxCustomerAdapter extends RecyclerView.Adapter<InboxCustomerAdap
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
-
-        public MyViewHolder(View itemView) {
+        public TextView t1,t2,t3,t4,t5;
+        public ImageView img;
+        public MyViewHolder(View itemView){
             super(itemView);
-            txtView = (TextView) itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.other);
+            t2=(TextView)itemView.findViewById(R.id.other2);
+            t3=(TextView)itemView.findViewById(R.id.other3);
+            t4=(TextView)itemView.findViewById(R.id.sched3);
+            t5=(TextView)itemView.findViewById(R.id.content2);
+
+            img=(ImageView)itemView.findViewById(R.id.imageView3);
 
         }
 
@@ -45,7 +53,7 @@ public class InboxCustomerAdapter extends RecyclerView.Adapter<InboxCustomerAdap
     public InboxCustomerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.row_layout, parent, false);
+        View itemView = inflater.inflate(R.layout.inbox_card_view, parent, false);
         InboxCustomerAdapter.MyViewHolder viewHolder = new InboxCustomerAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -54,8 +62,15 @@ public class InboxCustomerAdapter extends RecyclerView.Adapter<InboxCustomerAdap
     public void onBindViewHolder(@NonNull InboxCustomerAdapter.MyViewHolder holder, int position) {
 
         final Conversation listing= conversationsFromDb.get(position);
-        holder.txtView.setText("Conversation in Relation to Listing Titled  : "+listing.getListingTitle()+"\n Professionals Name : "+listing.getProfessionalName());
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+        ArrayList<Message> list=listing.getMessages();
+
+        holder.img.setImageResource(R.drawable.letter);
+        holder.t1.setText(listing.getListingTitle());
+        holder.t2.setText(listing.getProfessionalName());
+        holder.t3.setText(listing.getMessages().get(list.size()-1).getDateTime());
+        holder.t5.setText("Professionals Name:");
+
+        holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //   int position=this.getLayoutPosition();

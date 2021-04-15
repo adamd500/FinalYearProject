@@ -6,54 +6,157 @@
     android:layout_height="match_parent"
     tools:context=".CustomerFeatures.CustomerListingNav">
 
-    <Button
-        android:id="@+id/buttonViewAllListing"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="36dp"
-        android:onClick="listingView"
-        android:text="View my listings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonConsultations"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="36dp"
-        android:onClick="viewConsultations"
-        android:text="View Consultations"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:background="@drawable/bg_square"
 
-    <Button
-        android:id="@+id/buttonPreviousListings"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="36dp"
-        android:onClick="previousListings"
-        android:text="Previous Listings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Your Listings, Consultations and Jobs"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
 
-    <Button
-        android:id="@+id/buttonApproveJob"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="36dp"
-        android:onClick="viewJobsToBeFinalised"
-        android:text="Jobs awaiting finalisation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
 
+        <TextView
+            android:id="@+id/tvCurrentListings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:onClick="listingView"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:paddingStart="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Your Current Listings"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+        <TextView
+            android:id="@+id/tvCurrentConsultations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:onClick="viewConsultations"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:background="@drawable/bg_square"
+
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Your  Consultations"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+        <TextView
+            android:id="@+id/previousListings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:onClick="previousListings"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:background="@drawable/bg_square"
+
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Previous Listings"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+        <TextView
+            android:id="@+id/jobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:onClick="viewJobsToBeFinalised"
+            android:drawableStart="@drawable/ic_arrow_right_s_fill"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Jobs Awaiting Finalisation"
+            android:textColor="@color/textchild"
+            android:textSize="@dimen/font_large" />
+
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

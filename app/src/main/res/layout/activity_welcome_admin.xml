@@ -6,27 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".AdminFeatures.WelcomeAdmin">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="383dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="12dp"
-        android:onClick="verifyCustomers"
-        android:text="Customers to be verified"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="383dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="12dp"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Verify Users"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+    <TextView
+        android:id="@+id/buttonID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawableStart="@drawable/ic_arrow_right_s_fill"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:onClick="verifyCustomers"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Customers Awaiting Verification"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:text=""
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_medium" />
+
+
+    <TextView
+        android:id="@+id/buttonSelfie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawableStart="@drawable/ic_arrow_right_s_fill"
+        android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:onClick="verifyProfessionals"
-        android:text="Professionals to be verified"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Professionals Awaiting Verification"
+        android:textColor="@color/textchild"
+        android:textSize="@dimen/font_large" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

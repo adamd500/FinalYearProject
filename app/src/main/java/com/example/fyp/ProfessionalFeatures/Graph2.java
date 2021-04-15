@@ -4,6 +4,7 @@ package com.example.fyp.ProfessionalFeatures;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
@@ -52,6 +53,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,19 +65,19 @@ public class Graph2 extends AppCompatActivity {
     private DatabaseReference ref;
     private FirebaseUser user;
     private String uid;
-    ArrayList<String>xAxisLabels=new ArrayList<>();
-    ArrayList<Job> january = new ArrayList<>();
-    ArrayList<Job> february = new ArrayList<>();
-    ArrayList<Job> march = new ArrayList<>();
-    ArrayList<Job> april = new ArrayList<>();
-    ArrayList<Job> may = new ArrayList<>();
-    ArrayList<Job> june = new ArrayList<>();
-    ArrayList<Job> july = new ArrayList<>();
-    ArrayList<Job> august = new ArrayList<>();
-    ArrayList<Job> september = new ArrayList<>();
-    ArrayList<Job> october = new ArrayList<>();
-    ArrayList<Job> november = new ArrayList<>();
-    ArrayList<Job> december = new ArrayList<>();
+    ArrayList<String> xAxisLabels = new ArrayList<>();
+    public static ArrayList<Job> january = new ArrayList<>();
+    public static ArrayList<Job> february = new ArrayList<>();
+    public static ArrayList<Job> march = new ArrayList<>();
+    public static ArrayList<Job> april = new ArrayList<>();
+    public static ArrayList<Job> may = new ArrayList<>();
+    public static ArrayList<Job> june = new ArrayList<>();
+    public static ArrayList<Job> july = new ArrayList<>();
+    public static ArrayList<Job> august = new ArrayList<>();
+    public static ArrayList<Job> september = new ArrayList<>();
+    public static ArrayList<Job> october = new ArrayList<>();
+    public static ArrayList<Job> november = new ArrayList<>();
+    public static ArrayList<Job> december = new ArrayList<>();
     int janTotal = 0;
     int febTotal = 0;
     int marTotal = 0;
@@ -88,13 +90,14 @@ public class Graph2 extends AppCompatActivity {
     int octTotal = 0;
     int novTotal = 0;
     int decTotal = 0;
-    TextView t1,t2,t3,t4;
+    TextView t1, t2, t3, t4;
     Spinner spinner;
     int total;
     int takeHome;
 
-    int l= january.size()+ february.size() +march.size() +april.size()+ may.size() + june.size() +july.size() +august.size() +september.size()
-            + october.size()+november.size()+december.size();
+    int l = january.size() + february.size() + march.size() + april.size() + may.size() + june.size() + july.size() + august.size() + september.size()
+            + october.size() + november.size() + december.size();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,12 +112,12 @@ public class Graph2 extends AppCompatActivity {
 
         getJobs();
 
-        t1=(TextView)findViewById(R.id.totalEarned);
-        t2=(TextView)findViewById(R.id.totalTakeHome);
-        t3=(TextView)findViewById(R.id.jobsCompleted);
-        t4=(TextView)findViewById(R.id.average);
+        t1 = (TextView) findViewById(R.id.totalEarned);
+        t2 = (TextView) findViewById(R.id.totalTakeHome);
+        t3 = (TextView) findViewById(R.id.jobsCompleted);
+        t4 = (TextView) findViewById(R.id.average);
 
-        spinner=(Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         barChart = (BarChart) findViewById(R.id.barchart);
 
@@ -135,7 +138,7 @@ public class Graph2 extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.inbox:
                         Intent intent = new Intent(getApplicationContext(), InboxProfessional.class);
                         startActivity(intent);
@@ -153,7 +156,7 @@ public class Graph2 extends AppCompatActivity {
 
                     case R.id.stats:
                         Intent intent3 = new Intent(getApplicationContext(), ViewProfessionalFeedback.class);
-                        intent3.putExtra("professionalId",uid);
+                        intent3.putExtra("professionalId", uid);
                         startActivity(intent3);
                         return true;
 
@@ -167,96 +170,94 @@ public class Graph2 extends AppCompatActivity {
         });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int i= spinner.getSelectedItemPosition();
-                if(i==0){
-                    if(total!=0) {
-                        t1.setText("Total Gross Earnings : " + String.valueOf(total));
-                        t2.setText("Total Take Home : " + String.valueOf(takeHome));
-                        t3.setText("Number of Jobs Completed : " + String.valueOf(l));
-                        t4.setText("Average Earn per Job : " + String.valueOf(total / l));
+                int i = spinner.getSelectedItemPosition();
+                if (i == 0) {
+                    if (total != 0) {
+                        t1.setText(String.valueOf(total));
+                        t2.setText( String.valueOf(takeHome));
+                        t3.setText( String.valueOf(l));
+                        t4.setText(String.valueOf(takeHome / l));
                     }
                 }
-                if(i==1){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(janTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(janTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(january.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(janTotal/january.size()));
+                if (i == 1) {
+                    t1.setText(String.valueOf(janTotal));
+                    t2.setText( String.valueOf(janTotal * 0.9));
+                    t3.setText( String.valueOf(january.size()));
+                    t4.setText( String.valueOf((janTotal * 0.9) / january.size()));
                 }
-                if(i==2){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(febTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(febTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(february.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(febTotal/february.size()));
+                if (i == 2) {
+                    t1.setText( String.valueOf(febTotal));
+                    t2.setText(String.valueOf(febTotal * 0.9));
+                    t3.setText(  String.valueOf(february.size()));
+                    t4.setText("Average Earn per Job : " + String.valueOf((febTotal * 0.9) / february.size()));
                 }
-                if(i==3){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(marTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(marTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(march.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(marTotal/march.size()));
+                if (i == 3) {
+                    t1.setText( String.valueOf(marTotal));
+                    t2.setText( String.valueOf(marTotal * 0.9));
+                    t3.setText( String.valueOf(march.size()));
+                    t4.setText( String.valueOf((marTotal * 0.9) / march.size()));
                 }
-                if(i==4){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(aprTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(aprTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(april.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(aprTotal/april.size()));
+                if (i == 4) {
+                    t1.setText(String.valueOf(aprTotal));
+                    t2.setText( String.valueOf(aprTotal * 0.9));
+                    t3.setText(String.valueOf(april.size()));
+                    t4.setText( String.valueOf((aprTotal * 0.9) / april.size()));
                 }
-                if(i==5){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(mayTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(mayTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(may.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(mayTotal/may.size()));
+                if (i == 5) {
+                    t1.setText( String.valueOf(mayTotal));
+                    t2.setText(String.valueOf(mayTotal * 0.9));
+                    t3.setText( String.valueOf(may.size()));
+                    t4.setText(String.valueOf((mayTotal * 0.9) / may.size()));
                 }
-                if(i==6){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(juneTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(juneTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(june.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(juneTotal/june.size()));
+                if (i == 6) {
+                    t1.setText(String.valueOf(juneTotal));
+                    t2.setText( String.valueOf(juneTotal * 0.9));
+                    t3.setText(String.valueOf(june.size()));
+                    t4.setText(String.valueOf((juneTotal * 0.9) / june.size()));
                 }
-                if(i==7){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(julTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(julTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(july.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(julTotal/july.size()));
+                if (i == 7) {
+                    t1.setText( String.valueOf(julTotal));
+                    t2.setText(String.valueOf(julTotal * 0.9));
+                    t3.setText( String.valueOf(july.size()));
+                    t4.setText( String.valueOf((julTotal * 0.9) / july.size()));
                 }
-                if(i==8){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(augTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(augTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(august.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(augTotal/august.size()));
+                if (i == 8) {
+                    t1.setText( String.valueOf(augTotal));
+                    t2.setText( String.valueOf(augTotal * 0.9));
+                    t3.setText( String.valueOf(august.size()));
+                    t4.setText( String.valueOf((augTotal * 0.9) / august.size()));
                 }
-                if(i==9){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(sepTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(sepTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(september.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(sepTotal/september.size()));
+                if (i == 9) {
+                    t1.setText(String.valueOf(sepTotal));
+                    t2.setText(String.valueOf(sepTotal * 0.9));
+                    t3.setText(String.valueOf(september.size()));
+                    t4.setText(String.valueOf((sepTotal * 0.9) / september.size()));
                 }
-                if(i==10){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(octTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(octTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(october.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(octTotal/october.size()));
+                if (i == 10) {
+                    t1.setText( String.valueOf(octTotal));
+                    t2.setText(String.valueOf(octTotal * 0.9));
+                    t3.setText(String.valueOf(october.size()));
+                    t4.setText( String.valueOf((octTotal * 0.9) / october.size()));
                 }
-                if(i==11){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(novTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(novTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(november.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(novTotal/november.size()));
+                if (i == 11) {
+                    t1.setText( String.valueOf(novTotal));
+                    t2.setText(String.valueOf(novTotal * 0.9));
+                    t3.setText( String.valueOf(november.size()));
+                    t4.setText( String.valueOf((novTotal * 0.9) / november.size()));
                 }
-                if(i==12){
-                    t1.setText("Total Gross Earnings : "+String.valueOf(decTotal));
-                    t2.setText("Total Take Home : "+String.valueOf(decTotal*0.9));
-                    t3.setText("Number of Jobs Completed : "+String.valueOf(december.size()));
-                    t4.setText("Average Earn per Job : "+String.valueOf(decTotal/december.size()));
+                if (i == 12) {
+                    t1.setText( String.valueOf(decTotal));
+                    t2.setText(String.valueOf(decTotal * 0.9));
+                    t3.setText(String.valueOf(december.size()));
+                    t4.setText( String.valueOf((decTotal * 0.9) / december.size()));
                 }
-
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -270,11 +271,10 @@ public class Graph2 extends AppCompatActivity {
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 for (DataSnapshot child : children) {
                     Job job = child.getValue(Job.class);
-                    if (job.getProfessionalId().equals(uid) && job.isFinished() == true) {
+                    if (job.getProfessionalId().equals(uid) && job.isFinished()) {
                         String date = job.getEndDate();
                         String parts[] = date.split("/");
                         String month = parts[1];
-                        // allJobs.add(job);
                         if (month.equals("01")) {
                             january.add(job);
                         } else if (month.equals("02")) {
@@ -363,12 +363,13 @@ public class Graph2 extends AppCompatActivity {
 
         // X-Axis Style
         XAxis xAxis = barChart.getXAxis();
-        xAxis.enableGridDashedLine(10f, 10f, 0f);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setAxisMaximum(12);
+        //  xAxis.enableGridDashedLine(10f, 10f, 0f);
+        //xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //  xAxis.setAxisMaximum(12);
 //        xAxis.setValueFormatter(new ValueFormatter() {
 //            @Override
 //            public String getFormattedValue(float value) {
+//
 //                return xAxisLabels.get((int)value);
 //            }
 //        });
@@ -383,9 +384,9 @@ public class Graph2 extends AppCompatActivity {
         // Create a dataset
         ArrayList<BarEntry> values = new ArrayList<>();
         set = new BarDataSet(values, "Total Earnings per Month");
-        set.setColor(R.color.purple_200);
+        set.setColor(R.color.blue);
         set.setDrawValues(true);
-        set.setHighLightColor(R.color.colorPrimary);
+        set.setHighLightColor(R.color.red);
 
         // Customize legend entry
         set.setForm(Legend.LegendForm.LINE);
@@ -403,7 +404,7 @@ public class Graph2 extends AppCompatActivity {
         BarEntry sep = new BarEntry(9, sepTotal);
         BarEntry oct = new BarEntry(10, octTotal);
         BarEntry nov = new BarEntry(11, novTotal);
-        BarEntry dec = new BarEntry(12,decTotal );
+        BarEntry dec = new BarEntry(12, decTotal);
 
         set.addEntry(jan);
         set.addEntry(feb);
@@ -424,20 +425,71 @@ public class Graph2 extends AppCompatActivity {
         BarData data = new BarData(dataSets);
         barChart.setData(data);
 
-         total=janTotal+febTotal+marTotal+aprTotal+mayTotal+juneTotal+julTotal+augTotal+sepTotal+octTotal+novTotal+decTotal;
-         takeHome= (int) (total*0.9);
+        total = janTotal + febTotal + marTotal + aprTotal + mayTotal + juneTotal + julTotal + augTotal + sepTotal + octTotal + novTotal + decTotal;
+        takeHome = (int) (total * 0.9);
 
-        l= january.size()+ february.size() +march.size() +april.size()+ may.size() + june.size() +july.size() +august.size() +september.size()
-               + october.size()+november.size()+december.size();
+        l = january.size() + february.size() + march.size() + april.size() + may.size() + june.size() + july.size() + august.size() + september.size()
+                + october.size() + november.size() + december.size();
 
 
-        t1.setText("Total Gross Earnings : "+String.valueOf(total));
-        t2.setText("Total Take Home : "+String.valueOf(takeHome));
-        t3.setText("Number of Jobs Completed : "+String.valueOf(l));
-        t4.setText("Average Earn per Job : "+String.valueOf(total/l));
+        t1.setText("Total Gross Earnings : " + String.valueOf(total));
+        t2.setText("Total Take Home : " + String.valueOf(takeHome));
+        t3.setText("Number of Jobs Completed : " + String.valueOf(l));
+        t4.setText("Average Earn per Job : " + String.valueOf(total / l));
 
     }
 
     public void viewJobs(View view) {
+
+        Intent intent = new Intent(getApplicationContext(), CompletedSelectedJobs.class);
+        String selectedMonth = null;
+        int i = spinner.getSelectedItemPosition();
+        if (i == 0) {
+            if (total != 0) {
+                selectedMonth = "Whole Year";
+            }
+        }
+        if (i == 1) {
+            selectedMonth = "January";
+        }
+        if (i == 2) {
+            selectedMonth = "February";
+
+        }
+        if (i == 3) {
+            selectedMonth = "March";
+        }
+        if (i == 4) {
+            selectedMonth = "April";
+        }
+        if (i == 5) {
+            selectedMonth = "May";
+        }
+        if (i == 6) {
+            selectedMonth = "June";
+        }
+        if (i == 7) {
+            selectedMonth = "July";
+        }
+        if (i == 8) {
+            selectedMonth = "August";
+        }
+        if (i == 9) {
+            selectedMonth = "September";
+        }
+        if (i == 10) {
+            selectedMonth = "October";
+        }
+        if (i == 11) {
+            selectedMonth = "November";
+        }
+        if (i == 12) {
+            selectedMonth = "December";
+        }
+        intent.putExtra("month", selectedMonth);
+        startActivity(intent);
+
     }
+
+
 }

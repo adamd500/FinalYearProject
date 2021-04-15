@@ -22,11 +22,14 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
     //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtView;
+        public TextView t1,t2,t3,t4;
 
         public MyViewHolder(View itemView){
             super(itemView);
-            txtView=(TextView)itemView.findViewById(R.id.textView);
+            t1=(TextView)itemView.findViewById(R.id.listingTitle);
+            t2=(TextView)itemView.findViewById(R.id.proposedDate);
+            t3=(TextView)itemView.findViewById(R.id.proposedTime);
+            t4=(TextView)itemView.findViewById(R.id.sched3);
 
         }
 
@@ -43,7 +46,7 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
     public AcceptedConsultationAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
-        View itemView =inflater.inflate(R.layout.row_layout,parent,false);
+        View itemView =inflater.inflate(R.layout.accepted_cons,parent,false);
         AcceptedConsultationAdapter.MyViewHolder viewHolder=new AcceptedConsultationAdapter.MyViewHolder(itemView);
         return viewHolder;
     }
@@ -52,8 +55,11 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
     public void onBindViewHolder(@NonNull AcceptedConsultationAdapter.MyViewHolder holder, int position) {
 
         final Consultation consultation=consultationsFromDB.get(position);
-        holder.txtView.setText("\n Listing Title : "+consultation.getTitle()+"\n Proposed Date : "+consultation.getDate()+"\n Proposed Time : "+ consultation.getTime());
-        holder.txtView.setOnClickListener(new View.OnClickListener() {
+        holder.t1.setText(consultation.getTitle());
+        holder.t2.setText(consultation.getDate());
+        holder.t3.setText(consultation.getTime());
+
+        holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();

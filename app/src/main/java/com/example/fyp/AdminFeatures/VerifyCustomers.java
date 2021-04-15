@@ -30,7 +30,7 @@ public class VerifyCustomers extends AppCompatActivity {
     ArrayList<Customer> customers=new ArrayList<Customer>();
     private FirebaseDatabase database;
     private DatabaseReference ref;
-    CustomerVerificationAdapter myAdapter;
+    public static CustomerVerificationAdapter myAdapter;
     private FirebaseUser user;
     private String uid;
 

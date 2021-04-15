@@ -4,48 +4,288 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".ProfessionalFeatures.WelcomeProfessional">
 
-    <TextView
-        android:id="@+id/nationwideTraffic"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="136dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="96dp"
-        android:ems="10"
-        android:background="@color/white"
-        android:scrollbars="vertical"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/dublinTraffic"
+        android:id="@+id/textViewName"
         android:layout_width="match_parent"
-        android:layout_height="117dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="264dp"
-        android:background="@color/white"
-        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Welcome to Job Connect"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
 
-        android:scrollbars="vertical"
-        android:textColor="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonSchedule"
-        android:layout_width="356dp"
-        android:layout_height="41dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="openCalendar"
-        android:text="Check Schedule"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795" />
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/g"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="Quick Navigation "
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+
+                <TextView
+                    android:id="@+id/sched"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/g"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:drawableStart="@drawable/ic_arrow_right_s_fill"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:onClick="openCalendar"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Check Schedule"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/sched1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sched"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:drawableStart="@drawable/ic_arrow_right_s_fill"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:onClick="inbox1"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Inbox"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/sched2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sched1"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:drawableStart="@drawable/ic_arrow_right_s_fill"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:onClick="jobf"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="Browse for a New Job"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:background="@color/white"
+            app:cardCornerRadius="@dimen/spacing_small"
+            app:cardElevation="@dimen/card_shadow">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_small">
+
+                <TextView
+                    android:id="@+id/rat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:text="AA Roadwatch Traffic Updates "
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewCommunicationRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rat"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:background="@drawable/bg_square"
+                    android:text="Nationwide Traffic"
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/nationwideTraffic"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/textViewCommunicationRating"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:scrollbars="vertical"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Punc"
+                    android:background="@drawable/bg_square"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/textViewWorkQualityRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nationwideTraffic"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:text="Dublin Traffic"
+                    android:background="@drawable/bg_square"
+
+                    android:textColor="@color/textheader"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/dublinTraffic"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/textViewWorkQualityRating"
+                    android:layout_marginStart="@dimen/spacing_large"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansregular"
+                    android:padding="@dimen/spacing_small"
+                    android:scrollbars="vertical"
+                    android:text="work"
+                    android:background="@drawable/bg_square"
+
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+
+                <TextView
+                    android:id="@+id/tvCovid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dublinTraffic"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:layout_marginEnd="@dimen/spacing_medium"
+                    android:background="@drawable/bg_square"
+                    android:drawableStart="@drawable/ic_question_line"
+                    android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                    android:drawablePadding="@dimen/spacing_medium"
+                    android:fontFamily="@font/googlesansbold"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="start"
+                    android:onClick="traffic"
+                    android:paddingStart="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_large"
+                    android:paddingEnd="@dimen/spacing_medium"
+                    android:paddingBottom="@dimen/spacing_large"
+                    android:text="View all Traffic Details"
+                    android:textColor="@color/textchild"
+                    android:textSize="@dimen/font_large" />
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -56,50 +296,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_navigation"
         tools:layout_editor_absoluteX="208dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="Welcome to Job Connect"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="381dp"
-        android:layout_height="16dp"
-        android:layout_marginBottom="28dp"
-        android:text="See Major Traffic Updates Below Retrieved from AA."
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="381dp"
-        android:layout_height="16dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Nationwide Traffic"
-        app:layout_constraintBottom_toTopOf="@+id/nationwideTraffic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="381dp"
-        android:layout_height="16dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Dublin Traffic"
-        app:layout_constraintBottom_toTopOf="@+id/dublinTraffic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

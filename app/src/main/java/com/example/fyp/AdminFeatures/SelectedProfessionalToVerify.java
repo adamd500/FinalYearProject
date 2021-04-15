@@ -29,6 +29,8 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -38,7 +40,7 @@ public class SelectedProfessionalToVerify extends AppCompatActivity {
     private DatabaseReference ref;
     String professionalId;
     private Professional professional;
-    Button idButton,safePassButton,gardaVetButton;
+    TextView idButton,safePassButton,gardaVetButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +54,9 @@ public class SelectedProfessionalToVerify extends AppCompatActivity {
         t4 = (TextView) findViewById(R.id.textViewEmail);
         t5 = (TextView) findViewById(R.id.textViewDob);
 
-        idButton=(Button)findViewById(R.id.verifyIdButton);
-        safePassButton=(Button)findViewById(R.id.verifySafePassButton);
-        gardaVetButton=(Button)findViewById(R.id.verifyGardaVetButton);
+        idButton=(TextView)findViewById(R.id.sched);
+        safePassButton=(TextView)findViewById(R.id.sched3);
+        gardaVetButton=(TextView)findViewById(R.id.sched2);
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();

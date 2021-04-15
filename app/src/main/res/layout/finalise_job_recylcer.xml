@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_xsmall"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        app:cardCornerRadius="@dimen/spacing_small"
+        app:cardElevation="@dimen/card_shadow"
+        tools:ignore="MissingConstraints">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small">
+
+            <TextView
+                android:id="@+id/durationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Job Title"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/txtViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/durationTitle"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Date"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/loc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtViewTitle"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Start Date"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loc"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Date"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/trade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/location"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Finish Date"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/tradeSector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/trade"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansregular"
+                android:padding="@dimen/spacing_small"
+                android:text="Date"
+                android:textColor="@color/textchild"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/sched3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/imageView3"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:background="@drawable/bg_leftswitch"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
+                android:drawablePadding="@dimen/spacing_medium"
+                android:fontFamily="@font/googlesansbold"
+                android:gravity="start"
+                android:paddingStart="@dimen/spacing_medium"
+                android:paddingTop="@dimen/spacing_large"
+                android:paddingEnd="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_large"
+                android:text="View"
+                android:textColor="@color/textheader"
+                android:textSize="@dimen/font_large" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,7 @@ public class CustomerProfile extends AppCompatActivity {
     private Uri filePath1;
     private String picPath;
     private boolean idVer;
-    private Button buttonID, buttonSelfie;
+    private TextView buttonID, buttonSelfie;
     private static final int PICK_IMAGE_REQUEST = 22;
 
     @Override
@@ -64,7 +64,6 @@ public class CustomerProfile extends AppCompatActivity {
         t4 = (TextView) findViewById(R.id.textViewIdVer);
         t5 = (TextView) findViewById(R.id.textViewLocation);
         t6 = (TextView) findViewById(R.id.textViewName);
-        t7 = (TextView) findViewById(R.id.textViewPassword);
         t8 = (TextView) findViewById(R.id.textViewNumber);
         t9 = (TextView) findViewById(R.id.textViewIdRequired);
 
@@ -89,12 +88,11 @@ public class CustomerProfile extends AppCompatActivity {
                         t3.setText("Email:      " + customer.getEmail());
                         t4.setText("Id Verified:      " + customer.isIdVerified());
                         t5.setText("Location:     " + customer.getLocation());
-                        t6.setText(customer.getName());
-                        t7.setText("Password: ");
-                        t8.setText("Phone Number:      " + customer.getPhoneNumber());
+                        t6.setText("Name: "+customer.getName());
+                       t8.setText("Phone Number:      " + customer.getPhoneNumber());
                         if (customer.isIdVerified()) {
-                            buttonID = (Button) findViewById(R.id.buttonID);
-                            buttonSelfie = (Button) findViewById(R.id.buttonSelfie);
+                            buttonID = (TextView) findViewById(R.id.buttonID);
+                            buttonSelfie = (TextView) findViewById(R.id.buttonSelfie);
 
                             buttonID.setVisibility(View.INVISIBLE);
                             buttonSelfie.setVisibility(View.INVISIBLE);

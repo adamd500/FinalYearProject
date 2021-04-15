@@ -6,34 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".AdminFeatures.VerifyProfessionalID">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
     <TextView
         android:id="@+id/txtViewTitle"
-        android:layout_width="380dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="16dp"
-        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Professionals to be Verified"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large"
+        tools:layout_editor_absoluteX="10dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:text=""
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_medium" />
 
-    <Button
-        android:id="@+id/verifyButton"
-        android:layout_width="305dp"
-        android:layout_height="55dp"
-        android:layout_marginLeft="52dp"
-        android:onClick="verifyIdDocument"
-        android:text="Verify ID Document "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726" />
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="405dp"
+        android:layout_width="match_parent"
         android:layout_height="142dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
@@ -42,7 +54,7 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
         android:scaleType="centerCrop"
@@ -50,4 +62,28 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
         tools:layout_editor_absoluteX="3dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <Button
+            android:id="@+id/sendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@drawable/bg_btn_shape"
+            android:fontFamily="@font/googlesansbold"
+            android:onClick="verifyIdDocument"
+            android:text="Verify ID Document "
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

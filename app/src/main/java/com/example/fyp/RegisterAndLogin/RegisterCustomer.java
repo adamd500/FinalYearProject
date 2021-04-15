@@ -47,8 +47,6 @@ public class RegisterCustomer extends AppCompatActivity {
     private static final String TAG = "RegisterCustomer";
     private Customer customer;
     String email;
-    Account account;
-    Thread thread;
     String uid;
     String address;
     String dob;
@@ -61,14 +59,12 @@ public class RegisterCustomer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_customer);
 
-        //StrictMode.ThreadPolicy.Builder().;
-
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
         mAuth = FirebaseAuth.getInstance();
 
     }
-    public void createCustomer (View v) throws StripeException {
+    public void createCustomer (View v) {
 
         EditText nameTxt = (EditText) findViewById(R.id.name);
         EditText dobTxt = (EditText) findViewById(R.id.dob);
@@ -81,7 +77,6 @@ public class RegisterCustomer extends AppCompatActivity {
 
 
         email = emailTxt.getText().toString();
-      //  stripeSetup();
 
         String password = passwordTxt.getText().toString();
         String password2 = passwordTxt2.getText().toString();
@@ -99,7 +94,6 @@ public class RegisterCustomer extends AppCompatActivity {
                 || TextUtils.isEmpty(number) || TextUtils.isEmpty(name) || TextUtils.isEmpty(name) || TextUtils.isEmpty(password2) || !password.equals(password2)) {
             Toast.makeText(getApplicationContext(), "Please ensure all fields are completed and that passwords match",
                     Toast.LENGTH_SHORT).show();
-            //    return;
         } else {
             customer = new Customer(name, dob, address, false, feedback, location, number, email, password, "usernamStr", "s", "s", "stripe");
             customerProfessional(email, password);
@@ -126,9 +120,7 @@ public class RegisterCustomer extends AppCompatActivity {
     public void updateUI(FirebaseUser currentUser) {
           uid = currentUser.getUid();
         customer.setUsername(uid);
-      //  customer.setStripeKey(account.getId());
         mDatabase.child(uid).setValue(customer);
-        thread.start();
 
         Intent welcomeIntent = new Intent(this, WelcomeCustomer.class);
         startActivity(welcomeIntent);
