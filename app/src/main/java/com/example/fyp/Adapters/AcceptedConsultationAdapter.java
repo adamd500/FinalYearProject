@@ -9,9 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fyp.CustomerFeatures.SelectedConsultation;
 import com.example.fyp.ObjectClasses.Consultation;
-import com.example.fyp.ProfessionalFeatures.SelectedAcceptedConsultation;
+import com.example.fyp.ProfessionalFeatures.MapSelectedAcceptedConsultation;
 import com.example.fyp.R;
 
 import java.util.ArrayList;
@@ -65,9 +64,9 @@ public class AcceptedConsultationAdapter extends RecyclerView.Adapter<AcceptedCo
                 //int position=this.getLayoutPosition();
                 notifyDataSetChanged();
                 Consultation selectedConsultation =consultationsFromDB.get(position);
-                Intent intent= new Intent(v.getContext(), SelectedAcceptedConsultation.class);
+                Intent intent= new Intent(v.getContext(), MapSelectedAcceptedConsultation.class);
                 intent.putExtra("id",consultation.getConsultationId());
-
+                intent.putExtra("location",consultation.getLocation());
                 v.getContext().startActivity(intent);
                 notifyDataSetChanged();
 

@@ -91,7 +91,7 @@
                         android:layout_marginEnd="@dimen/spacing_medium"
                         android:background="@drawable/bg_square"
                         android:onClick="graph"
-                        android:drawableStart="@drawable/ic_wallet_3_line"
+                        android:drawableStart="@drawable/ic_baseline_credit_card_24"
                         android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
                         android:drawablePadding="@dimen/spacing_medium"
                         android:fontFamily="@font/googlesansbold"
@@ -104,29 +104,37 @@
                         android:textColor="@color/textheader"
                         android:textSize="@dimen/font_large" />
 
-
                     <TextView
-                        android:id="@+id/tvCards"
+                        android:id="@+id/logout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/spacing_medium"
                         android:layout_marginTop="@dimen/spacing_medium"
                         android:layout_marginEnd="@dimen/spacing_medium"
                         android:background="@drawable/bg_square"
-                        android:drawableStart="@drawable/ic_bank_card_line"
+                        android:onClick="logout"
+                        android:drawableStart="@drawable/ic_baseline_logout_24"
                         android:drawableEnd="@drawable/ic_keyboard_arrow_grey"
                         android:drawablePadding="@dimen/spacing_medium"
                         android:fontFamily="@font/googlesansbold"
                         android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                        android:gravity="start"
                         android:paddingStart="@dimen/spacing_medium"
                         android:paddingTop="@dimen/spacing_large"
                         android:paddingEnd="@dimen/spacing_medium"
                         android:paddingBottom="@dimen/spacing_large"
-                        android:text="TEST"
+                        android:text="Logout"
                         android:textColor="@color/textheader"
                         android:textSize="@dimen/font_large" />
 
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text=""
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_medium" />
 
 
 

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerFeatures.SelectedKeywordJob">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Listing"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text=""
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/des"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Description"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/textViewDescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/des"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Description"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/durationTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Final Cost"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/txtViewTrade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/durationTitle"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Trade"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/loc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Price Breakdown"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/txtViewEircode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/loc"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Eircode"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/beforePics"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Customer's Before Pictures"
+                                android:paddingBottom="@dimen/spacing_large"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_below="@id/beforePics"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"                                android:scaleType="centerCrop"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/afterPics"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Professionals After Pictures"
+                                android:paddingBottom="@dimen/spacing_large"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_below="@id/afterPics"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"                                android:scaleType="centerCrop"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="180dp"
+                                android:layout_height="180dp"                                android:layout_alignParentEnd="true"
+                                android:layout_below="@id/afterPics"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:srcCompat="@tools:sample/avatars" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text=""
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_medium" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/customer_menu_nav"
+        tools:layout_editor_absoluteX="208dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

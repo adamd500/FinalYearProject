@@ -124,7 +124,7 @@
                 android:layout_marginLeft="132dp"
                 android:background="@drawable/bg_rounded_border_edittext"
                 android:fontFamily="@font/googlesansregular"
-                android:hint="Time Estimation"
+                android:hint="Actual Time Taken"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:letterSpacing="0.2"
@@ -161,6 +161,7 @@
                 android:padding="@dimen/spacing_medium"
                 android:textColor="@color/textchild"
                 android:textSize="@dimen/font_medium" />
+
 
 
         </RelativeLayout>
@@ -224,7 +225,6 @@
                 android:textColor="@color/textchild"
                 android:textSize="@dimen/font_medium" />
 
-
         </RelativeLayout>
 
         <TextView
@@ -284,6 +284,58 @@
                 android:letterSpacing="0.2"
                 android:padding="@dimen/spacing_medium"
                 android:textColor="@color/textchild"
+                android:textSize="@dimen/font_medium" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:text="Add Some Pictures of Your Work"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_medium" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:onClick="selectImage"
+                android:scaleType="centerCrop"
+                android:src="@drawable/addimage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                 android:layout_alignParentEnd="true"
+                android:onClick="selectImage2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/addimage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_below="@id/imageView"
+                android:layout_height="35dp"
+                android:layout_margin="@dimen/spacing_medium"
+                android:background="@drawable/bg_btn_shape"
+                android:fontFamily="@font/googlesansbold"
+                android:onClick="uploadImage"
+                android:text="Upload Images"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="@dimen/font_medium" />
 
 

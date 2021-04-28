@@ -10,19 +10,26 @@ import android.view.View;
 
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.R;
+import com.example.fyp.RegisterAndLogin.MainActivity;
 import com.example.fyp.WebLinks.BecomingSelfEmployedInfo;
 import com.example.fyp.WebLinks.CovidInformation;
 import com.example.fyp.WebLinks.EmploymentStatusInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileHomePage extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.prof_profile_homepage);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+        auth=FirebaseAuth.getInstance();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -82,6 +89,12 @@ public class ProfileHomePage extends AppCompatActivity {
 
     public void graph(View view) {
         Intent intent = new Intent(getApplicationContext(), Graph2.class);
+        startActivity(intent);
+    }
+
+    public void logout(View view) {
+        auth.signOut();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 }

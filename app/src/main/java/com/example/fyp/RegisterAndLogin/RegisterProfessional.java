@@ -18,6 +18,7 @@ import com.example.fyp.R;
 import com.example.fyp.CustomerFeatures.WelcomeCustomer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,7 +40,7 @@ public class RegisterProfessional extends AppCompatActivity {
     private FirebaseUser mUser;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase,ref;
-
+    private FirebaseAnalytics analytics;
     private static final String USER = "Professional";
     private static final String TAG = "RegisterProfessional";
     private Professional professional;
@@ -55,6 +56,13 @@ public class RegisterProfessional extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_professional);
+
+        analytics=FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle= new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME,"Professional Register Page");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS,"RegisterProfessional");
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW,bundle);
 
         database=FirebaseDatabase.getInstance();
         mDatabase=database.getReference(USER);
@@ -93,17 +101,11 @@ public class RegisterProfessional extends AppCompatActivity {
 
                     ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
                     goToWelcomePage();
-                    //   ref= database.getReference();
-                  //  ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
 
                 } catch (StripeException e) {
                     e.printStackTrace();
                 }
-//                if(account.getId()!=null) {
-//                    ref.child("Professional").child(uid).child("stripeKey").setValue(account.getId());
-//                    goToWelcomePage();
-//
-//                }
+
             }
         });
     }
@@ -148,9 +150,11 @@ public class RegisterProfessional extends AppCompatActivity {
         }else {
 
            // registerStripe();
-            professional = new Professional( name,  dob,  address,  false, feedback,  location,  number,  email,  password,  "username",  false,
-                    false,  trade,  workRadiusInt, "s", "s", "s", "s",
+            professional = new Professional( name,  dob,  address,  false, feedback,  location,  number,  email,  password,  "username", "selife","id",
+                    false,
+                    false,  trade,0,  "s",  "s",
                     0, 0, 0, 0, 0,0,"stripe") ;
+
 
 
             registerProfessional(email, password);
@@ -176,14 +180,11 @@ public class RegisterProfessional extends AppCompatActivity {
 
     public void updateUI(FirebaseUser currentUser){
          uid=currentUser.getUid();
-       // thread.start();
         professional.setUsername(uid);
         mDatabase.child(uid).setValue(professional);
         thread.start();
 
-    //    Intent welcomeIntent = new Intent(this, WelcomeProfessional.class);
-//
-//        startActivity(welcomeIntent);
+
     }
     public void goToWelcomePage(){
         Intent welcomeIntent = new Intent(this, WelcomeProfessional.class);

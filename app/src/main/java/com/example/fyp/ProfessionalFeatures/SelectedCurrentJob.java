@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Job;
-import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -121,7 +120,7 @@ public class SelectedCurrentJob extends AppCompatActivity {
     public void showOnMap(View v){
         String location = job.getLocation();
 
-        Intent intent=new Intent(this,CurrentSelectedJobOnMap.class);
+        Intent intent=new Intent(this, MapSelectedAcceptedConsultation.class);
         intent.putExtra("location",location);
         startActivity(intent);
 

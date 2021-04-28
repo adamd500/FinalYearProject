@@ -18,6 +18,7 @@ import com.example.fyp.R;
 import com.example.fyp.CustomerFeatures.WelcomeCustomer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +43,7 @@ public class RegisterCustomer extends AppCompatActivity {
     private FirebaseUser mUser;
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
+    private FirebaseAnalytics analytics;
 
     private static final String USER = "Customer";
     private static final String TAG = "RegisterCustomer";
@@ -58,6 +60,13 @@ public class RegisterCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_customer);
+
+        analytics= FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle= new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME,"Customer Register Page");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS,"RegisterCustomer");
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW,bundle);
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
@@ -95,7 +104,7 @@ public class RegisterCustomer extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please ensure all fields are completed and that passwords match",
                     Toast.LENGTH_SHORT).show();
         } else {
-            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, "usernamStr", "s", "s", "stripe");
+            customer = new Customer(name, dob, address, false, feedback, location, number, email, password, "usernamStr", "s", "s");
             customerProfessional(email, password);
 
         }

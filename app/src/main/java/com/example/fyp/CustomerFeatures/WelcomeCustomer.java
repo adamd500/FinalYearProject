@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.fyp.Messaging.InboxCustomer;
 import com.example.fyp.ProfessionalFeatures.SetupStripe;
@@ -15,10 +16,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class WelcomeCustomer extends AppCompatActivity {
    // private List<Listing> listings =new ArrayList<Listing>();
+    EditText e1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcomecustomer);
+
+        e1=(EditText)findViewById(R.id.editTextEircode) ;
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,9 +60,13 @@ public class WelcomeCustomer extends AppCompatActivity {
         });
     }
 
-    
 
+    public void search(View view) {
 
+        String keyword=e1.getText().toString();
+        Intent intent = new Intent(this,JobsByKeyword.class);
+        intent.putExtra("keyword",keyword);
+        startActivity(intent);
 
-
+    }
 }

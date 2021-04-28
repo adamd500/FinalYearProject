@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fyp.ObjectClasses.Listing;
+import com.example.fyp.ProfessionalFeatures.ProfSelectedListing;
 import com.example.fyp.ProfessionalFeatures.SelectedCurrentJob;
 import com.example.fyp.ProfessionalFeatures.SelectedNewJob;
 import com.example.fyp.R;
@@ -98,8 +99,7 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
         } catch (IOException e) {
             e.printStackTrace();
         }
-       // holder.img.setImageResource(R.drawable.listing);
-      //  holder.img.setImageURI(Uri.parse("\"gs://fypdatabase-d9dfe.appspot.com"+name.getPhotos().get(0)));
+
         holder.t1.setText(name.getTitle());
         holder.t2.setText(name.getLocation());
         holder.t3.setText(name.getTradeSector());
@@ -109,9 +109,10 @@ public class MyAdapterProfessional extends RecyclerView.Adapter<MyAdapterProfess
             public void onClick(View v) {
                 //int position=this.getLayoutPosition();
                 Listing selectedListing =listingsFromDB.get(position);
-                Intent intent= new Intent(v.getContext(), SelectedNewJob.class);
+                Intent intent= new Intent(v.getContext(), ProfSelectedListing.class);
                 intent.putExtra("id",name.getListingId());
                 intent.putExtra("title",name.getTitle());
+                intent.putExtra("location",name.getLocation());
                 v.getContext().startActivity(intent);
             }
         });

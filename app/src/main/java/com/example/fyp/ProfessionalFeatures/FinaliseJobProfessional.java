@@ -5,23 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fyp.CustomerFeatures.CreateListing;
 import com.example.fyp.Messaging.InboxProfessional;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,15 +38,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.UUID;
 
 public class FinaliseJobProfessional extends AppCompatActivity {
 
-    TextView t1, t2,t3;
+    TextView t1, t2, t3;
     EditText e1, e2, e3, e4, e5;
     private String jobId;
     private FirebaseDatabase database;
@@ -46,8 +60,15 @@ public class FinaliseJobProfessional extends AppCompatActivity {
     private String uid;
     private Job job;
     Spinner spinner;
+     FirebaseStorage storage;
+     StorageReference storageReference;
     String finishDate;
     DatePickerDialog.OnDateSetListener dateSetListener;
+    private static final int PICK_IMAGE_REQUEST = 22;
+    Uri filePath;
+    Uri filePath2;
+    String picPath1, picPath2;
+    ImageView img1, img2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +78,17 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
+
         Intent intent = getIntent();
         jobId = intent.getStringExtra("id");
+
+        storage= FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+        img1 = (ImageView) findViewById(R.id.imageView);
+        img2 = (ImageView) findViewById(R.id.imageView2);
 
         t1 = (TextView) findViewById(R.id.estimatedDuration);
         t2 = (TextView) findViewById(R.id.quotePrice);
@@ -92,7 +122,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         e3 = (EditText) findViewById(R.id.priceBreakdown);
         e5 = (EditText) findViewById(R.id.feedbackForCustomer);
 
-        spinner=(Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         getJob();
 
@@ -100,7 +130,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.inbox:
                         Intent intent = new Intent(FinaliseJobProfessional.this, InboxProfessional.class);
                         startActivity(intent);
@@ -118,7 +148,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
 
                     case R.id.stats:
                         Intent intent3 = new Intent(FinaliseJobProfessional.this, ViewProfessionalFeedback.class);
-                        intent3.putExtra("professionalId",uid);
+                        intent3.putExtra("professionalId", uid);
                         startActivity(intent3);
                         return true;
 
@@ -132,7 +162,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         });
     }
 
-    public void getJob(){
+    public void getJob() {
         ref.child("Job").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -156,23 +186,184 @@ public class FinaliseJobProfessional extends AppCompatActivity {
     }
 
     public void finishJob(View v) {
-        String actualDuration=e1.getText().toString();
-        String actualPrice=e2.getText().toString();
-        String priceBreakdown=e3.getText().toString();
-        String finishDate=t3.getText().toString();
-        String feedbackForCustomer=e5.getText().toString();
 
-        CurrentJobs.myAdapter.notifyDataSetChanged();
-        ref.child("Job").child(jobId).child("price").setValue(Integer.parseInt(actualPrice));
-        ref.child("Job").child(jobId).child("actualDuration").setValue(actualDuration+spinner.getSelectedItem());
-        ref.child("Job").child(jobId).child("priceBreakdown").setValue(priceBreakdown);
-        ref.child("Job").child(jobId).child("endDate").setValue(finishDate);
-        ref.child("Job").child(jobId).child("feedbackFromProfessional").setValue(feedbackForCustomer);
+        ref.child("Job").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(jobId)) {
+                        job = child.getValue(Job.class);
 
-        Toast.makeText(this, "Job has been submitted. Once customer has finalised the funds will be released.", Toast.LENGTH_SHORT).show();
+                        String actualDuration = e1.getText().toString();
+                        String actualPrice = e2.getText().toString();
+                        String priceBreakdown = e3.getText().toString();
+                        String finishDate = t3.getText().toString();
+                        String feedbackForCustomer = e5.getText().toString();
+                        ArrayList<String>pics = new ArrayList<String>();
 
-        Intent intent = new Intent(this,WelcomeProfessional.class);
-        startActivity(intent);
+                        CurrentJobs.myAdapter.notifyDataSetChanged();
+
+                        if(!picPath1.isEmpty()){
+                            pics.add(picPath1);
+                        }
+                        if(!picPath2.isEmpty()){
+                            pics.add(picPath2);
+                        }
+
+                        job.setPrice(Integer.parseInt(actualPrice));
+                        job.setActualDuration(actualDuration + spinner.getSelectedItem());
+                        job.setPriceBreakdown(priceBreakdown);
+                        job.setEndDate(finishDate);
+                        job.setFeedbackFromProfessional(feedbackForCustomer);
+                        job.setAfterPics(pics);
+
+                        ref.child("Job").child(jobId).setValue(job);
+
+                        Intent intent = new Intent(FinaliseJobProfessional.this, JobFinishedPage.class);
+                        startActivity(intent);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+
+
 
     }
+
+    public void selectImage(View view) {
+
+        // Defining Implicit Intent to mobile gallery
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
+
+    }
+    public void selectImage2(View view) {
+
+        // Defining Implicit Intent to mobile gallery
+        Intent intent2 = new Intent();
+        intent2.setType("image/*");
+        intent2.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent2, "Select Image from here..."), PICK_IMAGE_REQUEST);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null
+                && data.getData() != null) {
+
+            if (filePath == null) {
+                filePath = data.getData();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                    img1.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+
+                filePath2 = data.getData();
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                    img2.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    public void uploadImage(View v) {
+        if (filePath != null) {
+
+            // Code for showing progressDialog while uploading
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("completedJobImages/"+jobId+" image1");
+            picPath1 = ref.getPath();
+            ref.putFile(filePath)
+                    .addOnSuccessListener(
+                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    progressDialog.dismiss();
+                                    // dbRef.child("User").child(uid).child("profileImageUri").setValue(filePath);
+
+                                    Toast.makeText(FinaliseJobProfessional.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Error, Image not uploaded
+                            progressDialog.dismiss();
+                            Toast.makeText(FinaliseJobProfessional.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                                }
+                            });
+        }
+
+        if (filePath2 != null) {
+
+            // Code for showing progressDialog while uploading
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("completedJobImages/"+jobId+" image2");
+            picPath2 = ref.getPath();
+            ref.putFile(filePath2)
+                    .addOnSuccessListener(
+                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    progressDialog.dismiss();
+                                    // dbRef.child("User").child(uid).child("profileImageUri").setValue(filePath);
+
+                                    Toast.makeText(FinaliseJobProfessional.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Error, Image not uploaded
+                            progressDialog.dismiss();
+                            Toast.makeText(FinaliseJobProfessional.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                                }
+                            });
+        }
+    }
+
 }

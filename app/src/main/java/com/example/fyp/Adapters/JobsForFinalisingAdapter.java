@@ -1,9 +1,12 @@
 package com.example.fyp.Adapters;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +16,14 @@ import com.example.fyp.CustomerFeatures.FinaliseJobCustomer;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.ProfessionalFeatures.SelectedCurrentJob;
 import com.example.fyp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinalisingAdapter.MyViewHolder>{
@@ -23,6 +33,7 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
 
        // public  TextView txtView;
        public  TextView t1,t2,t3,t4;
+     //   public ImageView img;
 
         public MyViewHolder(View itemView){
             super(itemView);
@@ -30,6 +41,7 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
             t2=(TextView)itemView.findViewById(R.id.location);
             t3=(TextView)itemView.findViewById(R.id.tradeSector);
             t4=(TextView)itemView.findViewById(R.id.sched3);
+        //    img=(ImageView)itemView.findViewById(R.id.imageView3);
 
         }
 
@@ -56,6 +68,26 @@ public class JobsForFinalisingAdapter extends RecyclerView.Adapter<JobsForFinali
     public void onBindViewHolder(@NonNull JobsForFinalisingAdapter.MyViewHolder holder, int position) {
 
         final Job name= jobsFromDb.get(position);
+
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference storageReference = storage.getReferenceFromUrl("gs://fypdatabase-d9dfe.appspot.com" + name.getListing().getPhotos().get(0));
+//        try {
+//            final File file = File.createTempFile("image", "jpeg");
+//            storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                    Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+//                 //   holder.img.setImageBitmap(bitmap);
+//                }
+//            }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//               //     holder.img.setImageResource(R.drawable.listing);
+//                }
+//            });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         holder.t1.setText(name.getJobTitle());
         holder.t2.setText(name.getStartDate());

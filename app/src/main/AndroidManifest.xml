@@ -9,7 +9,9 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
@@ -19,7 +21,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".CustomerFeatures.PaymentSuccess"></activity>
+        <activity android:name=".CustomerFeatures.PreviousListings"></activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ProfessionalFeatures.ProfSelectedListing"
+            android:label="@string/title_activity_selected_listing" />
+        <activity
+            android:name=".ProfessionalFeatures.MapCurrentJob"
+            android:label="@string/title_activity_map_current_job" />
+        <activity android:name=".CustomerFeatures.SelectedProfessionalPreviousJobs" />
+        <activity android:name=".CustomerFeatures.ProfessionalSelectedFromConversation" />
+        <activity android:name=".CustomerFeatures.SelectedKeywordJob" />
+        <activity android:name=".CustomerFeatures.JobsByKeyword" />
+        <activity android:name=".ProfessionalFeatures.JobFinishedPage" />
+        <activity android:name=".CustomerFeatures.PaymentSuccess" />
         <activity android:name=".WebLinks.TrafficLink" />
         <activity android:name=".ProfessionalFeatures.ViewListingFromConversation" />
         <activity android:name=".CustomerFeatures.CustomerPreviousListings" />
@@ -52,18 +78,6 @@
         <activity android:name=".Messaging.ProfessionalSelectedConversation" />
         <activity android:name=".Messaging.InboxProfessional" />
         <activity android:name=".Messaging.StartConversationWithCustomer" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
         <activity
             android:name=".ProfessionalFeatures.BrowseJobsOnMap"
             android:label="@string/title_activity_browse_jobs_on_map" />
@@ -72,7 +86,7 @@
         <activity android:name=".CustomerFeatures.FinaliseJobCustomer" />
         <activity android:name=".ProfessionalFeatures.FinaliseJobProfessional" />
         <activity
-            android:name=".ProfessionalFeatures.CurrentSelectedJobOnMap"
+            android:name=".ProfessionalFeatures.MapSelectedAcceptedConsultation"
             android:label="@string/title_activity_current_selected_job_on_map" />
         <activity android:name=".ProfessionalFeatures.SelectedCurrentJob" />
         <activity android:name=".ProfessionalFeatures.CurrentJobs" />

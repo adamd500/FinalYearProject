@@ -12,8 +12,6 @@ public class Professional extends Person {
     boolean gardaVetVer;
     String trade;
     int workRadius;
-    String idImage;
-    String selfieImage;
     String safePassImage;
     String gardaVetImage;
     int punctuality;
@@ -28,16 +26,14 @@ public class Professional extends Person {
 
     }
 
-    public Professional(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email, String password, String username, boolean safePassVer, boolean gardaVetVer, String trade, int workRadius, String idImage, String selfieImage, String safePassImage, String gardaVetImage, int punctuality,
-                        int workQuality, int communication, int overallCustomerSatisfaction,
-                        int jobsCompleted, int totalEarned, String stripeKey) {
-        super(name, dob, address, idVerified, feedback, location, phoneNumber, email, password, username);
+    public Professional(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email,
+                        String password, String username, String selfieImage, String idImage, boolean safePassVer, boolean gardaVetVer, String trade, int workRadius, String safePassImage, String gardaVetImage, int punctuality,
+                        int workQuality, int communication, int overallCustomerSatisfaction, int jobsCompleted, int totalEarned, String stripeKey) {
+        super(name, dob, address, idVerified, feedback, location, phoneNumber, email, password, username, selfieImage, idImage);
         this.safePassVer = safePassVer;
         this.gardaVetVer = gardaVetVer;
         this.trade = trade;
         this.workRadius = workRadius;
-        this.idImage = idImage;
-        this.selfieImage = selfieImage;
         this.safePassImage = safePassImage;
         this.gardaVetImage = gardaVetImage;
         this.punctuality = punctuality;
@@ -87,22 +83,6 @@ public class Professional extends Person {
 
     public void setWorkRadius(int workRadius) {
         this.workRadius = workRadius;
-    }
-
-    public String getIdImage() {
-        return idImage;
-    }
-
-    public void setIdImage(String idImage) {
-        this.idImage = idImage;
-    }
-
-    public String getSelfieImage() {
-        return selfieImage;
-    }
-
-    public void setSelfieImage(String selfieImage) {
-        this.selfieImage = selfieImage;
     }
 
     public String getSafePassImage() {

@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessionalAdapter.MyViewHolder> {
     ArrayList<Conversation> conversationsFromDB;
 
-    //Inner class - Provide a reference to each item/row
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView t1,t2,t3,t4,t5;
@@ -52,7 +51,6 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
     }
     @Override
     public InboxProfessionalAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        //create new view - create a row - inflate the layout for the row
         LayoutInflater inflater= LayoutInflater.from(parent.getContext());
         View itemView =inflater.inflate(R.layout.inbox_card_view,parent,false);
         InboxProfessionalAdapter.MyViewHolder viewHolder=new InboxProfessionalAdapter.MyViewHolder(itemView);
@@ -68,14 +66,13 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
 
         holder.img.setImageResource(R.drawable.letter);
         holder.t1.setText(listing.getListingTitle());
-        holder.t2.setText(listing.getProfessionalName());
+        holder.t2.setText(listing.getCustomerName());
         holder.t3.setText(listing.getMessages().get(list.size()-1).getDateTime());
-        holder.t5.setText("Professionals Name:");
+        holder.t5.setText("Customer Name:");
 
         holder.t4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   int position=this.getLayoutPosition();
                 Conversation selectedConvo = conversationsFromDB.get(position);
 
                 Intent intent= new Intent(v.getContext(), ProfessionalSelectedConversation.class);
@@ -83,7 +80,6 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
                 intent.putExtra("conversationId",selectedConvo.getConversationId());
                 intent.putExtra("customerId",selectedConvo.getCustomerId());
                 intent.putExtra("listingId",selectedConvo.getListingId());
-             //   intent.putExtra("title",selectedConvo.getTitle());
                 v.getContext().startActivity(intent);
             }
         });
@@ -101,7 +97,6 @@ public class InboxProfessionalAdapter extends RecyclerView.Adapter<InboxProfessi
         notifyItemChanged(position);
     }
     public void addItemtoEnd(Conversation consultation){
-        //these functions are user-defined
         conversationsFromDB.add(consultation);
         notifyItemInserted(conversationsFromDB.size());
     }

@@ -71,5 +71,7 @@ public class CustomerListingNav extends AppCompatActivity {
     }
 
     public void previousListings(View view) {
+        Intent intent = new Intent(CustomerListingNav.this, PreviousListings.class);
+        startActivity(intent);
     }
 }

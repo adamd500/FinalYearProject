@@ -2,22 +2,11 @@ package com.example.fyp.ObjectClasses;
 
 public class Message {
 
-   // String professionalId;
-   // String customerId;
     String conversationId;
     String content;
-  //  String listingId;
     String dateTime;
     String from;
-//
-//    public Message(String professionalId, String customerId, String content, String listingId, String dateTime, String from) {
-//        this.professionalId = professionalId;
-//        this.customerId = customerId;
-//        this.content = content;
-//        this.listingId = listingId;
-//        this.dateTime = dateTime;
-//        this.from = from;
-//    }
+
 
 
     public Message(String conversationId, String content, String dateTime, String from) {
@@ -31,29 +20,7 @@ public class Message {
 
     }
 
-//   // public String getListingId() {
-//        return listingId;
-//    }
-//
-//    public void setListingId(String listingId) {
-//        this.listingId = listingId;
-//    }
-//
-//    public String getProfessionalId() {
-//        return professionalId;
-//    }
-//
-//    public void setProfessionalId(String professionalId) {
-//        this.professionalId = professionalId;
-//    }
-//
-//    public String getCustomerId() {
-//        return customerId;
-//    }
-//
-//    public void setCustomerId(String customerId) {
-//        this.customerId = customerId;
-//    }
+
 
     public String getContent() {
         return content;

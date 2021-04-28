@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fyp.Adapters.MessageAdapter;
+import com.example.fyp.CustomerFeatures.ProfessionalSelectedFromConversation;
 import com.example.fyp.ObjectClasses.Conversation;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Message;
@@ -204,7 +205,7 @@ public class CustomerSelectedConversation extends AppCompatActivity {
     }
 
     public void viewProfessionalProfile(View view) {
-        Intent intent = new Intent(this, ViewProfessionalFeedback.class);
+        Intent intent = new Intent(this, ProfessionalSelectedFromConversation.class);
         intent.putExtra("professionalId",professionalId);
         startActivity(intent);
     }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.MenuItem;
@@ -53,7 +54,6 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
         textViewMessage=(TextView)findViewById(R.id.textViewMessage);
 
         getConsultation();
-        getListing();
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -109,7 +109,7 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
         txtViewListingDetails.setText("Listing Title : "+listing.getTitle()+"\n"+"\nDescription : "+listing.getDescription()+"\n"+"\nLocation : "+listing.getLocation());
         txtViewTime.setText("Time : "+consultation.getTime());
         txtViewDate.setText("Date : "+consultation.getDate());
-        textViewMessage.setText("Message : "+consultation.getMessage());
+        textViewMessage.setText("Your Message : "+consultation.getMessage());
     }
     public void getConsultation(){
         ref.child("Consultation").addValueEventListener(new ValueEventListener() {
@@ -119,7 +119,9 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(consultationId)) {
                         consultation = child.getValue(Consultation.class);
+                        getListing();
                     }
+
                 }
             }
             @Override
@@ -204,5 +206,31 @@ public class SelectedAcceptedConsultation extends AppCompatActivity {
                 //   Log.m("DBE Error","Cancel Access DB");
             }
         });
+    }
+
+    public void showOnMap(View view) {
+
+        ref.child("Consultation").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(consultationId)) {
+                        consultation = child.getValue(Consultation.class);
+
+                        Uri uri=Uri.parse("google.navigation:q="+consultation.getLocation());
+                        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                        intent.setPackage("com.google.android.apps.maps");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
+
     }
 }

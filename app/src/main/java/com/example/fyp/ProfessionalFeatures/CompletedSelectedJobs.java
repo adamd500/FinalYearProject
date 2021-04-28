@@ -92,7 +92,7 @@ public class CompletedSelectedJobs extends AppCompatActivity {
         if(month.equalsIgnoreCase("december")){
             jobs = Graph2.december;
         }
-        if(month.equalsIgnoreCase("whole year")){
+        if(month.equalsIgnoreCase("Whole Year")){
             getFromFirebase();
         }
 
@@ -102,7 +102,7 @@ public class CompletedSelectedJobs extends AppCompatActivity {
         mRecyclerView.setAdapter(myAdapter);
 //        getFromFirebase();
         t1=(TextView)findViewById(R.id.textView5);
-        t1.setText("Jobs from "+month);
+        t1.setText("Completed Jobs from "+month);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

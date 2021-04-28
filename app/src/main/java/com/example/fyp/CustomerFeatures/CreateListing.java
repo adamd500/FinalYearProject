@@ -105,6 +105,7 @@ public class CreateListing extends AppCompatActivity {
 
     }
     public void postListing(View v) {
+
         description = (EditText) findViewById(R.id.editTextDescription);
         eircode = (EditText) findViewById(R.id.editTextEircode);
         title=(EditText)findViewById(R.id.editTextTitle) ;
@@ -134,14 +135,9 @@ public class CreateListing extends AppCompatActivity {
 
     }
 
-    //
-    //
-    //METHODS FOR ADDING IMAGE
-    //
-    //
+
     public void selectImage(View v) {
 
-        // Defining Implicit Intent to mobile gallery
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -169,7 +165,6 @@ public class CreateListing extends AppCompatActivity {
     public void uploadImage() {
         if (filePath != null) {
 
-            // Code for showing progressDialog while uploading
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
@@ -183,7 +178,6 @@ public class CreateListing extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     progressDialog.dismiss();
-                                    // dbRef.child("User").child(uid).child("profileImageUri").setValue(filePath);
 
                                     Toast.makeText(CreateListing.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
                                 }
@@ -192,7 +186,6 @@ public class CreateListing extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast.makeText(CreateListing.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }

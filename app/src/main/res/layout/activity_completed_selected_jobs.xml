@@ -6,25 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".ProfessionalFeatures.CompletedSelectedJobs">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:background="@drawable/bg_square"
+        android:drawablePadding="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingEnd="@dimen/spacing_medium"
+        android:paddingBottom="@dimen/spacing_large"
+        android:text="Completed Jobs"
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_large" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/googlesansbold"
+        android:text=""
+        android:textColor="@color/textheader"
+        android:textSize="@dimen/font_medium" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="409dp"
-        android:layout_height="573dp"
-        android:layout_marginTop="63dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="3dp" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jobs From :"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

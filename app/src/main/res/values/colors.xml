@@ -21,16 +21,10 @@
     <color name="gray">#E2E2E2</color>
     <color name="rating">#FFC107</color>
 
-    <color name="colorPrimary">#eb4b51</color>
+    <color name="colorPrimary">#1887f9</color>
     <color name="colorPrimaryDark">#eb4b51</color>
     <color name="colorPrimaryRipple">#F57074</color>
 
-<!--    <color name="colorAccent">#eb4b51</color>-->
-<!--    <color name="blue">#4C92C0</color>-->
-<!--    <color name="red">#e51415</color>-->
-<!--    <color name="white">#fff</color>-->
-<!--    <color name="gray">#E2E2E2</color>-->
-<!--    <color name="rating">#FFC107</color>-->
 
     <color name="startcolor">@color/colorPrimary</color>
     <color name="endcolor">@color/colorPrimary </color>

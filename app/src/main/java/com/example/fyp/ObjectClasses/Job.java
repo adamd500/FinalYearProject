@@ -1,5 +1,7 @@
 package com.example.fyp.ObjectClasses;
 
+import java.util.ArrayList;
+
 public class Job {
     String jobId;
     String customerId;
@@ -19,7 +21,7 @@ public class Job {
     String actualDuration;
     String priceBreakdown;
     String jobTitle;
-  //  String professionalStripeKey;
+    ArrayList<String>afterPics = new ArrayList<String>();
 
     public Job(){
 
@@ -92,13 +94,13 @@ public class Job {
         return quote;
     }
 
-//    public String getProfessionalStripeKey() {
-//        return professionalStripeKey;
-//    }
-//
-//    public void setProfessionalStripeKey(String professionalStripeKey) {
-//        this.professionalStripeKey = professionalStripeKey;
-//    }
+    public ArrayList<String> getAfterPics() {
+        return afterPics;
+    }
+
+    public void setAfterPics(ArrayList<String> afterPics) {
+        this.afterPics = afterPics;
+    }
 
     public void setQuote(int quote) {
         this.quote = quote;
@@ -199,4 +201,6 @@ public class Job {
     public void setPriceBreakdown(String priceBreakdown) {
         this.priceBreakdown = priceBreakdown;
     }
+
+
 }

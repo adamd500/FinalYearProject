@@ -14,12 +14,15 @@ public class Person {
     String email;
     String password;
     String username;
+    String selfieImage;
+    String idImage;
 
     public Person(){
 
     }
 
-    public Person(String name, String dob, String address, boolean idVerified, List<String> feedback, String location, String phoneNumber, String email, String password, String username) {
+    public Person(String name, String dob, String address, boolean idVerified, List<String> feedback,
+                  String location, String phoneNumber, String email, String password, String username, String selfieImage, String idImage) {
         this.name = name;
         this.dob = dob;
         this.address = address;
@@ -30,6 +33,8 @@ public class Person {
         this.email = email;
         this.password = password;
         this.username = username;
+        this.selfieImage = selfieImage;
+        this.idImage = idImage;
     }
 
     public String getName() {
@@ -110,5 +115,21 @@ public class Person {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getSelfieImage() {
+        return selfieImage;
+    }
+
+    public void setSelfieImage(String selfieImage) {
+        this.selfieImage = selfieImage;
+    }
+
+    public String getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(String idImage) {
+        this.idImage = idImage;
     }
 }

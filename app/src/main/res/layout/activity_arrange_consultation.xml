@@ -31,7 +31,7 @@
         android:paddingTop="@dimen/spacing_large"
         android:paddingEnd="@dimen/spacing_medium"
         android:paddingBottom="@dimen/spacing_large"
-        android:text="Consultation Accepted by Client"
+        android:text="Send Consultation to Client"
         android:textColor="@color/textheader"
         android:textSize="@dimen/font_large" />
 

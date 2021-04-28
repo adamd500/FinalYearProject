@@ -272,34 +272,36 @@ public class Graph2 extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     Job job = child.getValue(Job.class);
                     if (job.getProfessionalId().equals(uid) && job.isFinished()) {
-                        String date = job.getEndDate();
-                        String parts[] = date.split("/");
-                        String month = parts[1];
-                        if (month.equals("01")) {
-                            january.add(job);
-                        } else if (month.equals("02")) {
-                            february.add(job);
-                        } else if (month.equals("03")) {
-                            march.add(job);
-                        } else if (month.equals("04")) {
-                            april.add(job);
-                        } else if (month.equals("05")) {
-                            may.add(job);
-                        } else if (month.equals("06")) {
-                            june.add(job);
-                        } else if (month.equals("07")) {
-                            july.add(job);
-                        } else if (month.equals("08")) {
-                            august.add(job);
-                        } else if (month.equals("09")) {
-                            september.add(job);
-                        } else if (month.equals("10")) {
-                            october.add(job);
-                        } else if (month.equals("11")) {
-                            november.add(job);
-                        } else if (month.equals("12")) {
-                            december.add(job);
-                        }
+
+                            String date = job.getEndDate();
+                            String parts[] = date.split("/");
+                            String month = parts[1];
+                            if (month.equals("01")) {
+                                january.add(job);
+                            } else if (month.equals("02")) {
+                                february.add(job);
+                            } else if (month.equals("03")) {
+                                march.add(job);
+                            } else if (month.equals("04")) {
+                                april.add(job);
+                            } else if (month.equals("05")) {
+                                may.add(job);
+                            } else if (month.equals("06")) {
+                                june.add(job);
+                            } else if (month.equals("07")) {
+                                july.add(job);
+                            } else if (month.equals("08")) {
+                                august.add(job);
+                            } else if (month.equals("09")) {
+                                september.add(job);
+                            } else if (month.equals("10")) {
+                                october.add(job);
+                            } else if (month.equals("11")) {
+                                november.add(job);
+                            } else if (month.equals("12")) {
+                                december.add(job);
+                            }
+
                     }
                 }
                 calculate();
@@ -435,8 +437,9 @@ public class Graph2 extends AppCompatActivity {
         t1.setText("Total Gross Earnings : " + String.valueOf(total));
         t2.setText("Total Take Home : " + String.valueOf(takeHome));
         t3.setText("Number of Jobs Completed : " + String.valueOf(l));
-        t4.setText("Average Earn per Job : " + String.valueOf(total / l));
-
+        if(total!=0 &&l!=0) {
+            t4.setText("Average Earn per Job : " + String.valueOf(total / l));
+        }
     }
 
     public void viewJobs(View view) {

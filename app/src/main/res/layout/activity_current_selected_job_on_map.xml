@@ -1,9 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessionalFeatures.CurrentSelectedJobOnMap" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfessionalFeatures.MapSelectedAcceptedConsultation">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginBottom="@dimen/bg_decrease20dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_medium"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:background="@drawable/bg_square"
+            android:drawablePadding="@dimen/spacing_medium"
+            android:fontFamily="@font/googlesansbold"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingTop="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large"
+            android:text="Accepted Consultation"
+            android:textColor="@color/textheader"
+            android:textSize="@dimen/font_large" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text=""
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_medium" />
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/durationTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Details of Listing"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/txtViewListingDetails"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/durationTitle"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Listing Details"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/consTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:text="Details Agreed for Consultation"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/txtViewDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/consTitle"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Date"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+                            <TextView
+                                android:id="@+id/txtViewTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/txtViewDate"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Time"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+
+                            <TextView
+                                android:id="@+id/textViewMessage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/txtViewTime"
+                                android:layout_marginStart="@dimen/spacing_large"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginBottom="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:padding="@dimen/spacing_small"
+                                android:text="Message"
+                                android:textColor="@color/textchild"
+                                android:textSize="@dimen/font_large" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_medium"
+                        android:layout_marginEnd="@dimen/spacing_medium"
+                        android:layout_marginBottom="@dimen/spacing_medium"
+                        android:background="@color/white"
+                        app:cardCornerRadius="@dimen/spacing_small"
+                        app:cardElevation="@dimen/card_shadow">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/mapTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansbold"
+                                android:paddingStart="@dimen/spacing_medium"
+                                android:paddingTop="@dimen/spacing_large"
+                                android:paddingEnd="@dimen/spacing_medium"
+                                android:paddingBottom="@dimen/spacing_large"
+                                android:text="Consultation Location"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+
+
+                            <fragment
+                                android:id="@+id/map"
+                                android:layout_below="@+id/mapTitle"
+                                android:layout_height="250dp"
+                                android:paddingStart="@dimen/spacing_medium"
+                                android:paddingTop="@dimen/spacing_large"
+                                android:paddingEnd="@dimen/spacing_medium"
+                                android:layout_width="match_parent"
+                                android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+
+                            <TextView
+                                android:id="@+id/locationOnMap"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/map"
+                                android:layout_marginStart="@dimen/spacing_medium"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:layout_marginEnd="@dimen/spacing_medium"
+                                android:background="@drawable/bg_square"
+                                android:drawableEnd="@drawable/ic_map_pin_2_line"
+                                android:drawablePadding="@dimen/spacing_medium"
+                                android:fontFamily="@font/googlesansregular"
+                                android:onClick="showOnMap"
+                                android:paddingTop="@dimen/spacing_large"
+                                android:paddingEnd="@dimen/spacing_medium"
+                                android:paddingBottom="@dimen/spacing_large"
+                                android:text="Start Navigation to Location"
+                                android:textColor="@color/textheader"
+                                android:textSize="@dimen/font_large" />
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <Button
+                        android:id="@+id/addToScheduleButton"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/bg_btn_shape"
+                        android:fontFamily="@font/googlesansbold"
+                        android:onClick="addToCalendar"
+                        android:text="Add to Calendar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_large" />
+
+
+                    <Button
+                        android:id="@+id/deleteButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:background="@drawable/bg_btn_shape"
+                        android:fontFamily="@font/googlesansbold"
+                        android:onClick="completeConsultation"
+                        android:text="Consultation is Complete"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_large" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/googlesansbold"
+                        android:text=""
+                        android:textColor="@color/textheader"
+                        android:textSize="@dimen/font_medium" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_navigation"
+        tools:layout_editor_absoluteX="208dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

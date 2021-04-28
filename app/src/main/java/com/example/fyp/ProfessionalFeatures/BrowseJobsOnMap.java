@@ -136,7 +136,7 @@ public class BrowseJobsOnMap extends FragmentActivity implements OnMapReadyCallb
                 return false;
             }
         });
-        getProfLocation();
+        getListingLocations();
 
     }
 
@@ -162,7 +162,6 @@ public class BrowseJobsOnMap extends FragmentActivity implements OnMapReadyCallb
 
                                 mMap.addMarker(new MarkerOptions().position(p1).title("Your Location"));
                                 mMap.moveCamera(CameraUpdateFactory.newLatLng(p1));
-                                getListingLocations(professional.getWorkRadius(),professional.getTrade());
                                 mMap.getUiSettings().setZoomControlsEnabled(true);
 
                             }else{
@@ -187,7 +186,7 @@ public class BrowseJobsOnMap extends FragmentActivity implements OnMapReadyCallb
         });
     }
 
-    public void getListingLocations(int radius, String trade) {
+    public void getListingLocations() {
 
         ref.child("Listing").addValueEventListener(new ValueEventListener() {
             @Override
@@ -219,7 +218,7 @@ public class BrowseJobsOnMap extends FragmentActivity implements OnMapReadyCallb
                         e.printStackTrace();
                     }
                    // LatLng myLocation = getLocationFromEircode(listing.getLocation());
-
+                    getProfLocation();
 
                     // getListingLocations(professional.getWorkRadius(), professional.getTrade());
 

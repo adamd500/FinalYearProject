@@ -204,7 +204,7 @@ public class ViewListingFromConversation extends AppCompatActivity {
                 for (DataSnapshot child : children) {
                     if (child.getKey().equals(listingId)) {
                         Listing listing = child.getValue(Listing.class);
-                        Intent intent=new Intent(getApplicationContext(),CurrentSelectedJobOnMap.class);
+                        Intent intent=new Intent(getApplicationContext(), MapSelectedAcceptedConsultation.class);
                         intent.putExtra("location",listing.getLocation());
                         startActivity(intent);
                     }

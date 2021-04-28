@@ -37,6 +37,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.1'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-core:18.0.3'
     annotationProcessor 'org.parceler:parceler:1.1.12'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
@@ -59,6 +60,13 @@ dependencies {
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
+    implementation 'com.google.android.gms:play-services-analytics:10.2.4'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'adapter-rxjava', version: '2.9.0'
 
 
 }

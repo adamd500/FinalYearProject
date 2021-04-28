@@ -49,4 +49,6 @@
     <string name="title_activity_browse_jobs_on_map">Map</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_map_current_job">Map</string>
+    <string name="title_activity_selected_listing">Map</string>
 </resources>

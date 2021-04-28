@@ -14,6 +14,7 @@
         android:background="@drawable/bg_card"
         android:orientation="vertical">
 
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
@@ -38,12 +39,14 @@
         <TextView
             android:id="@+id/tv"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             android:layout_margin="@dimen/spacing_medium"
             android:fontFamily="@font/googlesansbold"
             android:text=""
             android:textColor="@color/textheader"
             android:textSize="@dimen/font_medium" />
+
+
 
         <TextView
             android:id="@+id/tvCurrentListings"

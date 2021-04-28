@@ -112,6 +112,5 @@ public class CustomerAllListings extends AppCompatActivity {
         });
     }
 
-    public void previousListings(View view) {
-    }
+
 }
