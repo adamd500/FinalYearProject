@@ -276,23 +276,23 @@ public class Graph2 extends AppCompatActivity {
                             String date = job.getEndDate();
                             String parts[] = date.split("/");
                             String month = parts[1];
-                            if (month.equals("01")) {
+                            if (month.equals("1")) {
                                 january.add(job);
-                            } else if (month.equals("02")) {
+                            } else if (month.equals("2")) {
                                 february.add(job);
-                            } else if (month.equals("03")) {
+                            } else if (month.equals("3")) {
                                 march.add(job);
-                            } else if (month.equals("04")) {
+                            } else if (month.equals("4")) {
                                 april.add(job);
-                            } else if (month.equals("05")) {
+                            } else if (month.equals("5")) {
                                 may.add(job);
-                            } else if (month.equals("06")) {
+                            } else if (month.equals("6")) {
                                 june.add(job);
-                            } else if (month.equals("07")) {
+                            } else if (month.equals("7")) {
                                 july.add(job);
-                            } else if (month.equals("08")) {
+                            } else if (month.equals("8")) {
                                 august.add(job);
-                            } else if (month.equals("09")) {
+                            } else if (month.equals("9")) {
                                 september.add(job);
                             } else if (month.equals("10")) {
                                 october.add(job);

@@ -35,19 +35,19 @@ public class CustomerListingNav extends AppCompatActivity {
                         return true;
 
                     case R.id.createListing:
-//                        Intent intent2 = new Intent(CustomerListingNav.this, CreateListing.class);
-//                        startActivity(intent2);
+                        Intent intent2 = new Intent(CustomerListingNav.this, CreateListing.class);
+                        startActivity(intent2);
                         return true;
 
                     case R.id.myListings:
-                        Intent intent3 = new Intent(CustomerListingNav.this, CustomerAllListings.class);
-                        startActivity(intent3);
+                     //   Intent intent3 = new Intent(CustomerListingNav.this, CustomerListingNav.class);
+                       // startActivity(intent3);
                         return true;
 
 
                     case R.id.home:
-                        //   Intent intent4 = new Intent(SelectedListing.this, WelcomeCustomer.class);
-                        // startActivity(intent4);
+                          Intent intent4 = new Intent(CustomerListingNav.this, WelcomeCustomer.class);
+                        startActivity(intent4);
                 }
 
                 return false;

@@ -65,6 +65,8 @@ public class FinaliseJobProfessional extends AppCompatActivity {
     String finishDate;
     DatePickerDialog.OnDateSetListener dateSetListener;
     private static final int PICK_IMAGE_REQUEST = 22;
+    private static final int PICK_IMAGE_REQUEST2 = 23;
+
     Uri filePath;
     Uri filePath2;
     String picPath1, picPath2;
@@ -245,6 +247,8 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Image from here..."), PICK_IMAGE_REQUEST);
 
+
+
     }
     public void selectImage2(View view) {
 
@@ -252,7 +256,7 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         Intent intent2 = new Intent();
         intent2.setType("image/*");
         intent2.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent2, "Select Image from here..."), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent2, "Select Image from here..."), PICK_IMAGE_REQUEST2);
 
     }
 
@@ -264,26 +268,29 @@ public class FinaliseJobProfessional extends AppCompatActivity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null
                 && data.getData() != null) {
 
-            if (filePath == null) {
-                filePath = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                    img1.setImageBitmap(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-
-                filePath2 = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                    img2.setImageBitmap(bitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+            filePath = data.getData();
+            try {
+                Bitmap bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                img1.setImageBitmap(bitmap1);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+        }else if(requestCode == PICK_IMAGE_REQUEST2&&  resultCode== RESULT_OK && data!=null   && data.getData() != null){
+
+            filePath2 = data.getData();
+            try {
+                Bitmap bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath2);
+                img2.setImageBitmap(bitmap2);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
+
+
+
+
     }
 
     public void uploadImage(View v) {

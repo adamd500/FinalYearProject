@@ -124,7 +124,8 @@ public class JobsByKeyword extends AppCompatActivity {
 
                     assert job != null;
                     if(job.isFinished()){
-                       if( (job.getJobTitle().equalsIgnoreCase(keyword)) || (job.getJobTitle().contains(keyword))|| (job.getDescription().contains(keyword))) {
+                       if( (job.getJobTitle().toLowerCase().equalsIgnoreCase(keyword.toLowerCase())) || (job.getJobTitle().toLowerCase().contains(keyword.toLowerCase()))||
+                               (job.getDescription().toLowerCase().contains(keyword.toLowerCase()))) {
                            jobMatches.add(job);
                     }
 //

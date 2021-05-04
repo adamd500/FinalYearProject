@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fyp">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,7 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FYP">
-        <activity android:name=".CustomerFeatures.PreviousListings"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,6 +35,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".ProfessionalFeatures.MapListingFromConversation"
+            android:label="@string/title_activity_map_listing_from_conversation"></activity>
+        <activity android:name=".CustomerFeatures.PreviousListings" />
         <activity
             android:name=".ProfessionalFeatures.ProfSelectedListing"
             android:label="@string/title_activity_selected_listing" />
@@ -64,7 +69,12 @@
         <activity android:name=".Messaging.StartConversation2" />
         <activity android:name=".AdminFeatures.SelectedCustomerToVerify" />
         <activity android:name=".AdminFeatures.VerifyCustomers" />
+        <activity android:name=".AdminFeatures.VerifyProfessionals" />
         <activity android:name=".AdminFeatures.WelcomeAdmin" />
+        <activity android:name=".AdminFeatures.SelectedProfessionalToVerify" />
+        <activity android:name=".AdminFeatures.VerifyProfessionalGardaVet" />
+        <activity android:name=".AdminFeatures.VerifyProfessionalSafePass" />
+        <activity android:name=".AdminFeatures.VerifyProfessionalID" />
         <activity android:name=".RegisterAndLogin.AdminLogin" />
         <activity android:name=".DocumentUploading.ProfessionalUploadGardaVet" />
         <activity android:name=".DocumentUploading.ProfessionalUploadSafePass" />

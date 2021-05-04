@@ -24,7 +24,7 @@ public class WelcomeAdmin extends AppCompatActivity {
     }
 
     public void verifyProfessionals(android.view.View view) {
-        Intent intent=new Intent(this,VerifyProfessionals.class);
+        Intent intent=new Intent(WelcomeAdmin.this,VerifyProfessionals.class);
         startActivity(intent);
     }
 }

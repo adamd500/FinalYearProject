@@ -272,22 +272,22 @@ public class CreateJob extends AppCompatActivity {
                         ref2.child(jobId).child("estimatedDuration").setValue(duration+" "+spinner.getSelectedItem());
 
 //
-                        Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
-                                .putExtra(CalendarContract.Events.TITLE, "Working on Job Titled :" + job.getJobTitle())
-                                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
-                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.getTimeInMillis())
-                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finishCal.getTimeInMillis())
-                                .putExtra(CalendarContract.Events.EVENT_LOCATION, job.getLocation())
-                                .putExtra(Intent.EXTRA_EMAIL, customerEmail)
-                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :" + job.getDescription()) // Description
-                                .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
-                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
-
-                        startActivity(insertCalendarIntent);
+//                        Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+//                                .putExtra(CalendarContract.Events.TITLE, "Working on Job Titled :" + job.getJobTitle())
+//                                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+//                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.getTimeInMillis())
+//                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finishCal.getTimeInMillis())
+//                                .putExtra(CalendarContract.Events.EVENT_LOCATION, job.getLocation())
+//                                .putExtra(Intent.EXTRA_EMAIL, customerEmail)
+//                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :" + job.getDescription()) // Description
+//                                .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
+//                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
+//
+//                        startActivity(insertCalendarIntent);
 
                         Toast.makeText(CreateJob.this, "Job has been created", Toast.LENGTH_SHORT).show();
-                       // Intent intent=new Intent(getApplicationContext(),WelcomeProfessional.class);
-                        //startActivity(intent);
+                        Intent intent=new Intent(getApplicationContext(),WelcomeProfessional.class);
+                        startActivity(intent);
                         //  backToHomePage();
                     }
                 }
@@ -302,7 +302,4 @@ public class CreateJob extends AppCompatActivity {
 
     }
 
-    private void createNotificationChannel(){
-
-    }
 }

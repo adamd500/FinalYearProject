@@ -41,7 +41,7 @@ public class ProfessionalProfile extends AppCompatActivity {
     private FirebaseUser user;
     private String uid;
     private Professional professional;
-    private TextView buttonID, buttonSelfie,buttonSafePass,buttonGardaVet;
+    private TextView buttonID, buttonSelfie,buttonSafePass,buttonGardaVet,textViewStripe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,8 @@ public class ProfessionalProfile extends AppCompatActivity {
         t6 = (TextView) findViewById(R.id.textViewName);
         t8 = (TextView) findViewById(R.id.textViewNumber);
         t9 = (TextView) findViewById(R.id.textViewIdRequired);
+
+        textViewStripe=(TextView)findViewById(R.id.buttonStripe);
 
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -119,8 +121,12 @@ public class ProfessionalProfile extends AppCompatActivity {
                                 buttonSelfie = (TextView) findViewById(R.id.buttonSelfie);
                                 buttonID.setVisibility(View.INVISIBLE);
                                 buttonSelfie.setVisibility(View.INVISIBLE);
+                                textViewStripe.setVisibility(View.INVISIBLE);
+
                             }
+
                             if(professional.isGardaVetVer()){
+
                                 buttonGardaVet = (TextView) findViewById(R.id.buttonGardaVet);
                                 buttonGardaVet.setVisibility(View.INVISIBLE);
 
@@ -165,5 +171,35 @@ public class ProfessionalProfile extends AppCompatActivity {
         Intent intent = new Intent(this, ProfessionalUploadGardaVet.class);
         intent.putExtra("name", t6.getText().toString());
         startActivity(intent);
+    }
+
+    public void stripeSetup(View view) {
+
+
+        ref.child("Professional").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(uid)) {
+                        Professional customer = child.getValue(Professional.class);
+
+                        String accountID = customer.getStripeKey();
+
+                        Intent intent = new Intent(getApplicationContext(), SetupStripe.class);
+                        intent.putExtra("stripeKey", accountID);
+                        startActivity(intent);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 }

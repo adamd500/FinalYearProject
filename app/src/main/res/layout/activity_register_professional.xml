@@ -65,22 +65,7 @@
         android:textColor="@color/textchild"
         android:textSize="@dimen/font_large" />
 
-    <EditText
-        android:id="@+id/workRadius"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_medium"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:layout_marginEnd="@dimen/spacing_medium"
-        android:background="@drawable/bg_rounded_border_edittext"
-        android:fontFamily="@font/googlesansregular"
-        android:hint="Work Radius"
-        android:inputType="text"
-        android:padding="@dimen/spacing_large"
-        android:textColor="@color/textchild"
-        android:textSize="@dimen/font_large" />
-
-    <EditText
+        <EditText
         android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -193,6 +178,7 @@
             android:background="@drawable/bg_btn_shape"
             android:fontFamily="@font/googlesansbold"
             android:text="Register"
+            android:onClick="createProfessional"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/font_large" />

@@ -48,7 +48,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_adapter_view"
             android:layout_width="match_parent"
-            android:layout_height="480dp"
+            android:layout_height="550dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             tools:layout_editor_absoluteX="-1dp" />

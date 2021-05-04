@@ -10,6 +10,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fyp.Messaging.InboxProfessional;
+import com.example.fyp.ObjectClasses.Consultation;
 import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Job;
 import com.example.fyp.R;
@@ -42,6 +44,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 public class MapCurrentJob extends FragmentActivity implements OnMapReadyCallback {
@@ -151,8 +154,10 @@ public class MapCurrentJob extends FragmentActivity implements OnMapReadyCallbac
                     List<Address> locations=coder.getFromLocationName(location,2);
 
                     if(locations!=null){
-                        latitude =locations.get(0).getLatitude();
-                        longitude=locations.get(0).getLongitude();
+//                        latitude =locations.get(0).getLatitude();
+//                        longitude=locations.get(0).getLongitude();
+                        latitude =53.349081;
+                        longitude= -6.431490;
 
                     }
                 } catch (IOException e) {
@@ -269,6 +274,53 @@ public class MapCurrentJob extends FragmentActivity implements OnMapReadyCallbac
         Intent intent = new Intent(this,FinaliseJobProfessional.class);
         intent.putExtra("id",job.getJobId());
         startActivity(intent);
+
+    }
+
+    public void addToCalendar(View view) {
+
+        ref.child("Job").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    if (child.getKey().equals(jobId)) {
+                        job = child.getValue(Job.class);
+
+                        String[] date = job.getStartDate().split("/");
+                        int day = Integer.parseInt(date[0]);
+                        int month = Integer.parseInt(date[1]);
+                        int year = Integer.parseInt(date[2]);
+
+                        Calendar beginCal = Calendar.getInstance();
+                        beginCal.set(year, month, day);
+
+                        Calendar finishCal = Calendar.getInstance();
+                        finishCal.set(year, month, day);
+                        finishCal.add(Calendar.DAY_OF_YEAR, Integer.parseInt(job.getEstimatedDuration()));
+
+                        Intent insertCalendarIntent = new Intent(Intent.ACTION_INSERT).setData(CalendarContract.Events.CONTENT_URI)
+                                .putExtra(CalendarContract.Events.TITLE, "Working on Job Titled :" + job.getJobTitle())
+                                .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true)
+                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginCal.getTimeInMillis())
+                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, finishCal.getTimeInMillis())
+                                .putExtra(CalendarContract.Events.EVENT_LOCATION, job.getLocation())
+                              //  .putExtra(Intent.EXTRA_EMAIL, customerEmail)
+                                .putExtra(CalendarContract.Events.DESCRIPTION, "Description :" + job.getDescription()) // Description
+                                .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
+                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE);
+
+                        startActivity(insertCalendarIntent);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //   Log.m("DBE Error","Cancel Access DB");
+            }
+        });
 
     }
 

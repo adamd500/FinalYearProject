@@ -178,6 +178,7 @@ public class SelectedConsultation extends AppCompatActivity {
                         ref2.child("Listing").child(consultation.getListingId()).child("active").setValue(false);
                         ref2.child("Listing").child(consultation.getListingId()).child("professionalId").setValue(consultation.getProfessionalId());
                         ref2.child("Consultation").child(consultation.getConsultationId()).child("accepted").setValue(true);
+                        CustomerAllConsultations.adapter.notifyDataSetChanged();
 
                         String[] parts = consultation.getTime().split("-");
                         String beginTime = parts[0];

@@ -51,6 +51,9 @@ public class SetupStripe extends AppCompatActivity {
         ref = database.getReference();
         tv = (TextView) findViewById(R.id.tv);
 
+        Intent intent = getIntent();
+        accountID = intent.getStringExtra("stripeKey");
+
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -86,7 +89,6 @@ public class SetupStripe extends AppCompatActivity {
                 }
             }
         });
-        getCustomer();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomBar);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -122,28 +124,9 @@ public class SetupStripe extends AppCompatActivity {
                 return false;
             }
         });
+        thread.start();
     }
-    public void getCustomer(){
-        ref.child("Professional").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Iterable<DataSnapshot> children = snapshot.getChildren();
-                for (DataSnapshot child : children) {
-                    if (child.getKey().equals(uid)) {
-                        Professional customer = child.getValue(Professional.class);
-                        accountID=customer.getStripeKey();
-                        thread.start();
 
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //   Log.m("DBE Error","Cancel Access DB");
-            }
-        });
-    }
 
 }
 

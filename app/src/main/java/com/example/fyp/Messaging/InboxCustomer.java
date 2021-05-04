@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.example.fyp.Adapters.InboxCustomerAdapter;
 import com.example.fyp.CustomerFeatures.CreateListing;
 import com.example.fyp.CustomerFeatures.CustomerAllListings;
+import com.example.fyp.CustomerFeatures.CustomerListingNav;
 import com.example.fyp.CustomerFeatures.CustomerProfile;
 import com.example.fyp.CustomerFeatures.SelectedListing;
 import com.example.fyp.CustomerFeatures.WelcomeCustomer;
@@ -83,7 +84,7 @@ public class InboxCustomer extends AppCompatActivity {
                         return true;
 
                     case R.id.myListings:
-                        Intent intent3 = new Intent(InboxCustomer.this, CustomerAllListings.class);
+                        Intent intent3 = new Intent(InboxCustomer.this, CustomerListingNav.class);
                         startActivity(intent3);
                         return true;
 

@@ -121,7 +121,6 @@ public class RegisterProfessional extends AppCompatActivity {
         EditText passwordTxt = (EditText) findViewById(R.id.password);
         EditText passwordTxt2 = (EditText) findViewById(R.id.password2);
         EditText tradetxt=(EditText)findViewById(R.id.trade);
-        EditText worktxt=(EditText)findViewById(R.id.workRadius);
 
 
          email = emailTxt.getText().toString();
@@ -133,8 +132,6 @@ public class RegisterProfessional extends AppCompatActivity {
         String number = numberTxt.getText().toString();
         String name = nameTxt.getText().toString();
         String trade = tradetxt.getText().toString();
-        String workRadius = worktxt.getText().toString();
-        int workRadiusInt = Integer.parseInt(workRadius);
 
         List<String> feedback = new ArrayList<String>();
         String s="s";

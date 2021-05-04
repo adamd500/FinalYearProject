@@ -136,8 +136,10 @@ public class MapSelectedAcceptedConsultation extends FragmentActivity implements
             List<Address> locations=coder.getFromLocationName(location,2);
 
             if(locations!=null){
-                latitude =locations.get(0).getLatitude();
-                longitude=locations.get(0).getLongitude();
+//                latitude =locations.get(0).getLatitude();
+//                longitude=locations.get(0).getLongitude();
+                latitude =53.349081;
+                longitude= -6.431490;
 
             }
         } catch (IOException e) {

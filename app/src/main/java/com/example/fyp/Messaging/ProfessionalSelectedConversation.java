@@ -19,6 +19,7 @@ import com.example.fyp.ObjectClasses.Customer;
 import com.example.fyp.ObjectClasses.Listing;
 import com.example.fyp.ObjectClasses.Message;
 import com.example.fyp.ObjectClasses.Professional;
+import com.example.fyp.ProfessionalFeatures.MapListingFromConversation;
 import com.example.fyp.ProfessionalFeatures.ViewListingFromConversation;
 import com.example.fyp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -218,9 +219,10 @@ public class ProfessionalSelectedConversation extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Listing prof = snapshot.getValue(Listing.class);
-                Intent intent = new Intent(getApplicationContext(), ViewListingFromConversation.class);
+                Intent intent = new Intent(getApplicationContext(), MapListingFromConversation.class);
                 intent.putExtra("id",prof.getListingId());
                 intent.putExtra("title",prof.getTitle());
+                intent.putExtra("location",prof.getLocation());
                 startActivity(intent);
 
             }
